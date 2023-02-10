@@ -2,59 +2,57 @@ import styled, { css } from 'styled-components';
 import theme from '../../../styles/theme';
 
 export const Wrapper = styled.div`
-    display: 'flex',
-    flexDirection: 'column,
-    alignItems: 'flex-start,
+  ${({ theme }) => css`
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: ${theme.spacings.xxsmall};
+  `}
 `;
 
 export const LabelWrapper = styled.span`
-    display: flex,
-    alignItems: 'center',
-    width: '100%',
-    justifyContent: 'space-between',
+  display: flex;
+  align-items: center;
+  width: 100%;
 `;
 
 export const Label = styled.label`
   ${({ theme }) => css`
-    fontSize: ${theme.font.sizes.medium},
-    color: ${theme.colors.white},
-    `}
+    font-size: ${theme.font.sizes.medium};
+    color: ${theme.colors.white};
+  `}
 `;
 
 export const InputWrapper = styled.div`
   ${({ theme }) => css`
-    display: flex,
-    border: ${theme.border.radius},
-    padding: ${theme.spacings.xxsmall},
-    transition: ${theme.transition.default},
-    width: '100%',
-    minHeight: 35,
-    `}
+    display: flex;
+    border: 0.8rem;
+    transition: ${theme.transition.default};
+  `}
 `;
 
 export const InputText = styled.input`
   ${({ theme }) => css`
-fontFamily: ${theme.font.family},
-background: ${theme.colors.white},
-fontSize: ${theme.font.sizes.small}
-border: 'none',
-width: '100%',
-color: ${theme.colors.black},
-fontWeight: ${theme.font.bold},
-'&::placeholder': {
-    color: ${theme.colors.secondaryBlack},
-    fontWeight: ${theme.font.normal},
-    fontSize: ${theme.font.sizes.small},
-    opacity: 0.5,
-},
-`}
-`;
-
-export const IconWrapper = styled.div`
-  ${({ theme }) => css`
-display: 'flex',
-alignItems: 'center,
-marginRight: ${theme.spacings.xsmall},
-color: ${theme.colors.primary}
-`}
+    font-family: ${theme.font.family};
+    background: ${theme.colors.white};
+    font-size: ${theme.font.sizes.small};
+    color: ${theme.colors.black};
+    font-weight: ${theme.font.bold};
+    width: 360px;
+    height: 64px;
+    min-height: 35px;
+    border: 1px solid #d2ffec;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    &::placeholder: {
+      color: ${theme.colors.secondaryBlack};
+      font-weight: ${theme.font.normal};
+      font-wize: ${theme.font.sizes.small};
+      opacity: 0.5;
+    }
+    &:focus-within {
+      outline: none;
+      box-shadow: 0 0 0.5rem ${theme.colors.secondaryBlack};
+    }
+  `}
 `;
