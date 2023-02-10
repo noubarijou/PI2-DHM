@@ -3,7 +3,7 @@ import * as s from './button.styles';
 
 export type ButtonProps = {
   variant?: 'primary' | 'secondary' | 'tertiary' | 'disabled';
-  size?: 'small' | 'medium' | 'large';
+  size?: 'xsmall' | 'small' | 'medium' | 'large';
   children?: React.ReactNode;
   onClick?: () => void;
   type?: 'button' | 'submit' | 'reset';

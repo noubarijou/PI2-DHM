@@ -44,6 +44,9 @@ const buttonModifiers = {
 };
 
 const buttonSize = {
+  xsmall: () => css`
+    padding: 1.25rem 0.625rem;
+  `,
   small: () => css`
     width: 18.75rem;
     padding: 1.25rem 0.875rem;
