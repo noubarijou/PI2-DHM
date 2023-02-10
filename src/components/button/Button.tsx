@@ -2,7 +2,7 @@ import React from 'react';
 import * as s from './button.styles';
 
 export type ButtonProps = {
-  variant?: 'primary' | 'secondary' | 'disabled';
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'disabled';
   size?: 'small' | 'medium' | 'large';
   children?: React.ReactNode;
   onClick?: () => void;

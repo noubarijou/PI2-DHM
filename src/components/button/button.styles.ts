@@ -14,7 +14,7 @@ const buttonModifiers = {
     }
   `,
   secondary: (theme: DefaultTheme) => css`
-    background-color: ${theme.colors.gray};
+    background-color: ${theme.colors.secondaryBlack};
     color: ${theme.colors.primary};
     border-color: ${theme.colors.primary};
 
@@ -24,8 +24,18 @@ const buttonModifiers = {
       color: ${theme.colors.black};
     }
   `,
-  disabled: (theme: DefaultTheme) => css`
+  tertiary: (theme: DefaultTheme) => css`
     background-color: ${theme.colors.secondaryGray};
+    border: ${theme.colors.secondaryGray};
+    &:hover {
+      background-color: ${theme.colors.secondaryGray};
+      opacity: 0.5;
+    }
+  `,
+  disabled: (theme: DefaultTheme) => css`
+    background-color: ${theme.colors.secondaryWhite};
+    color: ${theme.colors.black};
+    opacity: 0.5;
     border: ${theme.colors.secondaryGray};
     &:hover {
       cursor: not-allowed;
