@@ -8,7 +8,7 @@ export type ButtonProps = {
 const Button = ({ variant = 'primary', isFullWidth = false }: ButtonProps) => {
   return (
     <s.ButtonWrapper variant={variant} isFullWidth={isFullWidth}>
-      botão topzera
+      botão teste
     </s.ButtonWrapper>
   );
 };
