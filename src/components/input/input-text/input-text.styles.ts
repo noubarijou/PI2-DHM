@@ -1,13 +1,13 @@
-import styled, { DefaultTheme, css } from 'styled-components';
+import styled, { css, DefaultTheme } from 'styled-components';
 import { InputTextProps } from './InputText';
 
 const InputModifiers = {
   outOfFocus: (theme: DefaultTheme) => css`
-    border: 1px solid #2dffec;
+    border: 1px solid #d2ffec;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
     &::placeholder: {
       color: ${theme.colors.secondaryBlack};
-      font-weight: ${theme.font.normal};
+      font-weight: ${theme.font.bold};
       opacity: 0.5;
     }
   `,
@@ -15,13 +15,13 @@ const InputModifiers = {
     &:focus-within {
       outline: none;
       box-shadow: 0 0 0.5rem ${theme.colors.secondaryBlack};
-      front-weight: ${theme.font.bold};
+      font-weight: ${theme.font.normal};
     }
   `,
-  validationEror: (theme: DefaultTheme) => css`
+  validationError: (theme: DefaultTheme) => css`
     border: 1px solid #ee3838;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
-    font-weight: ${theme.font.normal};
+    font-weight: ${theme.font.bold};
   `
 };
 
@@ -55,10 +55,11 @@ export const InputWrapper = styled.div`
   `}
 `;
 
-export const InputText = styled.input`
-  ${({ theme }) => css`
+export const InputText = styled.input<InputTextProps>`
+  ${({ theme, variant, size }) => css`
     font-family: ${theme.font.family};
     background: ${theme.colors.white};
+    font-size: ${theme.font.sizes.medium};
     font-size: ${theme.font.sizes.medium};
     color: ${theme.colors.black};
     width: 360px;
@@ -69,5 +70,6 @@ export const InputText = styled.input`
       width: 300px;
       height: 50px;
     }
+    ${!!variant && InputModifiers[variant](theme)};
   `}
 `;

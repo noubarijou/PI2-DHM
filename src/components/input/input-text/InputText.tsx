@@ -6,12 +6,14 @@ export type InputTextProps = {
   label?: string;
   type?: string;
   register?: any;
+  variant?: 'outOfFocus' | 'focusWithin' | 'validationError';
 } & InputHTMLAttributes<HTMLInputElement>;
 
 const InputText = ({
   name,
   label,
   type = 'text',
+  variant = 'outOfFocus',
   register,
   ...rest
 }: InputTextProps) => (
@@ -25,8 +27,9 @@ const InputText = ({
       <s.InputText
         type={type}
         name={name}
-        /* {...register(name, { required: true })}
-        {...rest} */
+        variant={variant}
+        /* {...register(name, { required: true })}*/
+        {...rest}
       />
     </s.InputWrapper>
   </s.Wrapper>

@@ -20,7 +20,7 @@ const Login = () => {
     <s.ContainerPage>
       <s.ContainerLogin onSubmit={onSubmitForm}>
         <s.Title>
-          {!logged ? '¡Hola! Ingresá tu e-mail' : 'Digite sua senha'}
+          {!logged ? 'Olá Digite seu e-mail' : 'Digite sua senha'}
         </s.Title>
         {!logged ? (
           <InputText
@@ -28,6 +28,8 @@ const Login = () => {
             value={email}
             onChange={e => setEmail(e.target.value)}
             placeholder="email"
+            variant={'outOfFocus'}
+            name="email"
           />
         ) : (
           <InputText
@@ -35,6 +37,8 @@ const Login = () => {
             type="password"
             onChange={e => setPassword(e.target.value)}
             placeholder="senha"
+            variant={'outOfFocus'}
+            name="password"
           />
         )}
         <Button variant="primary">Confirmar</Button>
