@@ -60,6 +60,7 @@ export const InputText = styled.input<InputTextProps>`
     font-family: ${theme.font.family};
     background: ${theme.colors.white};
     font-size: ${theme.font.sizes.medium};
+    font-size: ${theme.font.sizes.medium};
     color: ${theme.colors.black};
     width: 360px;
     height: 64px;
