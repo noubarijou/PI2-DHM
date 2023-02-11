@@ -1,5 +1,29 @@
-import styled, { css } from 'styled-components';
-import theme from '../../../styles/theme';
+import styled, { DefaultTheme, css } from 'styled-components';
+import { InputTextProps } from './InputText';
+
+const InputModifiers = {
+  outOfFocus: (theme: DefaultTheme) => css`
+    border: 1px solid #2dffec;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    &::placeholder: {
+      color: ${theme.colors.secondaryBlack};
+      font-weight: ${theme.font.normal};
+      opacity: 0.5;
+    }
+  `,
+  focusWithin: (theme: DefaultTheme) => css`
+    &:focus-within {
+      outline: none;
+      box-shadow: 0 0 0.5rem ${theme.colors.secondaryBlack};
+      front-weight: ${theme.font.bold};
+    }
+  `,
+  validationEror: (theme: DefaultTheme) => css`
+    border: 1px solid #ee3838;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    font-weight: ${theme.font.normal};
+  `
+};
 
 export const Wrapper = styled.div`
   ${({ theme }) => css`
@@ -35,24 +59,15 @@ export const InputText = styled.input`
   ${({ theme }) => css`
     font-family: ${theme.font.family};
     background: ${theme.colors.white};
-    font-size: ${theme.font.sizes.small};
+    font-size: ${theme.font.sizes.medium};
     color: ${theme.colors.black};
-    font-weight: ${theme.font.bold};
     width: 360px;
     height: 64px;
     min-height: 35px;
-    border: 1px solid #d2ffec;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    &::placeholder: {
-      color: ${theme.colors.secondaryBlack};
-      font-weight: ${theme.font.normal};
-      font-wize: ${theme.font.sizes.small};
-      opacity: 0.5;
-    }
-    &:focus-within {
-      outline: none;
-      box-shadow: 0 0 0.5rem ${theme.colors.secondaryBlack};
+    @media (max-width: 600px) {
+      width: 300px;
+      height: 50px;
     }
   `}
 `;
