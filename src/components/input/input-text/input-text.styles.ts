@@ -54,5 +54,9 @@ export const InputText = styled.input`
       outline: none;
       box-shadow: 0 0 0.5rem ${theme.colors.secondaryBlack};
     }
+    @media (max-width: 600px) {
+      width: 300px;
+      height: 50px;
+    }
   `}
 `;
