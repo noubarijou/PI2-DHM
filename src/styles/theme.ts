@@ -50,5 +50,10 @@ export default {
   transition: {
     default: '0.3s ease-in-out',
     fast: '0.1s ease-in-out'
+  },
+  screen: {
+    mobile: '24.375rem',
+    tablet: '52.125rem',
+    desktop: '90rem'
   }
 } as const;
