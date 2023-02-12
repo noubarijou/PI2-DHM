@@ -43,17 +43,22 @@ const buttonModifiers = {
   `
 };
 
+// #xsmall btn only have a padding
+// #medium btn is responsive
+// #large btn have a width 496px
+
 const buttonSize = {
   xsmall: () => css`
     padding: 1.25rem 0.625rem;
   `,
-  small: () => css`
-    width: 18.75rem;
-    padding: 1.25rem 0.875rem;
-  `,
-  medium: () => css`
+  medium: (theme: DefaultTheme) => css`
     width: 22.5rem;
     padding: 1.25rem 0.875rem;
+
+    @media (max-width: ${theme.screen.tablet}) {
+      width: 18.75rem;
+      padding: 1.25rem 0.875rem;
+    }
   `,
   large: () => css`
     width: 31rem;
@@ -75,6 +80,6 @@ export const ButtonWrapper = styled.button<ButtonProps>`
     }
 
     ${!!variant && buttonModifiers[variant](theme)};
-    ${!!size && buttonSize[size]()};
+    ${!!size && buttonSize[size](theme)};
   `}
 `;
