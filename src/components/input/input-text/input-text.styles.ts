@@ -5,7 +5,7 @@ const InputModifiers = {
   outOfFocus: (theme: DefaultTheme) => css`
     border: 1px solid #d2ffec;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
-    &::placeholder: {
+    &::placeholder {
       color: ${theme.colors.secondaryBlack};
       font-weight: ${theme.font.bold};
       opacity: 0.5;
