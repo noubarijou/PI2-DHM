@@ -17,6 +17,7 @@ const GlobalStyles = createGlobalStyle`
   ${({ theme }) => css`
     body {
       border: 8px solid ${theme.colors.ceriseRed};
+      overflow: hidden;
     }
   `}
 `;
