@@ -6,18 +6,27 @@ export const WomanImage = styled.img`
   display: flex;
   position: absolute;
   z-index: -10;
+
+  @media only screen and (max-width: 1180px) {
+    ${({ theme }) => css`
+      object-fit: cover;
+      object-position: 53% 8vw;
+    `};
+  }
+
   ${({ theme }) => css`
     object-fit: cover;
-    object-position: 53% -90%;
+    object-position: 53% 5vw;
   `};
 `;
 
 export const ContainerPage = styled.div`
-  height: 85vh;
+  height: 80vh;
   width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: flex-end;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
   position: relative;
   overflow: hidden;
   ${({ theme }) => css`
@@ -25,6 +34,12 @@ export const ContainerPage = styled.div`
   `};
 
   .infos-container {
+    @media only screen and (max-width: 915px) {
+      display: flex;
+      flex-direction: column;
+      width: 95%;
+      height: 60%;
+    }
     display: flex;
     justify-content: space-between;
     width: 70%;
@@ -45,6 +60,12 @@ export const GreenBottomContainer = styled.div`
 `;
 
 export const InfosLeft = styled.div`
+  @media only screen and (max-width: 915px) {
+    height: 90%;
+    width: 95%;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
   height: 90%;
   width: 50%;
   ${({ theme }) => css`
@@ -55,6 +76,14 @@ export const InfosLeft = styled.div`
   `};
 
   h2 {
+    @media only screen and (max-width: 1180px) {
+      ${({ theme }) => css`
+        font-family: ${theme.font.family};
+        line-height: 1em;
+      `};
+      font-size: 1.2em;
+    }
+
     ${({ theme }) => css`
       font-family: ${theme.font.family};
       line-height: 1em;
@@ -63,6 +92,14 @@ export const InfosLeft = styled.div`
   }
 
   h3 {
+    @media only screen and (max-width: 1180px) {
+      ${({ theme }) => css`
+        font-family: ${theme.font.family};
+        font-weight: ${theme.font.normal};
+      `};
+      font-size: 0.9em;
+    }
+
     ${({ theme }) => css`
       font-family: ${theme.font.family};
       font-weight: ${theme.font.normal};
@@ -72,6 +109,13 @@ export const InfosLeft = styled.div`
 `;
 
 export const InfosRight = styled.div`
+  @media only screen and (max-width: 915px) {
+    height: 90%;
+    width: 95%;
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+
   height: 90%;
   width: 50%;
   ${({ theme }) => css`
@@ -82,6 +126,14 @@ export const InfosRight = styled.div`
   `};
 
   h2 {
+    @media only screen and (max-width: 1180px) {
+      ${({ theme }) => css`
+        font-family: ${theme.font.family};
+        line-height: 1em;
+      `};
+      font-size: 1.2em;
+    }
+
     ${({ theme }) => css`
       font-family: ${theme.font.family};
       line-height: 1em;
@@ -90,6 +142,14 @@ export const InfosRight = styled.div`
   }
 
   h3 {
+    @media only screen and (max-width: 1180px) {
+      ${({ theme }) => css`
+        font-family: ${theme.font.family};
+        font-weight: ${theme.font.normal};
+      `};
+      font-size: 0.9em;
+    }
+
     ${({ theme }) => css`
       font-family: ${theme.font.family};
       font-weight: ${theme.font.normal};
@@ -105,4 +165,41 @@ export const DividerLine = styled.div`
   ${({ theme }) => css`
     background-color: #c1fd35;
   `};
+`;
+
+export const SmallTextContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 350px;
+  padding-left: 50px;
+
+  .small-text {
+    ${({ theme }) => css`
+      font-family: ${theme.font.family};
+      font-weight: ${theme.font.normal};
+      color: #ffffff;
+    `};
+  }
+
+  span {
+    color: #c1fd35;
+    font-size: 0.75em;
+  }
+`;
+
+export const SmallTextSession = styled.div`
+  @media only screen and (max-width: 915px) {
+    height: 40%;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-content: center;
+  }
+
+  height: 58%;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-content: center;
 `;
