@@ -8,6 +8,16 @@ const HomePage = () => {
         alt="Teste"
       ></s.WomanImage>
       <s.GreenBottomContainer></s.GreenBottomContainer>
+      <s.SmallTextSession>
+        <s.SmallTextContainer>
+          <h1 className="small-text">
+            De agora em diante, faça mais com seu dinheiro{' '}
+            <span>
+              Sua nova <strong>carteira virtual</strong>
+            </span>
+          </h1>
+        </s.SmallTextContainer>
+      </s.SmallTextSession>
       <div className="infos-container">
         <s.InfosLeft>
           <h2>Transferência</h2>
