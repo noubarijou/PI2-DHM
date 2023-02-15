@@ -1,6 +1,14 @@
 import styled, { css } from 'styled-components';
 
 export const WomanImage = styled.img`
+  @media only screen and (max-width: 915px) {
+    ${({ theme }) => css`
+      height: 70vh;
+      object-fit: cover;
+      object-position: 53% 0;
+      top: 0;
+    `};
+  }
   height: 100vh;
   width: 100vw;
   display: flex;
@@ -8,10 +16,10 @@ export const WomanImage = styled.img`
   z-index: -10;
 
   @media only screen and (max-width: 1180px) {
-    ${({ theme }) => css`
+    /* ${({ theme }) => css`
       object-fit: cover;
-      object-position: 53% 8vw;
-    `};
+      object-position: 53% 0;
+    `}; */
   }
 
   ${({ theme }) => css`
@@ -21,7 +29,11 @@ export const WomanImage = styled.img`
 `;
 
 export const ContainerPage = styled.div`
-  height: 80vh;
+  @media only screen and (max-width: 915px) {
+    height: 100vh;
+  }
+
+  height: 98vh;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -37,8 +49,10 @@ export const ContainerPage = styled.div`
     @media only screen and (max-width: 915px) {
       display: flex;
       flex-direction: column;
+      align-items: center;
       width: 95%;
       height: 60%;
+      padding-bottom: 10px;
     }
     display: flex;
     justify-content: space-between;
@@ -48,6 +62,9 @@ export const ContainerPage = styled.div`
 `;
 
 export const GreenBottomContainer = styled.div`
+  @media only screen and (max-width: 915px) {
+    height: 50%;
+  }
   height: 25%;
   width: 100%;
   position: absolute;
