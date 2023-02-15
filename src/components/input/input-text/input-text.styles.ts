@@ -50,6 +50,8 @@ export const Label = styled.label`
 export const InputWrapper = styled.div`
   ${({ theme }) => css`
     display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
     border: 0.8rem;
     transition: ${theme.transition.default};
   `}
@@ -66,10 +68,15 @@ export const InputText = styled.input<InputTextProps>`
     height: 64px;
     min-height: 35px;
     border-radius: 10px;
+    padding: 10px;
     @media (max-width: 600px) {
       width: 300px;
       height: 50px;
     }
     ${!!variant && InputModifiers[variant](theme)};
   `}
+`;
+
+export const Error = styled.p`
+  color: red;
 `;
