@@ -1,8 +1,11 @@
 import * as s from './home.style';
+import Header from '../../components/Header';
+import Footer from '../../components/footer';
 
 const HomePage = () => {
   return (
     <s.ContainerPage>
+      <Header />
       <s.WomanImage
         src="../../assets/images/happy_woman.png"
         alt="Teste"
@@ -37,6 +40,35 @@ const HomePage = () => {
           </h3>
         </s.InfosRight>
       </div>
+
+      {/* <s.ContainerLogin onSubmit={onSubmitForm}>
+        <s.Title>
+          {!logged ? 'Olá Digite seu e-mail' : 'Digite sua senha'}
+        </s.Title>
+        {!logged ? (
+          <InputText
+            type="email"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            placeholder="email"
+            variant={'outOfFocus'}
+            name="email"
+          />
+        ) : (
+          <InputText
+            value={password}
+            type="password"
+            onChange={e => setPassword(e.target.value)}
+            placeholder="senha"
+            variant={'outOfFocus'}
+            name="password"
+          />
+        )}
+        <Button variant="primary">Confirmar</Button>
+        {!logged && <Button variant="tertiary">Criar conta</Button>}
+        {messageError && <s.MessageError>{messageError}</s.MessageError>}
+      </s.ContainerLogin> */}
+      <Footer />
     </s.ContainerPage>
   );
 };
