@@ -1,11 +1,12 @@
 import { InputHTMLAttributes } from 'react';
+import { Controller } from 'react-hook-form';
 import * as s from './input-text.styles';
 
 export type InputTextProps = {
   name: string;
   label?: string;
   type?: string;
-  register?: any;
+  control?: any;
   variant?: 'outOfFocus' | 'focusWithin' | 'validationError';
 } & InputHTMLAttributes<HTMLInputElement>;
 
@@ -14,25 +15,37 @@ const InputText = ({
   label,
   type = 'text',
   variant = 'outOfFocus',
-  register,
+  control,
   ...rest
 }: InputTextProps) => (
-  <s.Wrapper aria-label="FieldText component">
-    {!!label && (
-      <s.LabelWrapper aria-label="FieldText component">
-        <s.Label>{label}</s.Label>
-      </s.LabelWrapper>
+  <Controller
+    control={control}
+    name={name}
+    render={({
+      field: { onChange, onBlur, value },
+      fieldState: { error, isDirty }
+    }) => (
+      <s.Wrapper aria-label="FieldText component">
+        {!!label && (
+          <s.LabelWrapper aria-label="FieldText component">
+            <s.Label>{label}</s.Label>
+          </s.LabelWrapper>
+        )}
+        <s.InputWrapper>
+          <s.InputText
+            type={type}
+            name={name}
+            variant={variant}
+            onChange={onChange}
+            onBlur={onBlur}
+            value={value}
+            {...rest}
+          />
+          {error && <s.Error>{error?.message}</s.Error>}
+        </s.InputWrapper>
+      </s.Wrapper>
     )}
-    <s.InputWrapper>
-      <s.InputText
-        type={type}
-        name={name}
-        variant={variant}
-        /* {...register(name, { required: true })}*/
-        {...rest}
-      />
-    </s.InputWrapper>
-  </s.Wrapper>
+  />
 );
 
 export { InputText };

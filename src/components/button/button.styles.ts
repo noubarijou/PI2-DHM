@@ -53,7 +53,6 @@ const buttonSize = {
   `,
   medium: () => css`
     width: 22.5rem;
-    padding: 1.25rem 0.875rem;
   `,
   large: () => css`
     width: 31rem;
@@ -66,7 +65,6 @@ export const ButtonWrapper = styled.button<ButtonProps>`
     border-radius: 0.625rem;
     border: 1px solid;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
-
     font-size: ${theme.font.sizes.medium};
     font-weight: ${theme.font.xbold};
 
