@@ -1,7 +1,5 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { Button } from 'components';
-import { Input } from 'components/';
 import HomePage from './home';
 
 const Home: NextPage = () => {
@@ -14,6 +12,11 @@ const Home: NextPage = () => {
           rel="stylesheet"
         />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="shortcut icon"
+          href="/assets/images/LOGO-DMH-green.png"
+          type="image/png"
+        />
       </Head>
 
       {/* <Button variant="secondary" />
