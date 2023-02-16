@@ -9,7 +9,7 @@ export const WomanImage = styled.img`
       top: 0;
     `};
   }
-  height: 100vh;
+  height: 102vh;
   width: 100vw;
   display: flex;
   position: absolute;
@@ -33,7 +33,7 @@ export const ContainerPage = styled.div`
     height: 100vh;
   }
 
-  height: 98vh;
+  height: 98.5vh;
   width: 100%;
   display: flex;
   flex-direction: column;

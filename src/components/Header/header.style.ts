@@ -19,6 +19,8 @@ export const ContainerPage = styled.div`
   }
 
   .buttons-container {
+    display: flex;
+    align-items: center;
     padding: 12px;
     height: 100%;
   }
