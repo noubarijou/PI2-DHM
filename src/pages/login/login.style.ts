@@ -26,9 +26,15 @@ export const ContainerLogin = styled.form`
   flex-direction: column;
   row-gap: 20px;
   width: 100%;
-  max-width: 360px;
+  max-width: min-content;
   height: 332px;
   text-align: center;
+
+  ${({ theme }) => css`
+    & > button {
+      margin: ${theme.spacings.xxsmall} auto;
+    }
+  `}
 `;
 
 export const MessageError = styled.span`

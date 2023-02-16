@@ -1,52 +1,100 @@
 import { Button } from 'components';
-import { InputText } from 'components/input/input-text/input-text.styles';
-import { FormEvent, useState } from 'react';
+import { yupResolver } from '@hookform/resolvers/yup';
 import * as s from './login.style';
-import HeaderLogged from '../../components/HeaderLogged';
-import Footer from '../../components/footer';
+import Footer from 'components/footer';
+import HeaderLogged from 'components/HeaderLogged';
+import { InputText } from 'components/input/input-text/InputText';
+import { useState } from 'react';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { schemaLogin } from './schemas';
+import { LoginPayload } from 'hooks/useUser/useLoginUser/types';
+import { useLoginUser } from 'hooks/useUser/useLoginUser';
+
+const messageErrors = {
+  'invalid credentials': 'Senha invalida',
+  'user not found': 'usuario não encontrado'
+};
+
+type ErrorKey = keyof typeof messageErrors;
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [messageError, setMessageError] = useState(
-    'Usuário não encontrado, tente novamente'
-  );
-  const [logged, setLogged] = useState(false);
+  const [stepEmailCompleted, setStepEmailCompleted] = useState(false);
+  const { mutate: loginUser, isLoading } = useLoginUser();
+  const [messageError, setMessageError] = useState('');
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+    setError
+  } = useForm({
+    defaultValues: {
+      email: '',
+      password: ''
+    },
+    resolver: yupResolver(schemaLogin),
+    mode: 'all'
+  });
 
-  const onSubmitForm = (e: FormEvent) => {
-    e.preventDefault();
-    setLogged(true);
+  const handleLogin: SubmitHandler<LoginPayload> = dataForm => {
+    if (!errors.email && !stepEmailCompleted) {
+      setStepEmailCompleted(true);
+      return;
+    }
+
+    if (!dataForm.password) {
+      return setError('password', {
+        type: 'required',
+        message: 'Campo obrigatório'
+      });
+    }
+    // token é recebido, falta saber o que faremos com ele
+    loginUser(dataForm, {
+      onSuccess: res => console.log(res?.token),
+      onError: err => {
+        let mesErr = err as ErrorKey;
+        setMessageError(messageErrors[mesErr]);
+      }
+    });
+  };
+
+  const resetMessageError = () => {
+    if (messageError) setMessageError('');
   };
 
   return (
     <>
       <HeaderLogged />
       <s.ContainerPage>
-        <s.ContainerLogin onSubmit={onSubmitForm}>
-          <s.Title>
-            {!logged ? 'Olá Digite seu e-mail' : 'Digite sua senha'}
+        <s.ContainerLogin onSubmit={handleSubmit(handleLogin)}>
+          <s.Title key="title">
+            {!stepEmailCompleted ? 'Olá Digite seu e-mail' : 'Digite sua senha'}
           </s.Title>
-          {!logged ? (
+          {!stepEmailCompleted ? (
             <InputText
+              key="email"
               type="email"
-              value={email}
-              onChange={e => setEmail(e.target.value)}
+              name="email"
+              control={control}
               placeholder="email"
               variant={'outOfFocus'}
-              name="email"
             />
           ) : (
             <InputText
-              value={password}
+              onKeyDown={resetMessageError}
+              key="password"
               type="password"
-              onChange={e => setPassword(e.target.value)}
+              name="password"
+              control={control}
               placeholder="senha"
               variant={'outOfFocus'}
-              name="password"
             />
           )}
-          <Button variant="primary">Confirmar</Button>
-          {!logged && <Button variant="tertiary">Criar conta</Button>}
+          <Button type="submit" variant={!isLoading ? 'primary' : 'disabled'}>
+            Confirmar
+          </Button>
+          {!stepEmailCompleted && (
+            <Button variant="tertiary">Criar conta</Button>
+          )}
           {messageError && <s.MessageError>{messageError}</s.MessageError>}
         </s.ContainerLogin>
       </s.ContainerPage>
