@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 export const ContainerPage = styled.div`
-  height: 100vh;
+  height: 80vh;
   display: flex;
 
   ${({ theme }) => css`

@@ -21,6 +21,7 @@ const GlobalStyles = createGlobalStyle`
     body {
       border: 8px solid ${theme.colors.ceriseRed};
       overflow: auto;
+      font-family: ${theme.font.family};
     }
   `}
 `;

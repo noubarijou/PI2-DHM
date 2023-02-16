@@ -3,6 +3,9 @@ import { InputText } from 'components/input/input-text/InputText';
 import { useState } from 'react';
 import { SignedUp } from 'layouts/SignUp/SignedUp';
 
+import HeaderLogged from '../../components/HeaderLogged';
+import Footer from '../../components/footer';
+
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as s from './signup.style';
 import { schema } from './schemas';
@@ -37,64 +40,68 @@ const Signup = () => {
   };
 
   return (
-    <s.FormContainer>
-      {isSignedUp ? (
-        <SignedUp />
-      ) : (
-        <s.Form onSubmit={handleSubmit(handleSignUp)}>
-          <s.FormTitle>Criar conta</s.FormTitle>
-          <InputText
-            type="text"
-            name="firstname"
-            control={control}
-            placeholder="Nome*"
-          />
-          <InputText
-            type="text"
-            name="lastname"
-            control={control}
-            placeholder="Sobrenome*"
-          />
-          <InputText
-            type="text"
-            name="dni"
-            control={control}
-            placeholder="CPF*"
-          />
-          <InputText
-            type="text"
-            name="email"
-            control={control}
-            placeholder="E-mail*"
-          />
-          <s.Text>
-            Use entre 6 e 20 caracteres (deve conter pelo menos 1 caractere
-            especial, uma letra maiúscula e um número)
-          </s.Text>
-          <InputText
-            type="password"
-            name="password"
-            control={control}
-            placeholder="Senha"
-          />
-          <InputText
-            type="password"
-            name="confirmPassword"
-            control={control}
-            placeholder="Confirmar senha"
-          />
-          <InputText
-            type="text"
-            name="phone"
-            control={control}
-            placeholder="Telefone*"
-          />
-          <Button type="submit">
-            {isLoading ? 'Carregando...' : 'Criar conta'}
-          </Button>
-        </s.Form>
-      )}
-    </s.FormContainer>
+    <>
+      <HeaderLogged />
+      <s.FormContainer>
+        {isSignedUp ? (
+          <SignedUp />
+        ) : (
+          <s.Form onSubmit={handleSubmit(handleSignUp)}>
+            <s.FormTitle>Criar conta</s.FormTitle>
+            <InputText
+              type="text"
+              name="firstname"
+              control={control}
+              placeholder="Nome*"
+            />
+            <InputText
+              type="text"
+              name="lastname"
+              control={control}
+              placeholder="Sobrenome*"
+            />
+            <InputText
+              type="text"
+              name="dni"
+              control={control}
+              placeholder="CPF*"
+            />
+            <InputText
+              type="text"
+              name="email"
+              control={control}
+              placeholder="E-mail*"
+            />
+            <s.Text>
+              Use entre 6 e 20 caracteres (deve conter pelo menos 1 caractere
+              especial, uma letra maiúscula e um número)
+            </s.Text>
+            <InputText
+              type="password"
+              name="password"
+              control={control}
+              placeholder="Senha"
+            />
+            <InputText
+              type="password"
+              name="confirmPassword"
+              control={control}
+              placeholder="Confirmar senha"
+            />
+            <InputText
+              type="text"
+              name="phone"
+              control={control}
+              placeholder="Telefone*"
+            />
+            <Button type="submit">
+              {isLoading ? 'Carregando...' : 'Criar conta'}
+            </Button>
+          </s.Form>
+        )}
+      </s.FormContainer>
+      <Footer />
+    </>
   );
 };
 

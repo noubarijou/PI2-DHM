@@ -4,7 +4,7 @@ export const FormContainer = styled.div`
   padding-top: 4rem;
   background-color: ${({ theme }) => theme.colors.secondaryBlack};
   @media (min-width: 931px) {
-    height: 100vh;
+    height: 80vh;
   }
 `;
 
