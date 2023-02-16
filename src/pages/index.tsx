@@ -19,8 +19,6 @@ const Home: NextPage = () => {
         />
       </Head>
 
-      {/* <Button variant="secondary" />
-      <Input.InputText type="text" name="name" /> */}
       <HomePage />
     </>
   );
