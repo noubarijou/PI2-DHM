@@ -1,7 +1,5 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { Button } from 'components';
-import { Input } from 'components/';
 import HomePage from './home';
 
 const Home: NextPage = () => {
@@ -15,10 +13,9 @@ const Home: NextPage = () => {
         />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
       </Head>
-
-      {/* <Button variant="secondary" />
-      <Input.InputText type="text" name="name" /> */}
       <HomePage />
     </>
   );
-}
+};
+
+export default Home;

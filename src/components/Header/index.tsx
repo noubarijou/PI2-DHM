@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import * as s from './header.style';
 
 const Header = () => {
@@ -8,8 +9,12 @@ const Header = () => {
         <img src="../../assets/images/Vector2.png" />
       </div>
       <div className="buttons-container">
-        <s.ButtonLogin>Entrar</s.ButtonLogin>
-        <s.ButtonCreateAccount>Criar conta</s.ButtonCreateAccount>
+        <Link href="/login">
+          <s.ButtonLogin>Entrar</s.ButtonLogin>
+        </Link>
+        <Link href="signup">
+          <s.ButtonCreateAccount>Criar conta</s.ButtonCreateAccount>
+        </Link>
       </div>
     </s.ContainerPage>
   );
