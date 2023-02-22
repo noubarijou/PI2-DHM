@@ -10,9 +10,6 @@ const GlobalStyles = createGlobalStyle`
   ${reset};
 
   html,  body {
-    @media only screen and (max-width: 915px) {
-      //height: calc(140vh);
-    }
     height: 100%;
     font-family: 16px;
   }
@@ -20,8 +17,6 @@ const GlobalStyles = createGlobalStyle`
   ${({ theme }) => css`
     body {
       border: 8px solid ${theme.colors.ceriseRed};
-      overflow: auto;
-      font-family: ${theme.font.family};
     }
   `}
 `;

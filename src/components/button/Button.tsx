@@ -1,31 +1,14 @@
-import React from 'react';
 import * as s from './button.styles';
 
 export type ButtonProps = {
-  variant?: 'primary' | 'secondary' | 'tertiary' | 'disabled';
-  size?: 'xsmall' | 'medium' | 'large';
-  children?: React.ReactNode;
-  onClick?: () => void;
-  type?: 'button' | 'submit' | 'reset';
+  variant?: 'primary' | 'secondary';
+  isFullWidth?: boolean;
 };
 
-const Button = ({
-  variant = 'primary',
-  size = 'medium',
-  children,
-  type,
-  onClick,
-  ...rest
-}: ButtonProps) => {
+const Button = ({ variant = 'primary', isFullWidth = false }: ButtonProps) => {
   return (
-    <s.ButtonWrapper
-      type={type}
-      variant={variant}
-      size={size}
-      onClick={onClick}
-      {...rest}
-    >
-      {children}
+    <s.ButtonWrapper variant={variant} isFullWidth={isFullWidth}>
+      botão topzera
     </s.ButtonWrapper>
   );
 };
