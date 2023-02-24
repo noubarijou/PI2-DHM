@@ -1,4 +1,5 @@
 import { Button } from 'components';
+import Link from 'next/link';
 import { IoIosCheckmarkCircleOutline } from 'react-icons/io';
 import { useTheme } from 'styled-components';
 
@@ -17,7 +18,9 @@ export function SignedUp() {
         Enviamos uma mensagem de confirmação para seu e-mail, por favor acesse e
         siga as instruções para iniciar a sessão.
       </s.Message>
-      <Button type="button">Continuar</Button>
+      <Link href="/login">
+        <Button type="button">Continuar</Button>
+      </Link>
     </s.Container>
   );
 }
