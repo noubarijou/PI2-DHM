@@ -12,7 +12,13 @@ const Home: NextPage = () => {
           rel="stylesheet"
         />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="shortcut icon"
+          href="/assets/images/LOGO-DMH-green.png"
+          type="image/png"
+        />
       </Head>
+
       <HomePage />
     </>
   );
