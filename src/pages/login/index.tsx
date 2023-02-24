@@ -9,6 +9,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { schemaLogin } from './schemas';
 import { LoginPayload } from 'hooks/useUser/useLoginUser/types';
 import { useLoginUser } from 'hooks/useUser/useLoginUser';
+import Link from 'next/link';
 
 const messageErrors = {
   'invalid credentials': 'Senha invalida',
@@ -93,7 +94,9 @@ const Login = () => {
             Confirmar
           </Button>
           {!stepEmailCompleted && (
-            <Button variant="tertiary">Criar conta</Button>
+            <Button variant="tertiary">
+              <Link href="/signup">Criar conta</Link>
+            </Button>
           )}
           {messageError && <s.MessageError>{messageError}</s.MessageError>}
         </s.ContainerLogin>
