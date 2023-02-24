@@ -5,8 +5,10 @@ const Header = () => {
   return (
     <s.ContainerPage>
       <div className="dmh-container">
-        <img src="../../assets/images/Vector.png" />
-        <img src="../../assets/images/Vector2.png" />
+        <Link href="/">
+          <img src="../../assets/images/Vector.png" />
+          <img src="../../assets/images/Vector2.png" />
+        </Link>
       </div>
       <div className="buttons-container">
         <Link href="/login">
