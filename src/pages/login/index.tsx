@@ -94,9 +94,9 @@ const Login = () => {
             Confirmar
           </Button>
           {!stepEmailCompleted && (
-            <Button variant="tertiary">
-              <Link href="/signup">Criar conta</Link>
-            </Button>
+            <Link href="/signup">
+              <Button variant="tertiary">Criar conta</Button>
+            </Link>
           )}
           {messageError && <s.MessageError>{messageError}</s.MessageError>}
         </s.ContainerLogin>
