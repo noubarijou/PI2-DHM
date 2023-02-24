@@ -12,6 +12,15 @@ const buttonModifiers = {
       border-color: ${theme.colors.gray};
       color: ${theme.colors.primary};
     }
+
+    > a {
+      color: ${theme.colors.black};
+      text-decoration: none;
+
+      &:hover {
+        color: ${theme.colors.primary};
+      }
+    }
   `,
   secondary: (theme: DefaultTheme) => css`
     background-color: ${theme.colors.secondaryBlack};
@@ -23,6 +32,15 @@ const buttonModifiers = {
       border-color: ${theme.colors.primary};
       color: ${theme.colors.black};
     }
+
+    > a {
+      color: ${theme.colors.primary};
+      text-decoration: none;
+
+      &:hover {
+        color: ${theme.colors.black};
+      }
+    }
   `,
   tertiary: (theme: DefaultTheme) => css`
     background-color: ${theme.colors.secondaryGray};
@@ -30,6 +48,10 @@ const buttonModifiers = {
     &:hover {
       background-color: ${theme.colors.secondaryGray};
       opacity: 0.5;
+    }
+    > a {
+      color: ${theme.colors.black};
+      text-decoration: none;
     }
   `,
   disabled: (theme: DefaultTheme) => css`
@@ -39,6 +61,10 @@ const buttonModifiers = {
     border: ${theme.colors.secondaryGray};
     &:hover {
       cursor: not-allowed;
+    }
+    > a {
+      color: ${theme.colors.black};
+      text-decoration: none;
     }
   `
 };
