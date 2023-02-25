@@ -53,24 +53,28 @@ const Signup = () => {
               name="firstname"
               control={control}
               placeholder="Nome*"
+              label="Nome"
             />
             <InputText
               type="text"
               name="lastname"
               control={control}
               placeholder="Sobrenome*"
+              label="Sobrenome"
             />
             <InputText
               type="text"
               name="dni"
               control={control}
               placeholder="CPF*"
+              label="CPF"
             />
             <InputText
               type="text"
               name="email"
               control={control}
               placeholder="E-mail*"
+              label="E-mail"
             />
             <s.Text>
               Use entre 6 e 20 caracteres (deve conter pelo menos 1 caractere
@@ -81,18 +85,21 @@ const Signup = () => {
               name="password"
               control={control}
               placeholder="Senha"
+              label="Senha"
             />
             <InputText
               type="password"
               name="confirmPassword"
               control={control}
               placeholder="Confirmar senha"
+              label="Confirmar senha"
             />
             <InputText
               type="text"
               name="phone"
               control={control}
               placeholder="Telefone*"
+              label="Telefone"
             />
             <Button type="submit">
               {isLoading ? 'Carregando...' : 'Criar conta'}

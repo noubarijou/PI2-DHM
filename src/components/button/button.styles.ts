@@ -89,6 +89,10 @@ const buttonSize = {
   large: () => css`
     width: 31rem;
     padding: 2.5rem 1.25rem;
+  `,
+  wallet: () => css`
+    width: 21.875rem;
+    height: 3.125rem;
   `
 };
 

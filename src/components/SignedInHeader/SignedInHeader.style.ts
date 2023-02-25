@@ -2,11 +2,13 @@ import styled, { css } from 'styled-components';
 
 export const ContainerPage = styled.div`
   background-color: #000;
-  height: calc(10vh - 7px);
+  height: 64px;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  top: 0;
+  position: sticky;
 
   .dmh-container {
     margin-left: 20px;
@@ -24,35 +26,25 @@ export const ContainerPage = styled.div`
     padding: 12px;
     height: 100%;
   }
+  .greeting-text {
+    color: white;
+  }
 `;
 
-export const ButtonLogin = styled.button`
-  //height: 100%;
-  padding: 10px;
-  line-height: 0.6em;
-  border: 2px solid #c1fd35;
-  border-radius: 5px;
-  margin-right: 15px;
-  background-color: transparent;
-  cursor: pointer;
+export const ButtonProfile = styled.button`
   ${({ theme }) => css`
+    height: 40px;
+    width: 43px;
+    padding: 6px;
+    line-height: 0.6em;
+    border: 2px solid ${theme.colors.primary};
+    border-radius: 12px;
+    margin-right: 15px;
+    cursor: pointer;
+    font-size: 20px;
+    background-color: ${theme.colors.primary};
     font-family: ${theme.font.family};
     font-weight: ${theme.font.xbold};
-    color: #c1fd35;
-  `};
-`;
-
-export const ButtonCreateAccount = styled.button`
-  //height: 100%;
-  padding: 10px;
-  line-height: 0.6em;
-  border: 2px solid #c1fd35;
-  border-radius: 5px;
-  background-color: #c1fd35;
-  cursor: pointer;
-  ${({ theme }) => css`
-    font-family: ${theme.font.family};
-    font-weight: ${theme.font.xbold};
-    color: #201f22;
+    color: ${theme.colors.black};
   `};
 `;
