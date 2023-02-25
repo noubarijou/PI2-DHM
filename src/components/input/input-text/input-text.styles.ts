@@ -19,7 +19,7 @@ const InputModifiers = {
     }
   `,
   validationError: (theme: DefaultTheme) => css`
-    border: 1px solid #ee3838;
+    border: 1px solid ${theme.colors.error};
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
     font-weight: ${theme.font.bold};
   `
