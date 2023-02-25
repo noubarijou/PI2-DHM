@@ -32,16 +32,16 @@ export const ContainerPage = styled.div`
 `;
 
 export const ButtonProfile = styled.button`
-  height: 40px;
-  width: 43px;
-  padding: 6px;
-  line-height: 0.6em;
-  border: 2px solid #c1fd35;
-  border-radius: 12px;
-  margin-right: 15px;
-  cursor: pointer;
-  font-size: 20px;
   ${({ theme }) => css`
+    height: 40px;
+    width: 43px;
+    padding: 6px;
+    line-height: 0.6em;
+    border: 2px solid ${theme.colors.primary};
+    border-radius: 12px;
+    margin-right: 15px;
+    cursor: pointer;
+    font-size: 20px;
     background-color: ${theme.colors.primary};
     font-family: ${theme.font.family};
     font-weight: ${theme.font.xbold};
