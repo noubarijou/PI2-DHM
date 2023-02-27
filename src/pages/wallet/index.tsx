@@ -97,7 +97,7 @@ const Wallet = () => {
           </s.ActivityContainer>
           <s.LinkFullActivity>
             <s.FullActivityText>Ver toda sua atividade</s.FullActivityText>
-            <AiOutlineArrowRight size={20} />
+            <AiOutlineArrowRight />
           </s.LinkFullActivity>
         </s.RecentActivity>
       </s.ContainerPage>

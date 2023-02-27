@@ -96,7 +96,12 @@ const buttonSize = {
     height: 3.125rem;
     @media (min-width: ${theme.screen.desktopXL}) {
       width: 430px;
-      height: 106px;
+      height: 70px;
+    }
+    @media (min-width: ${theme.screen.desktopXXL}) {
+      width: 790px;
+      height: 130px;
+      font-size: ${theme.font.sizes.xxlarge};
     }
   `
 };

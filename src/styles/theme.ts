@@ -58,6 +58,7 @@ export default {
     tablet768w: '48rem',
     tablet: '52.125rem',
     desktop: '64rem',
-    desktopXL: '90rem'
+    desktopXL: '90rem',
+    desktopXXL: '160rem'
   }
 } as const;

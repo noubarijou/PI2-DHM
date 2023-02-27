@@ -8,6 +8,9 @@ export const ContainerPage = styled.div`
     width: 100%;
     position: relative;
     overflow: hidden;
+    @media (min-width: ${theme.screen.desktopXXL}) {
+      height: 84.9vh;
+    }
   `}
 `;
 export const PageTitle = styled.div`
@@ -15,7 +18,7 @@ export const PageTitle = styled.div`
   position: absolute;
   left: 3.28%;
   top: 2%;
-  @media (min-width: 768px) {
+  @media (min-width: ${theme.screen.tablet768w}) {
     display: none;
   }
 `;
@@ -54,9 +57,14 @@ export const AvailableMoneyCard = styled.section`
       left: 360px;
     }
     @media (min-width: ${theme.screen.desktopXL}) {
-      top: 50px;
+      top: 25px;
       left: 460px;
-      height: 230px;
+      height: 190px;
+    }
+    @media (min-width: ${theme.screen.desktopXXL}) {
+      top: 25px;
+      left: 800px;
+      height: 390px;
     }
   `}
 `;
@@ -71,10 +79,17 @@ export const AvailableMoney = styled.div`
     border-radius: 100px;
     @media (min-width: ${theme.screen.desktopXL}) {
       border: 3px solid ${theme.colors.primary};
-      top: 130px;
+      top: 120px;
       left: 20px;
       height: 60px;
       width: 220px;
+    }
+    @media (min-width: ${theme.screen.desktopXXL}) {
+      border: 5px solid ${theme.colors.primary};
+      top: 200px;
+      left: 20px;
+      height: 70px;
+      width: 265px;
     }
   `}
 `;
@@ -88,6 +103,10 @@ export const Balance = styled.p`
     @media (min-width: ${theme.screen.desktopXL}) {
       font-weight: ${theme.font.xbold};
       font-size: ${theme.font.sizes.xlarge};
+    }
+    @media (min-width: ${theme.screen.desktopXXL}) {
+      font-weight: ${theme.font.xbold};
+      font-size: ${theme.font.sizes.xxlarge};
     }
   `}
 `;
@@ -107,6 +126,11 @@ export const whiteText = styled.div`
       font-size: ${theme.font.sizes.medium};
       top: 90px;
     }
+    @media (min-width: ${theme.screen.desktopXXL}) {
+      font-weight: ${theme.font.bold};
+      font-size: ${theme.font.sizes.xlarge};
+      top: 130px;
+    }
   `}
 `;
 export const TopLinks = styled.div`
@@ -117,7 +141,7 @@ export const TopLinks = styled.div`
   top: 10px;
   right: 10px;
 `;
-export const Links = styled.a`
+export const Links = styled.span`
   ${({ theme }) => css`
     color: ${theme.colors.white};
     position: relative;
@@ -132,6 +156,12 @@ export const Links = styled.a`
       font-size: ${theme.font.sizes.medium};
       right: 25px;
       top: 10px;
+    }
+    @media (min-width: ${theme.screen.desktopXXL}) {
+      font-weight: ${theme.font.bold};
+      font-size: ${theme.font.sizes.large};
+      right: 35px;
+      top: 20px;
     }
   `}
 `;
@@ -159,8 +189,16 @@ export const ButtonContainer = styled.div`
       left: 360px;
     }
     @media (min-width: ${theme.screen.desktopXL}) {
-      bottom: 500px;
+      bottom: 380px;
       left: 460px;
+      display: flex;
+      justify-content: space-between;
+      width: 63%;
+      height: 106px;
+    }
+    @media (min-width: ${theme.screen.desktopXXL}) {
+      bottom: 630px;
+      left: 800px;
       display: flex;
       justify-content: space-between;
       width: 63%;
@@ -171,20 +209,27 @@ export const ButtonContainer = styled.div`
 
 export const InputContainer = styled.div`
   position: absolute;
-  bottom: 290px;
+  bottom: 280px;
   left: -8px;
   max-width: 295px;
   @media (min-width: ${theme.screen.tablet768w}) {
     left: 316px;
+    bottom: 290px;
   }
   @media (min-width: ${theme.screen.desktop}) {
     width: 100%;
     left: 348px;
+    bottom: 295px;
   }
   @media (min-width: ${theme.screen.desktopXL}) {
     width: 100%;
     left: 448px;
-    bottom: 390px;
+    bottom: 320px;
+  }
+  @media (min-width: ${theme.screen.desktopXXL}) {
+    width: 100%;
+    left: 790px;
+    bottom: 450px;
   }
 `;
 
@@ -215,7 +260,12 @@ export const RecentActivity = styled.div`
     @media (min-width: ${theme.screen.desktopXL}) {
       width: 63%;
       left: 460px;
-      height: 350px;
+      height: 300px;
+    }
+    @media (min-width: ${theme.screen.desktopXXL}) {
+      width: 63%;
+      left: 800px;
+      height: 400px;
     }
   `}
 `;
@@ -230,6 +280,11 @@ export const ActivityTitle = styled.span`
     top: 11px;
     font-weight: ${theme.font.xbold};
     font-size: ${theme.font.sizes.small};
+    @media (min-width: ${theme.screen.desktopXXL}) {
+      font-weight: ${theme.font.xbold};
+      font-size: ${theme.font.sizes.xlarge};
+      width: 300px;
+    }
   `}
 `;
 export const DividerLine = styled.div`
@@ -251,6 +306,10 @@ export const DividerLine = styled.div`
     }
     @media (max-width: ${theme.screen.desktopXL}) {
       width: 860px;
+    }
+    @media (max-width: ${theme.screen.desktopXXL}) {
+      width: 1570px;
+      top: 50px;
     }
   `};
 `;
@@ -278,8 +337,12 @@ export const ActivityContainer = styled.div`
       width: 96%;
     }
     @media (min-width: ${theme.screen.desktopXL}) {
-      max-height: 90px;
-      height: 60px;
+      max-height: 60px;
+      height: 50px;
+    }
+    @media (min-width: ${theme.screen.desktopXXL}) {
+      max-height: 80px;
+      height: 70px;
     }
   `}
 `;
@@ -306,6 +369,11 @@ export const ActivityDescription = styled.div`
       right: 280px;
       font-size: ${theme.font.sizes.small};
     }
+    @media (min-width: ${theme.screen.desktopXXL}) {
+      right: 460px;
+      font-size: ${theme.font.sizes.large};
+      width: 500px;
+    }
   `}
 `;
 
@@ -320,6 +388,9 @@ export const ActivityValue = styled.div`
     @media (min-width: ${theme.screen.desktopXL}) {
       font-size: ${theme.font.sizes.small};
     }
+    @media (min-width: ${theme.screen.desktopXXL}) {
+      font-size: ${theme.font.sizes.medium};
+    }
   `}
 `;
 
@@ -332,24 +403,42 @@ export const LinkFullActivity = styled.div`
     position: absolute;
     width: 95%;
     top: 240px;
-    right: 280px;
+    right: 20px;
     @media (min-width: ${theme.screen.desktopXL}) {
-      top: 310px;
+      top: 270px;
+      right: 50px;
+    }
+    @media (min-width: ${theme.screen.desktopXXL}) {
+      top: 355px;
       right: 50px;
     }
   `}
 `;
 
-export const FullActivityText = styled.p`
+export const FullActivityText = styled.div`
   ${({ theme }) => css`
     font-size: ${theme.font.sizes.xsmall};
     font-weight: ${theme.font.xbold};
     display: flex;
-    position: absolute;
-    left: 3.28%;
+    position: relative;
+    right: 110px;
     top: 2%;
+    @media (min-width: ${theme.screen.mobile375w}) {
+      right: 160px;
+    }
+    @media (min-width: ${theme.screen.mobile425w}) {
+      right: 210px;
+    }
+    @media (min-width: ${theme.screen.desktop}) {
+      right: 440px;
+    }
     @media (min-width: ${theme.screen.desktopXL}) {
       font-size: ${theme.font.sizes.small};
+      right: 650px;
+    }
+    @media (min-width: ${theme.screen.desktopXXL}) {
+      font-size: ${theme.font.sizes.large};
+      right: 1260px;
     }
   `}
 `;
