@@ -90,9 +90,19 @@ const buttonSize = {
     width: 31rem;
     padding: 2.5rem 1.25rem;
   `,
-  wallet: () => css`
-    width: 21.875rem;
+  wallet: (theme: DefaultTheme) => css`
+    // width: 18.438rem;
+    width: 100%;
     height: 3.125rem;
+    @media (min-width: ${theme.screen.desktopXL}) {
+      width: 430px;
+      height: 70px;
+    }
+    @media (min-width: ${theme.screen.desktopXXL}) {
+      width: 790px;
+      height: 130px;
+      font-size: ${theme.font.sizes.xxlarge};
+    }
   `
 };
 

@@ -54,6 +54,9 @@ export const InputWrapper = styled.div`
     gap: 0.5rem;
     border: 0.8rem;
     transition: ${theme.transition.default};
+    @media (max-width: ${theme.screen.desktopXL}) {
+      width: 635px;
+    }
   `}
 `;
 
@@ -69,9 +72,32 @@ export const InputText = styled.input<InputTextProps>`
     min-height: 35px;
     border-radius: 10px;
     padding: 10px;
-    @media (max-width: 600px) {
-      width: 300px;
+
+    @media (max-width: ${theme.screen.desktopXXL}) {
+      width: 1602.72px;
+      height: 120px;
+    }
+    @media (max-width: ${theme.screen.desktopXL}) {
+      width: 892px;
+      height: 60px;
+    }
+
+    @media (max-width: ${theme.screen.desktop}) {
+      width: 635px;
+    }
+    @media (max-width: ${theme.screen.tablet768w}) {
+      width: 400px;
       height: 50px;
+      margin-bottom: 10px;
+    }
+    @media (max-width: ${theme.screen.mobile425w}) {
+      width: 400px;
+    }
+    @media (max-width: ${theme.screen.mobile375w}) {
+      width: 350px;
+    }
+    @media (max-width: 320px) {
+      width: 18.438rem;
     }
     ${!!variant && InputModifiers[variant](theme)};
   `}
