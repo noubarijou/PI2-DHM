@@ -83,8 +83,12 @@ export const Balance = styled.p`
     color: ${theme.colors.white};
     margin-left: 20px;
     margin-top: 10px;
-    font-weight: ${theme.font.xbold};
-    font-size: ${theme.font.sizes.xlarge};
+    font-weight: ${theme.font.bold};
+    font-size: ${theme.font.sizes.large};
+    @media (min-width: ${theme.screen.desktopXL}) {
+      font-weight: ${theme.font.xbold};
+      font-size: ${theme.font.sizes.xlarge};
+    }
   `}
 `;
 
