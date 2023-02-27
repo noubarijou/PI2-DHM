@@ -6,18 +6,8 @@ export const ContainerPage = styled.div`
     background-color: ${theme.colors.secondaryWhite};
     height: 81.5vh;
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
     position: relative;
     overflow: hidden;
-    @media (min-width: 768px) {
-      height: 83vh;
-    }
-    @media (min-width: 1024px) {
-      height: 85.8vh;
-    }
   `}
 `;
 export const PageTitle = styled.div`
@@ -44,38 +34,57 @@ export const AvailableMoneyCard = styled.section`
     position: absolute;
     top: 43px;
     height: 160px;
-    width: 350px;
-    left: 11px;
+    width: 295px;
+    left: 5px;
     border-radius: 8px;
     background: ${theme.colors.black};
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    @media (min-width: 768px) {
-      left: 350px;
+    @media (min-width: ${theme.screen.mobile375w}) {
+      width: 350px;
     }
-    @media (min-width: 1024px) {
-      width: 70%;
+    @media (min-width: ${theme.screen.mobile425w}) {
+      width: 400px;
+    }
+    @media (min-width: ${theme.screen.tablet768w}) {
+      left: 330px;
+      top: 20px;
+    }
+    @media (min-width: ${theme.screen.desktop}) {
+      width: 63%;
       left: 360px;
+    }
+    @media (min-width: ${theme.screen.desktopXL}) {
+      top: 50px;
+      left: 460px;
+      height: 230px;
     }
   `}
 `;
 export const AvailableMoney = styled.div`
   ${({ theme }) => css`
-    width: 207px;
-    height: 53px;
+    width: 180px;
+    height: 50px;
     position: absolute;
     top: 88px;
     left: 15px;
     border: 1px solid ${theme.colors.primary};
     border-radius: 100px;
+    @media (min-width: ${theme.screen.desktopXL}) {
+      border: 3px solid ${theme.colors.primary};
+      top: 130px;
+      left: 20px;
+      height: 60px;
+      width: 220px;
+    }
   `}
 `;
 export const Balance = styled.p`
   ${({ theme }) => css`
     color: ${theme.colors.white};
-    margin-left: 30px;
-    margin-top: 13px;
+    margin-left: 20px;
+    margin-top: 10px;
     font-weight: ${theme.font.xbold};
-    font-size: ${theme.font.sizes.large};
+    font-size: ${theme.font.sizes.xlarge};
   `}
 `;
 
@@ -84,11 +93,16 @@ export const whiteText = styled.div`
     color: ${theme.colors.white};
     position: absolute;
     height: 16px;
-    width: 160px;
+    width: 260px;
     left: 25px;
     top: 60px;
     font-size: ${theme.font.sizes.small};
     font-weight: ${theme.font.light};
+    @media (min-width: ${theme.screen.desktopXL}) {
+      font-weight: ${theme.font.bold};
+      font-size: ${theme.font.sizes.medium};
+      top: 90px;
+    }
   `}
 `;
 export const TopLinks = styled.div`
@@ -99,7 +113,7 @@ export const TopLinks = styled.div`
   top: 10px;
   right: 10px;
 `;
-export const Links = styled.span`
+export const Links = styled.a`
   ${({ theme }) => css`
     color: ${theme.colors.white};
     position: relative;
@@ -109,7 +123,65 @@ export const Links = styled.span`
     font-weight: ${theme.font.normal};
     padding-left: 10px;
     text-decoration: none;
+    @media (min-width: ${theme.screen.desktopXL}) {
+      font-weight: ${theme.font.bold};
+      font-size: ${theme.font.sizes.medium};
+      right: 25px;
+      top: 10px;
+    }
   `}
+`;
+export const ButtonContainer = styled.div`
+  ${({ theme }) => css`
+    bottom: 360px;
+    display: grid;
+    align-items: center;
+    position: absolute;
+    width: 18.438rem;
+    row-gap: 10px;
+    left: 5px;
+    @media (min-width: ${theme.screen.mobile375w}) {
+      width: 350px;
+    }
+    @media (min-width: ${theme.screen.mobile425w}) {
+      width: 400px;
+    }
+    @media (min-width: ${theme.screen.tablet768w}) {
+      left: 330px;
+      bottom: 380px;
+    }
+    @media (min-width: ${theme.screen.desktop}) {
+      width: 63%;
+      left: 360px;
+    }
+    @media (min-width: ${theme.screen.desktopXL}) {
+      bottom: 500px;
+      left: 460px;
+      display: flex;
+      justify-content: space-between;
+      width: 63%;
+      height: 106px;
+    }
+  `}
+`;
+
+export const InputContainer = styled.div`
+  position: absolute;
+  bottom: 290px;
+  left: -8px;
+  max-width: 295px;
+  @media (min-width: ${theme.screen.tablet768w}) {
+    left: 316px;
+  }
+  @media (min-width: ${theme.screen.desktop}) {
+    width: 100%;
+    left: 348px;
+  }
+  @media (min-width: ${theme.screen.desktopXL}) {
+    width: 100%;
+    left: 448px;
+    bottom: 390px;
+  }
 `;
 
 export const RecentActivity = styled.div`
@@ -118,17 +190,28 @@ export const RecentActivity = styled.div`
     display: flex;
     flex-direction: column;
     height: 270px;
-    width: 350px;
+    width: 295px;
     border-radius: 8px;
     position: absolute;
     bottom: 22px;
-    @media (min-width: 768px) {
-      left: 350px;
-      bottom: 120px;
+    left: 5px;
+    @media (min-width: ${theme.screen.mobile375w}) {
+      width: 350px;
     }
-    @media (min-width: 1024px) {
-      width: 70%;
+    @media (min-width: ${theme.screen.mobile425w}) {
+      width: 400px;
+    }
+    @media (min-width: ${theme.screen.tablet768w}) {
+      left: 330px;
+    }
+    @media (min-width: ${theme.screen.desktop}) {
+      width: 63%;
       left: 360px;
+    }
+    @media (min-width: ${theme.screen.desktopXL}) {
+      width: 63%;
+      left: 460px;
+      height: 350px;
     }
   `}
 `;
@@ -145,6 +228,28 @@ export const ActivityTitle = styled.span`
     font-size: ${theme.font.sizes.small};
   `}
 `;
+export const DividerLine = styled.div`
+  ${({ theme }) => css`
+    position: absolute;
+    top: 40px;
+    left: 10px;
+    height: 2px;
+    width: 280px;
+    background-color: ${theme.colors.secondaryWhite};
+    @media (min-width: ${theme.screen.mobile375w}) {
+      width: 330px;
+    }
+    @media (min-width: ${theme.screen.mobile425w}) {
+      width: 380px;
+    }
+    @media (max-width: ${theme.screen.desktop}) {
+      width: 610px;
+    }
+    @media (max-width: ${theme.screen.desktopXL}) {
+      width: 860px;
+    }
+  `};
+`;
 
 export const ActivityContainer = styled.div`
   ${({ theme }) => css`
@@ -153,14 +258,24 @@ export const ActivityContainer = styled.div`
     flex-direction: row;
     top: 50px;
     left: 11px;
-    width: 320px;
+    width: 285px;
     min-height: 45px;
     max-height: 45px;
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid ${theme.colors.secondaryWhite};
-    @media (min-width: 1024px) {
+    @media (min-width: ${theme.screen.mobile375w}) {
+      width: 330px;
+    }
+    @media (min-width: ${theme.screen.mobile425w}) {
+      width: 380px;
+    }
+    @media (min-width: ${theme.screen.desktop}) {
       width: 96%;
+    }
+    @media (min-width: ${theme.screen.desktopXL}) {
+      max-height: 90px;
+      height: 60px;
     }
   `}
 `;
@@ -168,14 +283,24 @@ export const ActivityContainer = styled.div`
 export const ActivityDescription = styled.div`
   ${({ theme }) => css`
     font-size: ${theme.font.sizes.xsmall};
-    right: 55px;
+    right: 40px;
     width: 110px;
     position: relative;
-    @media (min-width: 1024px) {
-      right: 280px;
+    @media (min-width: ${theme.screen.mobile375w}) {
+      right: 60px;
+    }
+    @media (min-width: ${theme.screen.mobile425w}) {
+      right: 85px;
+    }
+    @media (min-width: ${theme.screen.desktop}) {
+      right: 160px;
       display: flex;
       flex-wrap: nowrap;
       width: 200px;
+    }
+    @media (min-width: ${theme.screen.desktopXL}) {
+      right: 280px;
+      font-size: ${theme.font.sizes.small};
     }
   `}
 `;
@@ -188,66 +313,39 @@ export const ActivityValue = styled.div`
     position: relative;
     display: flex;
     flex-wrap: wrap;
+    @media (min-width: ${theme.screen.desktopXL}) {
+      font-size: ${theme.font.sizes.small};
+    }
   `}
 `;
 
-export const DividerLine = styled.div`
-  position: absolute;
-  top: 40px;
-  left: 10px;
-  height: 2px;
-  width: 320px;
+export const LinkFullActivity = styled.div`
   ${({ theme }) => css`
-    background-color: ${theme.colors.secondaryWhite};
-  `};
-`;
-
-export const ButtonContainer = styled.div`
-  bottom: 365px;
-  display: grid;
-  align-items: center;
-  position: absolute;
-  width: 22rem;
-  row-gap: 10px;
-  @media (min-width: 768px) {
-    left: 350px;
-    bottom: 520px;
-  }
-  @media (min-width: 1024px) {
-    width: 70%;
-    left: 360px;
     display: flex;
     flex-direction: row;
-    gap: 10px;
-  }
-`;
-
-export const InputContainer = styled.div`
-  position: absolute;
-  bottom: 290px;
-  @media (min-width: 768px) {
-    left: 335px;
-    bottom: 410px;
-  }
-  @media (min-width: 1024px) {
-    width: 70%;
-    left: 360px;
-  }
-`;
-
-export const LinkFullActivity = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  max-height: 45px;
-  position: absolute;
-  width: 95%;
-  top: 240px;
+    justify-content: flex-end;
+    max-height: 45px;
+    position: absolute;
+    width: 95%;
+    top: 240px;
+    right: 280px;
+    @media (min-width: ${theme.screen.desktopXL}) {
+      top: 310px;
+      right: 50px;
+    }
+  `}
 `;
 
 export const FullActivityText = styled.p`
-  display: flex;
-  position: absolute;
-  left: 3.28%;
-  top: 2%;
+  ${({ theme }) => css`
+    font-size: ${theme.font.sizes.xsmall};
+    font-weight: ${theme.font.xbold};
+    display: flex;
+    position: absolute;
+    left: 3.28%;
+    top: 2%;
+    @media (min-width: ${theme.screen.desktopXL}) {
+      font-size: ${theme.font.sizes.small};
+    }
+  `}
 `;

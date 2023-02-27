@@ -53,7 +53,11 @@ export default {
   },
   screen: {
     mobile: '24.375rem',
+    mobile375w: '23.438rem',
+    mobile425w: '26.563rem',
+    tablet768w: '48rem',
     tablet: '52.125rem',
-    desktop: '90rem'
+    desktop: '64rem',
+    desktopXL: '90rem'
   }
 } as const;

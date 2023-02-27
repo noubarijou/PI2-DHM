@@ -66,6 +66,7 @@ const Wallet = () => {
         </s.InputContainer>
         <s.RecentActivity>
           <s.ActivityTitle>Sua atividade</s.ActivityTitle>
+          <s.DividerLine />
           <s.ActivityContainer>
             <BsCircleFill color={primary} />
             <s.ActivityDescription>
@@ -96,7 +97,7 @@ const Wallet = () => {
           </s.ActivityContainer>
           <s.LinkFullActivity>
             <s.FullActivityText>Ver toda sua atividade</s.FullActivityText>
-            <AiOutlineArrowRight />
+            <AiOutlineArrowRight size={20} />
           </s.LinkFullActivity>
         </s.RecentActivity>
       </s.ContainerPage>
