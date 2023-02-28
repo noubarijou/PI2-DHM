@@ -54,26 +54,26 @@ export const InputWrapper = styled.div`
     gap: 0.5rem;
     border: 0.8rem;
     transition: ${theme.transition.default};
-    @media (max-width: ${theme.screen.desktopXL}) {
+    /* @media (max-width: ${theme.screen.desktopXL}) {
       width: 635px;
-    }
+    } */
   `}
 `;
 
 export const InputText = styled.input<InputTextProps>`
-  ${({ theme, variant, size }) => css`
-    font-family: ${theme.font.family};
+  ${({ theme, variant }) => css`
     background: ${theme.colors.white};
     font-size: ${theme.font.sizes.medium};
-    font-size: ${theme.font.sizes.medium};
     color: ${theme.colors.black};
-    width: 360px;
-    height: 64px;
-    min-height: 35px;
     border-radius: 10px;
-    padding: 10px;
+    padding: 1.25rem 0.875rem;
+    width: 18.75rem;
 
-    @media (max-width: ${theme.screen.desktopXXL}) {
+    @media (min-width: ${theme.screen.tablet}) {
+      width: 22.5rem;
+    }
+
+    /* @media (max-width: ${theme.screen.desktopXXL}) {
       width: 1602.72px;
       height: 120px;
     }
@@ -98,7 +98,7 @@ export const InputText = styled.input<InputTextProps>`
     }
     @media (max-width: 320px) {
       width: 18.438rem;
-    }
+    } */
     ${!!variant && InputModifiers[variant](theme)};
   `}
 `;
