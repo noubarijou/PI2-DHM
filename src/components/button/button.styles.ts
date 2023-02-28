@@ -78,21 +78,34 @@ const buttonSize = {
     padding: 0.625rem 1.25rem;
   `,
   medium: (theme: DefaultTheme) => css`
-    width: 22.5rem;
+    width: 18.5rem;
     padding: 1.25rem 0.875rem;
 
-    @media (max-width: ${theme.screen.tablet}) {
-      width: 18.75rem;
-      padding: 1.25rem 0.875rem;
+    @media (min-width: ${theme.screen.tablet}) {
+      width: 22.5rem;
     }
   `,
-  large: () => css`
-    width: 31rem;
-    padding: 2.5rem 1.25rem;
+  large: (theme: DefaultTheme) => css`
+    padding: 1.25rem;
+    width: 18.5rem;
+
+    @media (min-width: ${theme.screen.mobile}) {
+      width: 21rem;
+    }
+
+    @media (min-width: ${theme.screen.tablet}) {
+      width: 32rem;
+      padding: 2.5rem 1.25rem;
+    }
+
+    @media (min-width: ${theme.screen.desktopXL}) {
+      width: 31rem;
+      padding: 2.5rem 1.25rem;
+    }
   `,
   wallet: (theme: DefaultTheme) => css`
     // width: 18.438rem;
-    width: 100%;
+    /* width: 100%;
     height: 3.125rem;
     font-size: ${theme.font.sizes.xsmall};
     font-weight: ${theme.font.bold};
@@ -112,7 +125,7 @@ const buttonSize = {
       min-height: 130px;
       font-size: ${theme.font.sizes.xxlarge};
       padding: 0 30px;
-    }
+    } */
   `
 };
 
