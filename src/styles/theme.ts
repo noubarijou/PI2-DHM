@@ -12,6 +12,7 @@ export default {
     normal: 400,
     bold: 600,
     xbold: 700,
+    xxbold: 800,
     sizes: {
       xsmall: '0.75rem' /* 12 */,
       small: '0.875rem' /* 14 */,
