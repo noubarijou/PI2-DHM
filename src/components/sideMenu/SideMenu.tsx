@@ -23,7 +23,7 @@ const SideMenu = () => {
         </NavInfo>
         <NavLinksContainer>
           <li>
-            <NavLink href="/inital" className="active">
+            <NavLink href="/wallet" className="active">
               Início
             </NavLink>
           </li>
