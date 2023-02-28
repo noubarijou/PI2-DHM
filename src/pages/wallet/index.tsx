@@ -25,7 +25,7 @@ const Wallet = () => {
   } = useTheme();
   return (
     <>
-      <SignedInHeader />
+      {/* <SignedInHeader /> */}
       <SideMenu />
       <s.ContainerPage>
         <s.PageTitle>

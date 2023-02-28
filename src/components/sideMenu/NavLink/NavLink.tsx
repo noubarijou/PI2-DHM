@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { NavLink as Link } from '../SideMenu.styles';
+import { NavLink as Link } from './NavLink.style';
 
 type NavLinkProps = {
   route: string;

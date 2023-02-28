@@ -1,7 +1,8 @@
-import { LinksContainer } from '../SideMenu.styles';
+import { LinksContainer } from './NavLinksContainer.style';
 import { NavLink } from '../NavLink/NavLink';
 
 const NavLinksContainer = () => {
+  // /api/logout
   return (
     <>
       <LinksContainer>

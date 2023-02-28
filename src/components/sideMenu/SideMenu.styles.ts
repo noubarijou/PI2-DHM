@@ -1,6 +1,46 @@
-import Link from 'next/link';
-import styled, { css, DefaultTheme } from 'styled-components';
-import theme from 'styles/theme';
+import styled, { css } from 'styled-components';
+
+export const Header = styled.header`
+  width: 100vw;
+  height: 4rem;
+  padding: 0 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  ${({ theme }) => css`
+    background-color: ${theme.colors.black};
+    color: ${theme.colors.primary};
+  `}
+
+  .headerLogo {
+    height: 100%;
+    > img {
+      height: 100%;
+      width: auto;
+    }
+  }
+`;
+
+export const HeaderInfo = styled.div`
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1rem;
+  align-items: center;
+
+  > .alias {
+    text-transform: uppercase;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.5rem;
+
+    ${({ theme }) => css`
+      background-color: ${theme.colors.primary};
+      color: ${theme.colors.black};
+      font-size: ${theme.font.sizes.xlarge};
+      font-weight: ${theme.font.xbold};
+    `}
+  }
+`;
 
 export const NavBar = styled.nav`
   width: 13.75rem;
@@ -11,11 +51,11 @@ export const NavBar = styled.nav`
 
   ${({ theme }) => css`
     background-color: ${theme.colors.primary};
-  `}
 
-  @media (min-width: ${theme.screen.tablet}) {
-    width: 17.25rem;
-  }
+    @media (min-width: ${theme.screen.tablet}) {
+      width: 17.25rem;
+    }
+  `}
 `;
 
 export const NavInfo = styled.div`
@@ -31,31 +71,49 @@ export const NavInfo = styled.div`
     color: ${theme.colors.primary};
   `}
 `;
-export const MenuHambuger = styled.div``;
-export const CloseMenu = styled.div`
-  height: 1.5rem;
-  width: 1.5rem;
-  position: relative;
+
+export const HambugerMenu = styled.div`
+  cursor: pointer;
 
   > span {
     display: block;
     width: 1.5rem;
-    height: 0.125rem;
-    background-color: ${theme.colors.primary};
-    margin-bottom: 0.25rem;
+    height: 0.25rem;
     border-radius: 0.5rem;
-    position: absolute;
-    transform-origin: center;
+
+    ${({ theme }) => css`
+      background-color: ${theme.colors.primary};
+    `}
+  }
+
+  &.openBtn {
+    > span {
+      width: 2rem;
+    }
+    > span:nth-child(2) {
+      margin: 0.375rem 0;
+    }
+  }
+
+  &.closeBtn {
+    width: 2rem;
+    height: 2rem;
+    position: relative;
     left: 10rem;
-    top: 0.5rem;
-  }
 
-  > span:nth-child(1) {
-    transform: rotate(45deg);
-  }
+    > span {
+      position: absolute;
+      top: 0.75rem;
+      transform-origin: center;
+    }
 
-  > span:nth-child(2) {
-    transform: rotate(-45deg);
+    > span:nth-child(1) {
+      transform: rotate(45deg);
+    }
+
+    > span:nth-child(2) {
+      transform: rotate(-45deg);
+    }
   }
 `;
 
@@ -63,42 +121,9 @@ export const InfoText = styled.h3`
   ${({ theme }) => css`
     font-weight: ${theme.font.xbold};
     font-size: ${theme.font.sizes.medium};
-  `}
-`;
 
-export const LinksContainer = styled.ul`
-  padding: 1rem 1.875rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-
-  ${({ theme }) => css`
-    font-weight: ${theme.font.bold};
-    font-size: ${theme.font.sizes.medium};
-
-    > button {
-      background: none;
-      border: none;
-      font-weight: ${theme.font.bold};
-      font-size: ${theme.font.sizes.medium};
-      opacity: 50%;
-      text-align: left;
+    &.headerText {
+      color: ${theme.colors.white};
     }
   `}
-
-  > li {
-    list-style: none;
-  }
-`;
-
-export const NavLink = styled(Link)`
-  text-decoration: none;
-
-  ${({ theme }) => css`
-    color: ${theme.colors.black};
-
-    &.active {
-      font-weight: ${theme.font.xxbold};
-    }
-  `};
 `;

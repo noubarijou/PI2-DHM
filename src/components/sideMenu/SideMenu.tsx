@@ -1,17 +1,19 @@
 import {
-  CloseMenu,
+  HambugerMenu,
+  Header,
+  HeaderInfo,
   InfoText,
-  MenuHambuger,
   NavBar,
   NavInfo
 } from './SideMenu.styles';
 import { useWindow, WindowSize } from 'hooks/useWindow';
 import { useState } from 'react';
-import { NavLinksContainer } from './NavLinksContainer/NavsLinksContainer';
+import { NavLinksContainer } from './NavLinksContainer/NavLinksContainer';
+import Link from 'next/link';
 
 const SideMenu = () => {
   const size: WindowSize = useWindow();
-  const [showMenu, setShowMenu] = useState(true);
+  const [showMenu, setShowMenu] = useState(false);
 
   const openMenu = () => {
     setShowMenu(true);
@@ -24,23 +26,48 @@ const SideMenu = () => {
   return (
     <>
       {size.width > 834 ? (
-        <NavBar>
-          <NavLinksContainer />
-        </NavBar>
+        <>
+          <Header>
+            <Link href="/" className="headerLogo">
+              <img
+                src="../../assets/images/LOGO-DMH-green.png"
+                alt="green logo digital money house"
+              />
+            </Link>
+            <HeaderInfo>
+              <p className="alias">MB</p>
+              <InfoText className="headerText">Olá, Maurício Brito</InfoText>
+            </HeaderInfo>
+          </Header>
+          <NavBar>
+            <NavLinksContainer />
+          </NavBar>
+        </>
       ) : (
         <>
-          <MenuHambuger>
-            <span></span>
-            <span></span>
-            <span></span>
-          </MenuHambuger>
+          <Header>
+            <Link href="/" className="headerLogo">
+              <img
+                src="../../assets/images/LOGO-DMH-green.png"
+                alt="green logo digital money house"
+              />
+            </Link>
+            <HeaderInfo>
+              <p className="alias">MB</p>
+              <HambugerMenu className="openBtn" onClick={openMenu}>
+                <span></span>
+                <span></span>
+                <span></span>
+              </HambugerMenu>
+            </HeaderInfo>
+          </Header>
           {showMenu ? (
             <NavBar>
               <NavInfo>
-                <CloseMenu onClick={closeMenu}>
+                <HambugerMenu className="closeBtn" onClick={closeMenu}>
                   <span></span>
                   <span></span>
-                </CloseMenu>
+                </HambugerMenu>
                 <div>
                   <InfoText>Olá,</InfoText>
                   <InfoText>Mauricio Brito</InfoText>
