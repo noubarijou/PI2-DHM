@@ -301,13 +301,13 @@ export const DividerLine = styled.div`
     @media (min-width: ${theme.screen.mobile425w}) {
       width: 380px;
     }
-    @media (max-width: ${theme.screen.desktop}) {
+    @media (min-width: ${theme.screen.desktop}) {
       width: 610px;
     }
-    @media (max-width: ${theme.screen.desktopXL}) {
+    @media (min-width: ${theme.screen.desktopXL}) {
       width: 860px;
     }
-    @media (max-width: ${theme.screen.desktopXXL}) {
+    @media (min-width: ${theme.screen.desktopXXL}) {
       width: 1570px;
       top: 50px;
     }
@@ -321,7 +321,7 @@ export const ActivityContainer = styled.div`
     flex-direction: row;
     top: 50px;
     left: 11px;
-    width: 285px;
+    width: 280px;
     min-height: 45px;
     max-height: 45px;
     align-items: center;

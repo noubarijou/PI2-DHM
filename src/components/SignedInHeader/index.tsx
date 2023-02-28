@@ -11,7 +11,9 @@ const SignedInHeader = () => {
         </Link>
       </div>
       <div className="buttons-container">
-        <s.ButtonProfile>NC</s.ButtonProfile>
+        <Link href="/profile">
+          <s.ButtonProfile>NC</s.ButtonProfile>
+        </Link>
       </div>
     </s.ContainerPage>
   );

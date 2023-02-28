@@ -94,14 +94,24 @@ const buttonSize = {
     // width: 18.438rem;
     width: 100%;
     height: 3.125rem;
-    @media (min-width: ${theme.screen.desktopXL}) {
-      width: 430px;
-      height: 70px;
+    font-size: ${theme.font.sizes.xsmall};
+    font-weight: ${theme.font.bold};
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px 0 10px;
+    tex-decoration: none;
+    @media (min-width: ${theme.screen.desktop}) {
+      min-width: 430px;
+      max-width: 898px;
+      min-height: 70px;
+      font-size: ${theme.font.sizes.large};
     }
     @media (min-width: ${theme.screen.desktopXXL}) {
-      width: 790px;
-      height: 130px;
+      max-width: 1603px;
+      min-height: 130px;
       font-size: ${theme.font.sizes.xxlarge};
+      padding: 0 30px;
     }
   `
 };
