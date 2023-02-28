@@ -1,7 +1,7 @@
 import SignedInHeader from '../../components/SignedInHeader';
 import Footer from 'components/footer';
 import * as s from './wallet.styles';
-import { Button } from 'components';
+import { Button, SideMenu } from 'components';
 import Link from 'next/link';
 import { InputText } from 'components/input/input-text/InputText';
 import { useForm } from 'react-hook-form';
@@ -26,6 +26,7 @@ const Wallet = () => {
   return (
     <>
       <SignedInHeader />
+      <SideMenu />
       <s.ContainerPage>
         <s.PageTitle>
           <AiOutlineArrowRight />
