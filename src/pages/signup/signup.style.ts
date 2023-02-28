@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const FormContainer = styled.div`
   padding-top: 4rem;
   background-color: ${({ theme }) => theme.colors.secondaryBlack};
-  @media (min-width: 931px) {
+  @media (min-width: ${({ theme }) => theme.screen.tablet}) {
     height: 80vh;
   }
 `;
@@ -21,9 +21,9 @@ export const Form = styled.form`
   }
 
   & > button {
-    margin: 0.8rem auto;
+    margin: 2.25rem auto 0.9rem;
   }
-  @media (max-width: 930px) {
+  @media (max-width: ${({ theme }) => theme.screen.tablet}) {
     width: 100%;
     grid-template-columns: 1fr;
   }
@@ -37,7 +37,7 @@ export const FormTitle = styled.h2`
 
 export const Text = styled.p`
   grid-column: 1 / -1;
-  @media (max-width: 930px) {
+  @media (max-width: ${({ theme }) => theme.screen.tablet}) {
     width: 50%;
   }
   word-wrap: break-word;

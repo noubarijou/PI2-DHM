@@ -101,7 +101,7 @@ const Signup = () => {
               placeholder="Telefone*"
               label="Telefone"
             />
-            <Button type="submit">
+            <Button type="submit" size="medium">
               {isLoading ? 'Carregando...' : 'Criar conta'}
             </Button>
           </s.Form>

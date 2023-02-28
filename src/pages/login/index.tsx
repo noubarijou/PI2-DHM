@@ -10,6 +10,7 @@ import { schemaLogin } from './schemas';
 import { LoginPayload } from 'hooks/useUser/useLoginUser/types';
 import { useLoginUser } from 'hooks/useUser/useLoginUser';
 import Link from 'next/link';
+import Head from 'next/head';
 
 const messageErrors = {
   'invalid credentials': 'Senha invalida',
@@ -64,6 +65,9 @@ const Login = () => {
 
   return (
     <>
+      <Head>
+        <title>DMH | Login</title>
+      </Head>
       <HeaderLogged />
       <s.ContainerPage>
         <s.ContainerLogin onSubmit={handleSubmit(handleLogin)}>
