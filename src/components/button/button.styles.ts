@@ -75,7 +75,7 @@ const buttonModifiers = {
 
 const buttonSize = {
   xsmall: () => css`
-    padding: 1.25rem 0.625rem;
+    padding: 0.625rem 1.25rem;
   `,
   medium: (theme: DefaultTheme) => css`
     width: 22.5rem;
@@ -100,7 +100,7 @@ const buttonSize = {
     justify-content: space-between;
     align-items: center;
     padding: 0 10px 0 10px;
-    tex-decoration: none;
+    text-decoration: none;
     @media (min-width: ${theme.screen.desktop}) {
       min-width: 430px;
       max-width: 898px;
