@@ -4,12 +4,18 @@ import theme from 'styles/theme';
 
 export const NavBar = styled.nav`
   width: 13.75rem;
-  height: 100vh;
-  //position: relative;
+  height: 81.5vh;
+  position: absolute;
+  top: 64px;
+  z-index: 1;
 
   ${({ theme }) => css`
     background-color: ${theme.colors.primary};
   `}
+
+  @media (min-width: ${theme.screen.tablet}) {
+    width: 17.25rem;
+  }
 `;
 
 export const NavInfo = styled.div`
@@ -60,7 +66,7 @@ export const MenuHambuger = styled.div`
 
 export const InfoText = styled.h3`
   ${({ theme }) => css`
-    font-size: ${theme.font.xbold};
+    font-weight: ${theme.font.xbold};
     font-size: ${theme.font.sizes.medium};
   `}
 `;
@@ -101,20 +107,3 @@ export const NavLink = styled(Link)`
     }
   `};
 `;
-
-/* 
-const MenuModifiers = {
-  emphasis: (theme: DefaultTheme) => css`
-    font-weight: ${theme.font.bold};
-    text-decoration: underline;
-  `
-};
-
-export const MenuLink = styled.li<>`
-  ${({ theme, highlighted }) => css`
-    font-size: ${theme.font.sizes.medium};
-    color: ${theme.colors.black};
-    text-decoration: none;
-  `}
-`;
- */
