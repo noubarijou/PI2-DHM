@@ -4,7 +4,7 @@ import * as s from './button.styles';
 export type ButtonProps = {
   variant?: 'primary' | 'secondary' | 'tertiary' | 'disabled';
   size?: 'xsmall' | 'medium' | 'large' | 'wallet';
-  children?: React.ReactNode;
+  children: React.ReactNode;
   onClick?: () => void;
   type?: 'button' | 'submit' | 'reset';
 };
