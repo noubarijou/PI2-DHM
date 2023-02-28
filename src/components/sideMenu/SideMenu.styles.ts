@@ -30,13 +30,9 @@ export const NavInfo = styled.div`
     background-color: ${theme.colors.gray};
     color: ${theme.colors.primary};
   `}
-
-  @media (min-width: ${theme.screen.tablet}) {
-    display: none;
-  }
 `;
-
-export const MenuHambuger = styled.div`
+export const MenuHambuger = styled.div``;
+export const CloseMenu = styled.div`
   height: 1.5rem;
   width: 1.5rem;
   position: relative;
@@ -53,14 +49,13 @@ export const MenuHambuger = styled.div`
     left: 10rem;
     top: 0.5rem;
   }
-  &.is-active {
-    > span:nth-child(1) {
-      transform: rotate(45deg);
-    }
 
-    > span:nth-child(2) {
-      transform: rotate(-45deg);
-    }
+  > span:nth-child(1) {
+    transform: rotate(45deg);
+  }
+
+  > span:nth-child(2) {
+    transform: rotate(-45deg);
   }
 `;
 
@@ -71,7 +66,7 @@ export const InfoText = styled.h3`
   `}
 `;
 
-export const NavLinksContainer = styled.ul`
+export const LinksContainer = styled.ul`
   padding: 1rem 1.875rem;
   display: flex;
   flex-direction: column;

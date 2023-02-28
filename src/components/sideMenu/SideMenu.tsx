@@ -1,52 +1,57 @@
 import {
+  CloseMenu,
   InfoText,
   MenuHambuger,
   NavBar,
-  NavInfo,
-  NavLink,
-  NavLinksContainer
+  NavInfo
 } from './SideMenu.styles';
+import { useWindow, WindowSize } from 'hooks/useWindow';
+import { useState } from 'react';
+import { NavLinksContainer } from './NavLinksContainer/NavsLinksContainer';
 
 const SideMenu = () => {
+  const size: WindowSize = useWindow();
+  const [showMenu, setShowMenu] = useState(true);
+
+  const openMenu = () => {
+    setShowMenu(true);
+  };
+
+  const closeMenu = () => {
+    setShowMenu(false);
+  };
+
   return (
     <>
-      <NavBar>
-        <NavInfo>
-          <MenuHambuger className="is-active">
+      {size.width > 834 ? (
+        <NavBar>
+          <NavLinksContainer />
+        </NavBar>
+      ) : (
+        <>
+          <MenuHambuger>
+            <span></span>
             <span></span>
             <span></span>
           </MenuHambuger>
-          <div>
-            <InfoText>Olá,</InfoText>
-            <InfoText>Mauricio Brito</InfoText>
-          </div>
-        </NavInfo>
-        <NavLinksContainer>
-          <li>
-            <NavLink href="/wallet" className="active">
-              Início
-            </NavLink>
-          </li>
-          <li>
-            <NavLink href="/activity">Atividade</NavLink>
-          </li>
-          <li>
-            <NavLink href="/profile">Seu perfil</NavLink>
-          </li>
-          <li>
-            <NavLink href="/value">Carregar valor</NavLink>
-          </li>
-          <li>
-            <NavLink href="/service">Pagar serviços</NavLink>
-          </li>
-          <li>
-            <NavLink href="/card">Cartões</NavLink>
-          </li>
-          <button>Encerrar sessão</button>
-        </NavLinksContainer>
-      </NavBar>
+          {showMenu ? (
+            <NavBar>
+              <NavInfo>
+                <CloseMenu onClick={closeMenu}>
+                  <span></span>
+                  <span></span>
+                </CloseMenu>
+                <div>
+                  <InfoText>Olá,</InfoText>
+                  <InfoText>Mauricio Brito</InfoText>
+                </div>
+              </NavInfo>
+              <NavLinksContainer />
+            </NavBar>
+          ) : null}
+        </>
+      )}
     </>
   );
 };
-
 export { SideMenu };
