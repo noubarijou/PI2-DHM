@@ -22,7 +22,7 @@ const NavLinksContainer = () => {
           <NavLink route="/service">Pagar serviços</NavLink>
         </li>
         <li>
-          <NavLink route="/card">Cartões</NavLink>
+          <NavLink route="/cards">Cartões</NavLink>
         </li>
         <button>Encerrar sessão</button>
       </LinksContainer>
