@@ -4,7 +4,7 @@ import theme from 'styles/theme';
 export const ContainerPage = styled.div`
   ${({ theme }) => css`
     background-color: ${theme.colors.secondaryWhite};
-    height: 81.5vh;
+    height: ${theme.calc.body};
     width: 100%;
     position: relative;
     overflow: hidden;

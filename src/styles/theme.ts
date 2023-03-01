@@ -61,5 +61,8 @@ export default {
     desktop: '64rem',
     desktopXL: '90rem',
     desktopXXL: '160rem'
+  },
+  calc: {
+    body: 'calc(100vh - ((10vh - 8px) + (10vh - 7px)))'
   }
 } as const;

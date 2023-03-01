@@ -14,7 +14,7 @@ export const Header = styled.header`
   `}
 
   .headerLogo {
-    height: 100%;
+    height: 70%;
     > img {
       height: 100%;
       width: auto;
@@ -44,7 +44,7 @@ export const HeaderInfo = styled.div`
 
 export const NavBar = styled.nav`
   width: 13.75rem;
-  height: 81.5vh;
+  height: ${({ theme }) => theme.calc.body};
   position: absolute;
   top: 64px;
   z-index: 1;
@@ -52,7 +52,7 @@ export const NavBar = styled.nav`
   ${({ theme }) => css`
     background-color: ${theme.colors.primary};
 
-    @media (min-width: ${theme.screen.tablet}) {
+    @media (min-width: ${theme.screen.desktop}) {
       width: 17.25rem;
     }
   `}
