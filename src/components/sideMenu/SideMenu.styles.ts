@@ -52,7 +52,7 @@ export const NavBar = styled.nav`
   ${({ theme }) => css`
     background-color: ${theme.colors.primary};
 
-    @media (min-width: ${theme.screen.desktop}) {
+    @media (min-width: ${theme.screen.desktopXL}) {
       width: 17.25rem;
     }
   `}
