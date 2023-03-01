@@ -1,25 +1,6 @@
 import Link from 'next/link';
 import { AiOutlineSearch } from 'react-icons/ai';
 import styled, { css } from 'styled-components';
-import theme from 'styles/theme';
-
-export const PageTitle = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  width: 18.5rem;
-
-  @media (min-width: ${theme.screen.tablet}) {
-    display: none;
-  }
-`;
-
-export const PageTitleContent = styled.p`
-  ${({ theme }) => css`
-    font-size: ${theme.font.sizes.medium};
-    font-weight: ${theme.font.bold};
-  `}
-`;
 
 export const AvailableMoneyCard = styled.section`
   ${({ theme }) => css`

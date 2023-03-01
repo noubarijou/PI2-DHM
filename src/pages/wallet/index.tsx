@@ -1,6 +1,6 @@
 import Footer from 'components/footer';
 import * as s from './wallet.styles';
-import { Button, ContainerPage, SideMenu } from 'components';
+import { Button, ContainerPage, PageTitle, SideMenu } from 'components';
 import Link from 'next/link';
 import { InputText } from 'components/input/input-text/InputText';
 import { useForm } from 'react-hook-form';
@@ -26,10 +26,7 @@ const Wallet = () => {
     <>
       <SideMenu />
       <ContainerPage>
-        <s.PageTitle>
-          <AiOutlineArrowRight />
-          <s.PageTitleContent>Início</s.PageTitleContent>
-        </s.PageTitle>
+        <PageTitle>Início</PageTitle>
         <s.AvailableMoneyCard>
           <s.TopLinks>
             <s.Links href="/">Ver cartões</s.Links>
