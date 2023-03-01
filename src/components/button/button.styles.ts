@@ -105,28 +105,28 @@ const buttonSize = {
     }
   `,
   wallet: (theme: DefaultTheme) => css`
-    // width: 18.438rem;
-    /* width: 100%;
-    height: 3.125rem;
-    font-size: ${theme.font.sizes.xsmall};
-    font-weight: ${theme.font.bold};
+    padding: 1.25rem;
+    width: 18.5rem;
+    font-weight: ${theme.font.xbold};
+    font-size: ${theme.font.sizes.small};
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 10px 0 10px;
-    text-decoration: none;
-    @media (min-width: ${theme.screen.desktop}) {
-      min-width: 430px;
-      max-width: 898px;
-      min-height: 70px;
+
+    @media (min-width: ${theme.screen.mobile}) {
+      font-size: ${theme.font.sizes.medium};
+      width: 21rem;
+    }
+
+    @media (min-width: ${theme.screen.tablet}) {
+      width: 32rem;
+      padding: 2.5rem 1.875rem;
       font-size: ${theme.font.sizes.large};
     }
-    @media (min-width: ${theme.screen.desktopXXL}) {
-      max-width: 1603px;
-      min-height: 130px;
-      font-size: ${theme.font.sizes.xxlarge};
-      padding: 0 30px;
-    } */
+
+    @media (min-width: ${theme.screen.desktopXL}) {
+      width: 62.875rem;
+    }
   `
 };
 
