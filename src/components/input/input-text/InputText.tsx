@@ -7,6 +7,7 @@ export type InputTextProps = {
   label?: string;
   type?: string;
   control?: any;
+  className: string;
   variant?: 'outOfFocus' | 'focusWithin' | 'validationError';
 } & InputHTMLAttributes<HTMLInputElement>;
 
@@ -15,7 +16,8 @@ const InputText = ({
   label,
   type = 'text',
   variant = 'outOfFocus',
-  control
+  control,
+  className
 }: InputTextProps) => (
   <Controller
     control={control}
@@ -38,6 +40,7 @@ const InputText = ({
             onChange={onChange}
             onBlur={onBlur}
             value={value}
+            className={className}
           />
           {error && <s.Error>{error?.message}</s.Error>}
         </s.InputWrapper>

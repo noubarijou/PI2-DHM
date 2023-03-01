@@ -1,4 +1,3 @@
-import SignedInHeader from '../../components/SignedInHeader';
 import Footer from 'components/footer';
 import * as s from './wallet.styles';
 import { Button, SideMenu } from 'components';
@@ -48,12 +47,12 @@ const Wallet = () => {
         </s.AvailableMoneyCard>
         <s.ButtonContainer>
           <Link href="/">
-            <Button variant="primary" size="wallet">
+            <Button variant="primary" size="large">
               Transferir valor
             </Button>
           </Link>
           <Link href="/">
-            <Button variant="primary" size="wallet">
+            <Button variant="primary" size="large">
               Adicionar valor
             </Button>
           </Link>
@@ -63,6 +62,7 @@ const Wallet = () => {
             name="search"
             control={control}
             placeholder="Pesquisar em sua atividade"
+            className="search"
           />
         </s.InputContainer>
         <s.RecentActivity>

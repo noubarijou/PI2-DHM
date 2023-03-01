@@ -67,10 +67,27 @@ export const InputText = styled.input<InputTextProps>`
     color: ${theme.colors.black};
     border-radius: 10px;
     padding: 1.25rem 0.875rem;
-    width: 18.75rem;
+    width: 18.5rem;
 
     @media (min-width: ${theme.screen.tablet}) {
       width: 22.5rem;
+    }
+
+    &.search {
+      @media (min-width: ${theme.screen.mobile}) {
+        width: 21rem;
+        padding: 1.25rem;
+      }
+
+      @media (min-width: ${theme.screen.tablet}) {
+        width: 32rem;
+        padding: 1.25rem;
+      }
+
+      @media (min-width: ${theme.screen.desktopXL}) {
+        width: 62.875rem;
+        padding: 1.25rem;
+      }
     }
 
     /* @media (max-width: ${theme.screen.desktopXXL}) {
