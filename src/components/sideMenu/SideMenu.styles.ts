@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 
 export const Header = styled.header`
   width: 100vw;
-  height: 4rem;
+  height: calc(10vh - 7px);
   padding: 0 1.25rem;
   display: flex;
   align-items: center;
@@ -46,7 +46,7 @@ export const NavBar = styled.nav`
   width: 13.75rem;
   height: ${({ theme }) => theme.calc.body};
   position: absolute;
-  top: 64px;
+  top: calc(10vh - 7px);
   z-index: 1;
 
   ${({ theme }) => css`
