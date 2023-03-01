@@ -53,8 +53,8 @@ export default {
     fast: '0.1s ease-in-out'
   },
   screen: {
-    mobile: '24.375rem',
     mobile375w: '23.438rem',
+    mobile: '24.375rem',
     mobile425w: '26.563rem',
     tablet768w: '48rem',
     tablet: '52.125rem',
