@@ -1,7 +1,8 @@
 import styled, { css } from 'styled-components';
+import theme from 'styles/theme';
 
 export const ContainerPage = styled.div`
-  background-color: #c1fd35;
+  background-color: ${theme.colors.primary};
   height: calc(10vh - 7px);
   width: 100%;
   display: flex;
@@ -14,7 +15,7 @@ export const ContainerPage = styled.div`
     ${({ theme }) => css`
       font-family: ${theme.font.family};
       font-weight: ${theme.font.normal};
-      color: #c1fd35;
+      color: ${theme.colors.primary};
     `}
   }
 
@@ -25,32 +26,59 @@ export const ContainerPage = styled.div`
 `;
 
 export const ButtonLogin = styled.button`
+  border: 2px solid ${theme.colors.primary};
   height: 100%;
   padding: 10px;
   line-height: 0.6em;
-  border: 2px solid #c1fd35;
   border-radius: 5px;
   margin-right: 15px;
   background-color: transparent;
   cursor: pointer;
+
   ${({ theme }) => css`
     font-family: ${theme.font.family};
     font-weight: ${theme.font.xbold};
-    color: #c1fd35;
+    color: ${theme.colors.primary};
   `};
 `;
 
-export const ButtonCreateAccount = styled.button`
-  height: 100%;
-  padding: 10px;
-  line-height: 0.6em;
-  border: 2px solid #c1fd35;
-  border-radius: 5px;
-  background-color: #c1fd35;
+export const UserInitials = styled.div`
+  background-color: ${theme.colors.black};
+  display: flex;
+  border-radius: 13px;
+  margin-right: 10px;
+  padding: 5px;
+  width: 40px;
+  height: 40px;
+
+  div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  p {
+    ${({ theme }) => css`
+      color: ${theme.colors.primary};
+    `};
+    font-size: 120%;
+    font-weight: 600;
+  }
+`;
+
+export const UserGreetings = styled.p`
+  color: ${theme.colors.black};
+  font-size: 1em;
+  font-weight: 600;
+`;
+
+export const UserContainer = styled.div`
+  margin-right: 20px;
   cursor: pointer;
-  ${({ theme }) => css`
-    font-family: ${theme.font.family};
-    font-weight: ${theme.font.xbold};
-    color: #201f22;
-  `};
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100%;
 `;

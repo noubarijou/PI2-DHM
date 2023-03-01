@@ -17,7 +17,7 @@ export const ContainerPage = styled.div`
     ${({ theme }) => css`
       font-family: ${theme.font.family};
       font-weight: ${theme.font.normal};
-      color: #c1fd35;
+      color: ${theme.colors.primary};
     `}
   }
 
@@ -27,6 +27,7 @@ export const ContainerPage = styled.div`
     padding: 12px;
     height: 100%;
   }
+
   .greeting-text {
     color: white;
   }
@@ -48,4 +49,43 @@ export const ButtonProfile = styled.button`
     font-weight: ${theme.font.xbold};
     color: ${theme.colors.black};
   `};
+`;
+
+export const UserInitials = styled.div`
+  background-color: ${theme.colors.primary};
+  display: flex;
+  border-radius: 13px;
+  margin-right: 10px;
+  padding: 5px;
+  width: 40px;
+  height: 40px;
+
+  div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  p {
+    color: black;
+    font-size: 120%;
+    font-weight: 600;
+  }
+`;
+
+export const UserGreetings = styled.p`
+  font-size: 1em;
+  color: ${theme.colors.primary};
+  font-weight: 600;
+`;
+
+export const UserContainer = styled.div`
+  margin-right: 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100%;
 `;
