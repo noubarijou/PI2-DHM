@@ -19,7 +19,8 @@ export default {
       medium: '1rem' /* 16 */,
       large: '1.25rem' /* 20 */,
       xlarge: '1.5rem' /* 24 */,
-      xxlarge: '2.0rem' /* 32 */
+      xxlarge: '2.0rem' /* 32 */,
+      xxxlarge: '2.25rem' /* 36 */
     }
   },
   colors: {
