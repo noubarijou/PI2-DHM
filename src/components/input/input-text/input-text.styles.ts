@@ -74,19 +74,21 @@ export const InputText = styled.input<InputTextProps>`
     }
 
     &.search {
+      @media (max-width: ${theme.screen.mobile375w}) {
+        padding: 1.25rem 0 1.25rem 2.125rem;
+      }
+
       @media (min-width: ${theme.screen.mobile}) {
         width: 21rem;
-        padding: 1.25rem;
       }
 
       @media (min-width: ${theme.screen.tablet}) {
         width: 32rem;
-        padding: 1.25rem;
+        padding-left: 2.5rem;
       }
 
       @media (min-width: ${theme.screen.desktopXL}) {
         width: 62.875rem;
-        padding: 1.25rem;
       }
     }
 
