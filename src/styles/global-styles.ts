@@ -21,6 +21,7 @@ const GlobalStyles = createGlobalStyle`
     body {
       overflow: auto;
       font-family: ${theme.font.family};
+      background-color: ${theme.colors.secondaryWhite};
     }
   `}
 `;
