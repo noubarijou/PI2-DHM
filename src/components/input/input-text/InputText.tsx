@@ -8,6 +8,7 @@ export type InputTextProps = {
   type?: string;
   control?: any;
   className: string;
+  placeholder: string;
   variant?: 'outOfFocus' | 'focusWithin' | 'validationError';
 } & InputHTMLAttributes<HTMLInputElement>;
 
@@ -17,6 +18,7 @@ const InputText = ({
   type = 'text',
   variant = 'outOfFocus',
   control,
+  placeholder,
   className
 }: InputTextProps) => (
   <Controller
@@ -36,6 +38,7 @@ const InputText = ({
           <s.InputText
             type={type}
             name={name}
+            placeholder={placeholder}
             variant={variant}
             onChange={onChange}
             onBlur={onBlur}

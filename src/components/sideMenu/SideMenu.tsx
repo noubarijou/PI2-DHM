@@ -30,7 +30,7 @@ const SideMenu = () => {
           <Header>
             <Link href="/" className="headerLogo">
               <img
-                src="../../assets/images/LOGO-DMH-green.png"
+                src="../../assets/images/LOGO-DMH.png"
                 alt="green logo digital money house"
               />
             </Link>
@@ -48,7 +48,7 @@ const SideMenu = () => {
           <Header>
             <Link href="/" className="headerLogo">
               <img
-                src="../../assets/images/LOGO-DMH-green.png"
+                src="../../assets/images/LOGO-DMH.png"
                 alt="green logo digital money house"
               />
             </Link>

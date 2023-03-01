@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 export const ContainerPage = styled.div`
-  height: 80vh;
+  height: ${({ theme }) => theme.calc.body};
   display: flex;
 
   ${({ theme }) => css`

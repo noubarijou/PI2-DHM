@@ -95,12 +95,13 @@ const buttonSize = {
 
     @media (min-width: ${theme.screen.tablet}) {
       width: 32rem;
-      padding: 2.5rem 1.25rem;
+      padding: 1.675rem 1.25rem;
+      font-size: ${theme.font.sizes.xlarge};
     }
 
     @media (min-width: ${theme.screen.desktopXL}) {
       width: 31rem;
-      padding: 2.5rem 1.25rem;
+      padding: 2.25rem 1.25rem;
     }
   `,
   wallet: (theme: DefaultTheme) => css`

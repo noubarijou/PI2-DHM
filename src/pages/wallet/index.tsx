@@ -24,21 +24,16 @@ const Wallet = () => {
   } = useTheme();
   return (
     <>
-      {/* <SignedInHeader /> */}
       <SideMenu />
       <s.ContainerPage>
         <s.PageTitle>
           <AiOutlineArrowRight />
-          <s.PageTitleContent>Inicio</s.PageTitleContent>
+          <s.PageTitleContent>Início</s.PageTitleContent>
         </s.PageTitle>
         <s.AvailableMoneyCard>
           <s.TopLinks>
-            <Link href="/">
-              <s.Links>Ver cartões</s.Links>
-            </Link>
-            <Link href="/">
-              <s.Links>Ver CVU</s.Links>
-            </Link>
+            <s.Links href="/">Ver cartões</s.Links>
+            <s.Links href="/">Ver CVU</s.Links>
           </s.TopLinks>
           <s.whiteText>Dinheiro disponível</s.whiteText>
           <s.AvailableMoney>
@@ -58,6 +53,7 @@ const Wallet = () => {
           </Link>
         </s.ButtonContainer>
         <s.InputContainer>
+          <s.SearchIcon />
           <InputText
             name="search"
             control={control}
@@ -67,34 +63,53 @@ const Wallet = () => {
         </s.InputContainer>
         <s.RecentActivity>
           <s.ActivityTitle>Sua atividade</s.ActivityTitle>
-          <s.DividerLine />
           <s.ActivityContainer>
-            <BsCircleFill color={primary} />
             <s.ActivityDescription>
-              Transferência para Rodrigo
+              <BsCircleFill color={primary} size="20" />
+              <s.ActivityDescriptionText>
+                Transferência para Rodrigo
+              </s.ActivityDescriptionText>
             </s.ActivityDescription>
-            <s.ActivityValue>-$1265,57 Sábado</s.ActivityValue>
+            <s.ActivityValue>
+              <s.ActivityDescriptionText>-$1265,57</s.ActivityDescriptionText>
+              <span>Sábado</span>
+            </s.ActivityValue>
           </s.ActivityContainer>
           <s.ActivityContainer>
-            <BsCircleFill color={primary} />
             <s.ActivityDescription>
-              Transferência para Rodrigo
+              <BsCircleFill color={primary} size="20" />
+              <s.ActivityDescriptionText>
+                Transferência para Rodrigo
+              </s.ActivityDescriptionText>
             </s.ActivityDescription>
-            <s.ActivityValue>-$1265,57 Sábado</s.ActivityValue>
+            <s.ActivityValue>
+              <s.ActivityDescriptionText>-$1265,57</s.ActivityDescriptionText>
+              <span>Sábado</span>
+            </s.ActivityValue>
           </s.ActivityContainer>
           <s.ActivityContainer>
-            <BsCircleFill color={primary} />
             <s.ActivityDescription>
-              Transferência para Rodrigo
+              <BsCircleFill color={primary} size="20" />
+              <s.ActivityDescriptionText>
+                Transferência para Rodrigo
+              </s.ActivityDescriptionText>
             </s.ActivityDescription>
-            <s.ActivityValue>-$1265,57 Sábado</s.ActivityValue>
+            <s.ActivityValue>
+              <s.ActivityDescriptionText>-$1265,57</s.ActivityDescriptionText>
+              <span>Sábado</span>
+            </s.ActivityValue>
           </s.ActivityContainer>
           <s.ActivityContainer>
-            <BsCircleFill color={primary} />
             <s.ActivityDescription>
-              Transferência para Rodrigo
+              <BsCircleFill color={primary} size="20" />
+              <s.ActivityDescriptionText>
+                Transferência para Rodrigo
+              </s.ActivityDescriptionText>
             </s.ActivityDescription>
-            <s.ActivityValue>-$1265,57 Sábado</s.ActivityValue>
+            <s.ActivityValue>
+              <s.ActivityDescriptionText>-$1265,57</s.ActivityDescriptionText>
+              <span>Sábado</span>
+            </s.ActivityValue>
           </s.ActivityContainer>
           <s.LinkFullActivity>
             <s.FullActivityText>Ver toda sua atividade</s.FullActivityText>

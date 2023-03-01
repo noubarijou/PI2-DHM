@@ -1,12 +1,15 @@
 import styled, { css } from 'styled-components';
 
 export const Header = styled.header`
-  width: 100vw;
-  height: 4rem;
+  width: 100%;
+  height: calc(10vh - 7px);
   padding: 0 1.25rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 
   ${({ theme }) => css`
     background-color: ${theme.colors.black};
@@ -14,7 +17,7 @@ export const Header = styled.header`
   `}
 
   .headerLogo {
-    height: 100%;
+    height: 70%;
     > img {
       height: 100%;
       width: auto;
@@ -44,15 +47,15 @@ export const HeaderInfo = styled.div`
 
 export const NavBar = styled.nav`
   width: 13.75rem;
-  height: 81.5vh;
-  position: absolute;
-  top: 64px;
+  min-height: ${({ theme }) => theme.calc.body};
+  position: fixed;
+  top: calc(10vh - 7px);
   z-index: 1;
 
   ${({ theme }) => css`
     background-color: ${theme.colors.primary};
 
-    @media (min-width: ${theme.screen.tablet}) {
+    @media (min-width: ${theme.screen.desktopXL}) {
       width: 17.25rem;
     }
   `}

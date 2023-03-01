@@ -19,7 +19,8 @@ export default {
       medium: '1rem' /* 16 */,
       large: '1.25rem' /* 20 */,
       xlarge: '1.5rem' /* 24 */,
-      xxlarge: '2.0rem' /* 32 */
+      xxlarge: '2.0rem' /* 32 */,
+      xxxlarge: '2.25rem' /* 36 */
     }
   },
   colors: {
@@ -53,13 +54,16 @@ export default {
     fast: '0.1s ease-in-out'
   },
   screen: {
-    mobile: '24.375rem',
     mobile375w: '23.438rem',
+    mobile: '24.375rem',
     mobile425w: '26.563rem',
     tablet768w: '48rem',
     tablet: '52.125rem',
     desktop: '64rem',
     desktopXL: '90rem',
     desktopXXL: '160rem'
+  },
+  calc: {
+    body: 'calc(100vh - ((10vh - 8px) + (10vh - 7px)))'
   }
 } as const;
