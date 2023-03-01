@@ -24,6 +24,9 @@ export const ContainerPage = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
+  position: sticky;
+  bottom: 0;
+  z-index: 1;
 
   .small-text {
     margin-left: 20px;

@@ -1,12 +1,15 @@
 import styled, { css } from 'styled-components';
 
 export const Header = styled.header`
-  width: 100vw;
+  width: 100%;
   height: calc(10vh - 7px);
   padding: 0 1.25rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 
   ${({ theme }) => css`
     background-color: ${theme.colors.black};
@@ -44,8 +47,8 @@ export const HeaderInfo = styled.div`
 
 export const NavBar = styled.nav`
   width: 13.75rem;
-  height: ${({ theme }) => theme.calc.body};
-  position: absolute;
+  min-height: ${({ theme }) => theme.calc.body};
+  position: fixed;
   top: calc(10vh - 7px);
   z-index: 1;
 
