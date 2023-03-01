@@ -1,6 +1,6 @@
 import Footer from 'components/footer';
 import * as s from './wallet.styles';
-import { Button, SideMenu } from 'components';
+import { Button, ContainerPage, SideMenu } from 'components';
 import Link from 'next/link';
 import { InputText } from 'components/input/input-text/InputText';
 import { useForm } from 'react-hook-form';
@@ -25,7 +25,7 @@ const Wallet = () => {
   return (
     <>
       <SideMenu />
-      <s.ContainerPage>
+      <ContainerPage>
         <s.PageTitle>
           <AiOutlineArrowRight />
           <s.PageTitleContent>Início</s.PageTitleContent>
@@ -116,7 +116,7 @@ const Wallet = () => {
             <AiOutlineArrowRight />
           </s.LinkFullActivity>
         </s.RecentActivity>
-      </s.ContainerPage>
+      </ContainerPage>
       <Footer />
     </>
   );
