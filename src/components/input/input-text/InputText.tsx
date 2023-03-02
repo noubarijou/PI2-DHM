@@ -7,7 +7,7 @@ export type InputTextProps = {
   label?: string;
   type?: string;
   control?: any;
-  className: string;
+  className?: string;
   placeholder: string;
   variant?: 'outOfFocus' | 'focusWithin' | 'validationError';
 } & InputHTMLAttributes<HTMLInputElement>;
