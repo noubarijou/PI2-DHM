@@ -1,28 +1,27 @@
 import Link from 'next/link';
 import { AiOutlineSearch } from 'react-icons/ai';
 import styled, { css } from 'styled-components';
+import {
+  ModifierSizeMediaQuery,
+  ModifierSizeMediaQueryProps
+} from 'styles/modifier.style';
 
-export const AvailableMoneyCard = styled.section`
-  ${({ theme }) => css`
+export const AvailableMoneyCard = styled.section<ModifierSizeMediaQueryProps>`
+  ${({ theme, variant }) => css`
     height: 10rem;
-    width: 18.5rem;
     border-radius: 0.5rem;
     background: ${theme.colors.black};
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     padding: 1rem 1.375rem;
 
-    @media (min-width: ${theme.screen.mobile}) {
-      width: 21rem;
-    }
+    ${ModifierSizeMediaQuery[(variant = 'bigComponent')](theme)};
 
     @media (min-width: ${theme.screen.tablet}) {
-      width: 32rem;
       height: 14.5rem;
       padding: 1.5rem 1.675rem;
     }
 
     @media (min-width: ${theme.screen.desktopXL}) {
-      width: 62.875rem;
       padding: 1.5rem 3.75rem;
     }
   `}
@@ -128,47 +127,6 @@ export const SearchIcon = styled(AiOutlineSearch)`
       left: 1rem;
     }
   `}
-`;
-
-export const RecentActivity = styled.div`
-  ${({ theme }) => css`
-    width: 18.5rem;
-    padding: 1.25rem;
-    border-radius: 0.5rem;
-    background-color: ${theme.colors.white};
-    display: flex;
-    flex-direction: column;
-
-    @media (min-width: ${theme.screen.mobile}) {
-      width: 21rem;
-    }
-
-    @media (min-width: ${theme.screen.tablet}) {
-      width: 32rem;
-      padding: 2.5rem 2.25rem;
-    }
-
-    @media (min-width: ${theme.screen.desktopXL}) {
-      width: 62.875rem;
-    }
-  `}
-`;
-
-export const ActivityTitle = styled.h4`
-  ${({ theme }) => css`
-    color: ${theme.colors.black};
-    font-weight: ${theme.font.xbold};
-    font-size: ${theme.font.sizes.medium};
-    margin-bottom: 1.25rem;
-  `}
-`;
-
-export const DividerLine = styled.div`
-  ${({ theme }) => css`
-    height: 0.125rem;
-    width: 100%;
-    background-color: ${theme.colors.secondaryWhite};
-  `};
 `;
 
 export const ActivityContainer = styled.div`
