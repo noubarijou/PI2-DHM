@@ -66,6 +66,24 @@ export async function loginUser(user: Omit<LoginPayload, 'login'>) {
   }
 }
 
+export async function logoutUser(token: Omit<null, 'logout'>) {
+  try {
+    const response = await api.post('/api/logout');
+    window.localStorage.removeItem('userData');
+    api.defaults.headers.common['Authorization'] = '';
+  } catch (e: unknown) {
+    if (e instanceof Error) {
+      const err: CustomError = e;
+      const errorResponse = err.response?.data.error;
+      return Promise.reject(errorResponse ?? e);
+    }
+  }
+}
+
 export function useLoginUser() {
   return useMutation(loginUser);
+}
+
+export function useLogoutUser() {
+  return useMutation(logoutUser);
 }

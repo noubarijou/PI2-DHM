@@ -1,8 +1,23 @@
+import { useLogoutUser } from 'hooks/useUser/useLoginUser';
+import { useRouter } from 'next/router';
 import { LinksContainer } from './NavLinksContainer.style';
 import { NavLink } from '../NavLink/NavLink';
 
 const NavLinksContainer = () => {
-  // /api/logout
+  const router = useRouter();
+  const { mutate } = useLogoutUser();
+
+  const logout = async () => {
+    mutate(
+      {},
+      {
+        onSuccess: () => {
+          router.push('/');
+        }
+      }
+    );
+  };
+
   return (
     <>
       <LinksContainer>
@@ -24,7 +39,7 @@ const NavLinksContainer = () => {
         <li>
           <NavLink route="/cards">Cartões</NavLink>
         </li>
-        <button>Encerrar sessão</button>
+        <button onClick={logout}>Encerrar sessão</button>
       </LinksContainer>
     </>
   );
