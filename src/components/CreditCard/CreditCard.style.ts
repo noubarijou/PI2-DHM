@@ -26,6 +26,9 @@ export const CreditCardContainer = styled.div<CreditCardProps>`
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%);
 
     ${!!variant && CreditCardModifiers[variant](theme)};
   `}
