@@ -1,3 +1,4 @@
+import { InputText } from 'components/input/input-text/input-text.styles';
 import Link from 'next/link';
 import { AiOutlineSearch } from 'react-icons/ai';
 import styled, { css } from 'styled-components';
@@ -115,6 +116,27 @@ export const InputContainer = styled.div`
   div:nth-child(2) {
     padding: 0;
   }
+
+  ${({ theme }) => css`
+    ${InputText}.search {
+      @media (max-width: ${theme.screen.mobile375w}) {
+        padding: 1.25rem 0 1.25rem 2.125rem;
+      }
+
+      @media (min-width: ${theme.screen.mobile}) {
+        width: 21rem;
+      }
+
+      @media (min-width: ${theme.screen.tablet}) {
+        width: 32rem;
+        padding-left: 2.5rem;
+      }
+
+      @media (min-width: ${theme.screen.desktopXL}) {
+        width: 62.875rem;
+      }
+    }
+  `}
 `;
 
 export const SearchIcon = styled(AiOutlineSearch)`

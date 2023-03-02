@@ -61,7 +61,7 @@ export const InputWrapper = styled.div`
 `;
 
 export const InputText = styled.input<InputTextProps>`
-  ${({ theme, variant }) => css`
+  ${({ theme, variant, variantType }) => css`
     background: ${theme.colors.white};
     font-size: ${theme.font.sizes.medium};
     color: ${theme.colors.black};
@@ -71,25 +71,6 @@ export const InputText = styled.input<InputTextProps>`
 
     @media (min-width: ${theme.screen.tablet}) {
       width: 22.5rem;
-    }
-
-    &.search {
-      @media (max-width: ${theme.screen.mobile375w}) {
-        padding: 1.25rem 0 1.25rem 2.125rem;
-      }
-
-      @media (min-width: ${theme.screen.mobile}) {
-        width: 21rem;
-      }
-
-      @media (min-width: ${theme.screen.tablet}) {
-        width: 32rem;
-        padding-left: 2.5rem;
-      }
-
-      @media (min-width: ${theme.screen.desktopXL}) {
-        width: 62.875rem;
-      }
     }
 
     /* @media (max-width: ${theme.screen.desktopXXL}) {
