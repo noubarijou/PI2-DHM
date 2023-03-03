@@ -6,7 +6,7 @@ import * as s from './AddCard.style';
 import { schema } from 'pages/cards/schemas';
 
 const AddCard = () => {
-  const { control, watch, getValues } = useForm({
+  const { control, watch } = useForm({
     defaultValues: {
       cardNumber: '',
       cardName: '',
