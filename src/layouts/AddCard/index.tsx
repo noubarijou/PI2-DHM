@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, CreditCard } from 'components';
@@ -7,12 +6,7 @@ import * as s from './AddCard.style';
 import { schema } from 'pages/cards/schemas';
 
 const AddCard = () => {
-  const [cardNumber, setCardNumber] = useState();
-  const [cardName, setCardName] = useState('');
-  const [cardExpiration, setCardExpiration] = useState('');
-  const [cvv, setCvv] = useState();
-
-  const { control } = useForm({
+  const { control, watch, getValues } = useForm({
     defaultValues: {
       cardNumber: '',
       cardName: '',
@@ -27,10 +21,10 @@ const AddCard = () => {
     <>
       <s.ContainerBackGround>
         <CreditCard
-          cardNumber={cardNumber}
-          cardName={cardName}
-          cardExpiration={cardExpiration}
-          cvv={cvv}
+          cardNumber={Number(watch('cardNumber'))}
+          cardName={watch('cardName')}
+          cardExpiration={watch('expirationDate')}
+          cvv={Number(watch('cardCvv'))}
         />
         <s.Form>
           <s.InputContainer>
