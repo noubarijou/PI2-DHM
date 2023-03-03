@@ -1,12 +1,18 @@
-import { useForm } from 'react-hook-form';
+import { useState } from 'react';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, CreditCard } from 'components';
 import { InputText } from 'components/input/input-text/InputText';
 import * as s from './AddCard.style';
 import { schema } from 'pages/cards/schemas';
 
-const AddCard = () => {
-  const { control, watch } = useForm({
+const AddCard = ({ handleCreateCard, setAddNewCard, isLoading }: any) => {
+  const [cardNumber, setCardNumber] = useState();
+  const [cardName, setCardName] = useState('');
+  const [cardExpiration, setCardExpiration] = useState('');
+  const [cvv, setCvv] = useState();
+
+  const { control, watch, handleSubmit } = useForm({
     defaultValues: {
       cardNumber: '',
       cardName: '',
@@ -17,6 +23,16 @@ const AddCard = () => {
     mode: 'all'
   });
 
+  const functionToSubmitForm: SubmitHandler<any> = (dataForm, event) => {
+    handleCreateCard({
+      cod: Number(dataForm.cardCvv),
+      expiration_date: dataForm.expirationDate,
+      first_last_name: dataForm.cardName,
+      number_id: Number(dataForm.cardNumber)
+    });
+    setAddNewCard(false);
+  };
+
   return (
     <>
       <s.ContainerBackGround>
@@ -26,12 +42,12 @@ const AddCard = () => {
           cardExpiration={watch('expirationDate')}
           cvv={Number(watch('cardCvv'))}
         />
-        <s.Form>
+        <s.Form onSubmit={handleSubmit(functionToSubmitForm)}>
           <s.InputContainer>
             <InputText
               name="cardNumber"
               label="Número do cartão"
-              type="number"
+              type="text"
               placeholder="Número do cartão*"
               control={control}
               maxLength={16}
@@ -47,6 +63,7 @@ const AddCard = () => {
           <s.InputContainer>
             <InputText
               name="expirationDate"
+              type="text"
               label="Data de validade"
               placeholder="Data de validade*"
               control={control}
@@ -54,7 +71,7 @@ const AddCard = () => {
             <InputText
               name="cardCvv"
               label="Código de segurança"
-              type="number"
+              type="text"
               placeholder="Código de segurança*"
               control={control}
             />
