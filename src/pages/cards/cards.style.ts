@@ -102,6 +102,7 @@ export const DeleteCardBtn = styled.button`
   text-align: right;
   background-color: transparent;
   border: none;
+  cursor: pointer;
 
   ${({ theme }) => css`
     font-size: ${theme.font.sizes.xsmall};

@@ -17,7 +17,7 @@ const CreditCard = ({
   return (
     <>
       <s.CreditCardContainer variant={!!cardNumber ? 'valid' : 'disabled'}>
-        <FlagContainer />
+        <FlagContainer cardNumber={cardNumber} />
         <s.NumberContainer>
           {!!cardNumber ? cardNumber : '**** **** **** ****'}
         </s.NumberContainer>
