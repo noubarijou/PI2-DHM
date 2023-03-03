@@ -4,23 +4,28 @@ import Footer from '../../components/footer';
 import HeaderLogged from 'components/HeaderLogged';
 import { useEffect, useState } from 'react';
 import { UserData } from './types';
+import { useRouter } from 'next/router';
 
 const HomePage = () => {
   const [userData, setUserData] = useState<UserData>();
   const [loading, setLoading] = useState<boolean>(true);
+  const router = useRouter();
 
   useEffect(() => {
     if (loading) {
       setUserData(JSON.parse(localStorage.getItem('userData') || '{}'));
       setLoading(false);
+    } else if (userData?.token) {
+      router.push('/wallet');
     }
   }, [loading, userData]);
+  console.log(userData);
 
   return (
     <s.ContainerPage>
       {!loading && (
         <>
-          {userData?.token ? <HeaderLogged /> : <Header />}
+          <Header />
           <s.WomanImage
             src="../../assets/images/happy_woman.png"
             alt="Teste"

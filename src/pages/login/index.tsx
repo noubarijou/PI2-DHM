@@ -11,6 +11,7 @@ import { LoginPayload } from 'hooks/useUser/useLoginUser/types';
 import { useLoginUser } from 'hooks/useUser/useLoginUser';
 import Link from 'next/link';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 
 const messageErrors = {
   'invalid credentials': 'Senha invalida',
@@ -20,6 +21,7 @@ const messageErrors = {
 type ErrorKey = keyof typeof messageErrors;
 
 const Login = () => {
+  const router = useRouter();
   const [stepEmailCompleted, setStepEmailCompleted] = useState(false);
   const { mutate: loginUser, isLoading } = useLoginUser();
   const [messageError, setMessageError] = useState('');
@@ -51,7 +53,12 @@ const Login = () => {
     }
     // token é recebido, falta saber o que faremos com ele
     loginUser(dataForm, {
-      onSuccess: res => console.log(res?.token),
+      onSuccess: res => {
+        if (res?.token) {
+          router.push('/wallet');
+        }
+        console.log(res?.token);
+      },
       onError: err => {
         let mesErr = err as ErrorKey;
         setMessageError(messageErrors[mesErr]);
