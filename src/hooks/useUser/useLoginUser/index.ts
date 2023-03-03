@@ -44,10 +44,20 @@ export async function loginUser(user: Omit<LoginPayload, 'login'>) {
       }
     );
 
+    const { data: accountId } = await api.get<UserDataResponse>(
+      `/api/account`,
+      {
+        headers: {
+          Authorization: loginData.token
+        }
+      }
+    );
+
     window.localStorage.setItem(
       'userData',
       JSON.stringify({
         ...userData,
+        account_id: accountId.id,
         token: loginData.token
       })
     );
