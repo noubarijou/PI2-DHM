@@ -1,11 +1,11 @@
-import Footer from 'components/footer';
 import * as s from './wallet.styles';
 import {
   Button,
   ContainerPage,
   PageTitle,
   SideMenu,
-  TableContainer
+  TableContainer,
+  Footer
 } from 'components';
 import Link from 'next/link';
 import { InputText } from 'components/input/input-text/InputText';

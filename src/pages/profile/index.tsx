@@ -1,23 +1,18 @@
 import * as s from './profile.styles';
-import SignedInHeader from 'components/SignedInHeader';
-import Footer from 'components/footer';
 import { AiOutlineArrowRight } from 'react-icons/ai';
 import { useTheme } from 'styled-components';
 import { MdEdit, MdContentCopy } from 'react-icons/md';
 import Link from 'next/link';
-import { Button } from 'components';
+import { Button, ContainerPage, PageTitle, SideMenu, Footer } from 'components';
 const Profile = () => {
   const {
     colors: { secondaryWhite }
   } = useTheme();
   return (
     <>
-      <SignedInHeader />
-      <s.ContainerPage>
-        <s.PageTitle>
-          <AiOutlineArrowRight />
-          <s.PageTitleContent>Perfil</s.PageTitleContent>
-        </s.PageTitle>
+      <SideMenu />
+      <ContainerPage>
+        <PageTitle>Perfil</PageTitle>
         <s.PersonalInfo>
           <s.InfoTitle>Seus dados</s.InfoTitle>
           <s.DividerLine />
@@ -28,6 +23,7 @@ const Profile = () => {
             </s.InfoDescriptionContainer>
             <MdEdit color={secondaryWhite} />
           </s.InfoContainer>
+          <s.DividerLine />
           <s.InfoContainer>
             <s.InfoDescriptionContainer>
               <s.InfoDescription>Nome e Sobrenome</s.InfoDescription>
@@ -35,6 +31,7 @@ const Profile = () => {
             </s.InfoDescriptionContainer>
             <MdEdit color={secondaryWhite} />
           </s.InfoContainer>
+          <s.DividerLine />
           <s.InfoContainer>
             <s.InfoDescriptionContainer>
               <s.InfoDescription>CPF </s.InfoDescription>
@@ -42,6 +39,7 @@ const Profile = () => {
             </s.InfoDescriptionContainer>
             <MdEdit color={secondaryWhite} />
           </s.InfoContainer>
+          <s.DividerLine />
           <s.InfoContainer>
             <s.InfoDescriptionContainer>
               <s.InfoDescription>Telefone </s.InfoDescription>
@@ -49,6 +47,7 @@ const Profile = () => {
             </s.InfoDescriptionContainer>
             <MdEdit color={secondaryWhite} />
           </s.InfoContainer>
+          <s.DividerLine />
           <s.InfoContainer>
             <s.InfoDescriptionContainer>
               <s.InfoDescription>Senha </s.InfoDescription>
@@ -56,6 +55,7 @@ const Profile = () => {
             </s.InfoDescriptionContainer>
             <MdEdit color={secondaryWhite} />
           </s.InfoContainer>
+          <s.DividerLine />
         </s.PersonalInfo>
         <s.ButtonContainer>
           <Link href="/">
@@ -75,13 +75,14 @@ const Profile = () => {
             <MdContentCopy />
           </s.CVUAliasTop>
           <s.CVUAliasText>0000002100075320000000</s.CVUAliasText>
+          <s.DividerLine />
           <s.CVUAliasTop>
             Alias
             <MdContentCopy />
           </s.CVUAliasTop>
           <s.CVUAliasText>estealiasnãoexiste</s.CVUAliasText>
         </s.CVUAliasCard>
-      </s.ContainerPage>
+      </ContainerPage>
       <Footer />
     </>
   );

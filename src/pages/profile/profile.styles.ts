@@ -1,33 +1,6 @@
 import styled, { css } from 'styled-components';
 import theme from 'styles/theme';
 
-export const ContainerPage = styled.div`
-  ${({ theme }) => css`
-    background-color: ${theme.colors.secondaryWhite};
-    height: 81.5vh;
-    width: 100%;
-    position: relative;
-    overflow: hidden;
-    @media (min-width: ${theme.screen.desktop}) {
-      height: 83.6vh;
-    }
-    @media (min-width: ${theme.screen.desktopXL}) {
-      height: 84vh;
-    }
-    @media (min-width: ${theme.screen.desktopXXL}) {
-      height: 87vh;
-    }
-  `}
-`;
-export const PageTitle = styled.div`
-  display: flex;
-  position: absolute;
-  left: 3.28%;
-  top: 2%;
-  @media (min-width: ${theme.screen.tablet768w}) {
-    display: none;
-  }
-`;
 export const PageTitleContent = styled.p`
   ${({ theme }) => css`
     font-size: ${theme.font.sizes.small};
@@ -44,48 +17,18 @@ export const PersonalInfo = styled.div`
     display: flex;
     flex-direction: column;
     height: 310px;
-    width: 270px;
+    width: 100%;
     border-radius: 8px;
-    position: absolute;
-    top: 45px;
-    left: 15px;
-    @media (min-width: ${theme.screen.mobile375w}) {
-      width: 330px;
-    }
-    @media (min-width: ${theme.screen.mobile425w}) {
-      width: 380px;
-    }
-    @media (min-width: ${theme.screen.tablet768w}) {
-      left: 300px;
-      width: 420px;
-    }
-    @media (min-width: ${theme.screen.desktop}) {
-      width: 63%;
-      left: 360px;
-    }
     @media (min-width: ${theme.screen.desktopXL}) {
-      width: 63%;
-      left: 460px;
-      height: 380px;
-    }
-    @media (min-width: ${theme.screen.desktopXXL}) {
-      width: 63%;
-      left: 800px;
-      height: 700px;
-      top: 100px;
+      height: 390px;
     }
   `}
 `;
 
-export const InfoTitle = styled.span`
+export const InfoTitle = styled.p`
   ${({ theme }) => css`
-    color: ${theme.colors.black};
-    height: 16.915555953979492px;
-    width: 112.67806243896484px;
-    position: absolute;
-    left: 13px;
-    top: 11px;
-    font-weight: ${theme.font.xbold};
+    padding: 10px;
+    font-weight: ${theme.font.normal};
     font-size: ${theme.font.sizes.small};
     @media (min-width: ${theme.screen.desktop}) {
       font-size: ${theme.font.sizes.large};
@@ -105,11 +48,9 @@ export const InfoTitle = styled.span`
 `;
 export const DividerLine = styled.div`
   ${({ theme }) => css`
-    position: absolute;
-    top: 40px;
-    left: 10px;
     height: 2px;
-    width: 240px;
+    width: 250px;
+    margin-left: 10px;
     background-color: ${theme.colors.secondaryWhite};
     @media (min-width: ${theme.screen.mobile375w}) {
       width: 305px;
@@ -118,7 +59,7 @@ export const DividerLine = styled.div`
       width: 360px;
     }
     @media (min-width: ${theme.screen.tablet768w}) {
-      width: 400px;
+      width: 550px;
     }
     @media (min-width: ${theme.screen.desktop}) {
       width: 610px;
@@ -136,23 +77,17 @@ export const DividerLine = styled.div`
 
 export const InfoContainer = styled.div`
   ${({ theme }) => css`
-    position: relative;
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
-    top: 50px;
-    left: 11px;
-    width: 240px;
-    height: 50px;
-    border-bottom: 1px solid ${theme.colors.secondaryWhite};
+    margin: 0 10px;
+    width: 250px;
+    height: 45px;
     @media (min-width: ${theme.screen.mobile375w}) {
       width: 300px;
-      left: 13px;
     }
     @media (min-width: ${theme.screen.mobile425w}) {
-      width: 390px;
-      left: -25px;
     }
     @media (min-width: ${theme.screen.tablet768w}) {
       width: 400px;
@@ -172,8 +107,6 @@ export const InfoContainer = styled.div`
 `;
 export const InfoDescriptionContainer = styled.div`
   ${({ theme }) => css`
-    position: relative;
-    right: 42px;
     width: 180px;
   `}
 `;
@@ -182,11 +115,7 @@ export const InfoDescription = styled.div`
   ${({ theme }) => css`
     font-size: ${theme.font.sizes.xsmall};
     width: 120px;
-    position: relative;
 
-    @media (min-width: ${theme.screen.mobile375w}) {
-      right: 60px;
-    }
     @media (min-width: ${theme.screen.mobile425w}) {
       right: 115px;
     }
@@ -213,30 +142,10 @@ export const InfoDescription = styled.div`
 
 export const ButtonContainer = styled.div`
   ${({ theme }) => css`
-    bottom: 265px;
-    position: absolute;
-    width: 270px;
-    left: 15px;
-    @media (min-width: ${theme.screen.mobile375w}) {
-      width: 330px;
-    }
-    @media (min-width: ${theme.screen.mobile425w}) {
-      width: 380px;
-    }
-    @media (min-width: ${theme.screen.tablet768w}) {
-      width: 420px;
-      left: 300px;
-      bottom: 260px;
-    }
-    @media (min-width: ${theme.screen.desktop}) {
-      width: 63%;
-      left: 360px;
-      bottom: 470px;
-    }
     @media (min-width: ${theme.screen.desktopXL}) {
       bottom: 610px;
       left: 460px;
-      width: 63%;
+      width: 1064px;
     }
     @media (min-width: ${theme.screen.desktopXXL}) {
       bottom: 1080px;
@@ -249,35 +158,24 @@ export const ButtonContainer = styled.div`
 
 export const CVUAliasCard = styled.section`
   ${({ theme }) => css`
-    position: absolute;
-    bottom: 13px;
-    height: 240px;
-    width: 270px;
-    left: 15px;
+    padding: 5px;
+    height: 340px;
     border-radius: 8px;
     background: ${theme.colors.black};
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    @media (min-width: ${theme.screen.mobile375w}) {
-      width: 330px;
-    }
-    @media (min-width: ${theme.screen.mobile425w}) {
-      width: 380px;
-    }
+
     @media (min-width: ${theme.screen.tablet768w}) {
-      width: 420px;
-      left: 300px;
-      bottom: 10px;
+      width: 728px;
     }
     @media (min-width: ${theme.screen.desktop}) {
-      width: 63%;
-      left: 360px;
-      bottom: 30px;
-      height: 400px;
+      width: 734px;
+      height: 350px;
     }
     @media (min-width: ${theme.screen.desktopXL}) {
       bottom: 25px;
       left: 460px;
-      height: 500px;
+      height: 320px;
+      width: 1064px;
     }
     @media (min-width: ${theme.screen.desktopXXL}) {
       left: 800px;
@@ -294,17 +192,21 @@ export const CVUAliasText = styled.p`
     font-weight: ${theme.font.light};
     height: 14px;
     width: 280px;
-    left: 44px;
-    top: 632px;
-    padding: 15px;
-    @media (min-width: ${theme.screen.desktop}) {
+    padding: 25px;
+    @media (min-width: ${theme.screen.tablet768w}) {
       font-size: ${theme.font.sizes.medium};
       width: 500px;
       padding: 30px;
     }
+    @media (min-width: ${theme.screen.desktop}) {
+      font-size: ${theme.font.sizes.medium};
+      width: 500px;
+      padding: 25px 30px;
+    }
     @media (min-width: ${theme.screen.desktopXL}) {
       font-size: ${theme.font.sizes.large};
-      width: 800px;
+      width: 600px;
+      padding: 10px 30px 40px 30px;
     }
     @media (min-width: ${theme.screen.desktopXXL}) {
       font-size: ${theme.font.sizes.xxlarge};
@@ -318,17 +220,16 @@ export const CVUAliasText = styled.p`
 export const CVUAliasTop = styled.div`
   ${({ theme }) => css`
     color: ${theme.colors.primary};
-    padding: 15px;
-    margin-top: 25px;
+    padding: 25px 25px 10px 25px;
     display: flex;
     justify-content: space-between;
-    margin-bottom: -20px;
     @media (min-width: ${theme.screen.desktop}) {
       font-size: ${theme.font.sizes.medium};
       padding: 30px;
     }
     @media (min-width: ${theme.screen.desktopXL}) {
       font-size: ${theme.font.sizes.large};
+      padding: 20px 30px 0 30px;
     }
     @media (min-width: ${theme.screen.desktopXXL}) {
       font-size: ${theme.font.sizes.xxlarge};
