@@ -1,5 +1,10 @@
-import { ContainerPage, PageTitle, SideMenu, TableContainer } from 'components';
-import Footer from 'components/footer';
+import {
+  ContainerPage,
+  PageTitle,
+  SideMenu,
+  TableContainer,
+  Footer
+} from 'components';
 import { useGetCards } from 'hooks/useCards/useGetCards';
 import { useCreateCard } from 'hooks/useCards/useCreateCard';
 import { useDeleteCard } from 'hooks/useCards/useDeleteCard';
