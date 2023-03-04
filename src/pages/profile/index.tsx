@@ -3,11 +3,13 @@ import { AiOutlineArrowRight } from 'react-icons/ai';
 import { useTheme } from 'styled-components';
 import { MdEdit, MdContentCopy } from 'react-icons/md';
 import Link from 'next/link';
+import { useGetUserData } from 'hooks/useUser/useGetUser';
 import { Button, ContainerPage, PageTitle, SideMenu, Footer } from 'components';
 const Profile = () => {
   const {
     colors: { secondaryWhite }
   } = useTheme();
+
   return (
     <>
       <SideMenu />
