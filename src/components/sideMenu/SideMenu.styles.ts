@@ -17,7 +17,7 @@ export const Header = styled.header`
   `}
 
   .headerLogo {
-    height: 70%;
+    height: 30%;
     > img {
       height: 100%;
       width: auto;
