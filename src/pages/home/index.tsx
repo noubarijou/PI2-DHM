@@ -1,10 +1,10 @@
 import * as s from './home.style';
 import Header from '../../components/Header';
-import Footer from '../../components/footer';
 import HeaderLogged from 'components/HeaderLogged';
 import { useEffect, useState } from 'react';
 import { UserData } from './types';
 import { useRouter } from 'next/router';
+import { Footer } from 'components';
 
 const HomePage = () => {
   const [userData, setUserData] = useState<UserData>();

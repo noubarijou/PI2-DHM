@@ -1,7 +1,6 @@
-import { Button } from 'components';
+import { Button, Footer } from 'components';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as s from './login.style';
-import Footer from 'components/footer';
 import HeaderLogged from 'components/HeaderLogged';
 import { InputText } from 'components/input/input-text/InputText';
 import { useState } from 'react';
