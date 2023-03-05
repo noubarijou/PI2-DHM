@@ -1,9 +1,9 @@
 import {
   ContainerPage,
   PageTitle,
-  SideMenu,
   TableContainer,
-  Footer
+  Footer,
+  HeaderLogged
 } from 'components';
 import { useGetCards } from 'hooks/useCards/useGetCards';
 import { useCreateCard } from 'hooks/useCards/useCreateCard';
@@ -67,7 +67,7 @@ const Cards = () => {
       <Head>
         <title>DMH | Cards</title>
       </Head>
-      <SideMenu />
+      <HeaderLogged />
       <ContainerPage>
         <>
           <PageTitle>Cartões</PageTitle>

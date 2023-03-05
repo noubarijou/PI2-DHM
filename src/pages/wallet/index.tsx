@@ -3,8 +3,8 @@ import {
   Button,
   ContainerPage,
   PageTitle,
-  SideMenu,
   TableContainer,
+  HeaderLogged,
   Footer
 } from 'components';
 import Link from 'next/link';
@@ -12,7 +12,6 @@ import { InputText } from 'components/input/input-text/InputText';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schemaLogin } from 'pages/login/schemas';
-import { api } from 'api/client';
 import { AiOutlineArrowRight } from 'react-icons/ai';
 import { BsCircleFill } from 'react-icons/bs';
 import { useTheme } from 'styled-components';
@@ -30,7 +29,7 @@ const Wallet = () => {
   } = useTheme();
   return (
     <>
-      <SideMenu />
+      <HeaderLogged />
       <ContainerPage>
         <PageTitle>Início</PageTitle>
         <s.AvailableMoneyCard>
