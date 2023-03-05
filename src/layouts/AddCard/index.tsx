@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, CreditCard } from 'components';
@@ -7,11 +6,6 @@ import * as s from './AddCard.style';
 import { schema } from 'pages/cards/schemas';
 
 const AddCard = ({ handleCreateCard, setAddNewCard, isLoading }: any) => {
-  const [cardNumber, setCardNumber] = useState();
-  const [cardName, setCardName] = useState('');
-  const [cardExpiration, setCardExpiration] = useState('');
-  const [cvv, setCvv] = useState();
-
   const { control, watch, handleSubmit } = useForm({
     defaultValues: {
       cardNumber: '',
