@@ -4,10 +4,38 @@ import { useTheme } from 'styled-components';
 import { MdEdit, MdContentCopy } from 'react-icons/md';
 import Link from 'next/link';
 import { Button, ContainerPage, PageTitle, TableContainer } from 'components';
+import { useEffect, useState } from 'react';
+import { UserData } from 'pages/home/types';
+import { useGetUserData } from 'hooks/useUser/useGetUserData';
+import { useGetAccount } from 'hooks/useAccount/useGetAcctAcvivity';
 const Profile = () => {
   const {
     colors: { secondaryWhite }
   } = useTheme();
+  const [isRetrievingData, setIsRetrievingData] = useState(true);
+  const [isEditing, setIsEditing] = useState(false);
+  const [editValue, setEditValue] = useState<string | number>();
+
+  const userData: UserData = JSON.parse(
+    localStorage.getItem('userData') || '{}'
+  );
+
+  const { data: userInfo } = useGetUserData(userData.id);
+  const { data: accountInfo } = useGetAccount(userData.id);
+
+  const retrievingData = (userInfo: any) => {
+    return isRetrievingData ? (
+      <s.LoadingInfo>Carregando</s.LoadingInfo>
+    ) : (
+      userInfo
+    );
+  };
+
+  useEffect(() => {
+    if (userInfo) {
+      setIsRetrievingData(false);
+    }
+  }, [userInfo]);
   return (
     <>
       <ContainerPage>
