@@ -13,6 +13,7 @@ export const ContainerPage = styled.div`
     @media (min-width: ${theme.screen.tablet}) {
       padding-left: 16.875rem;
       padding-top: 2.5rem;
+      margin-right: 1rem;
     }
 
     @media (min-width: ${theme.screen.desktopXL}) {

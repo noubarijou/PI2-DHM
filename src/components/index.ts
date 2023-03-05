@@ -6,3 +6,4 @@ export { CreditCard } from './CreditCard/CreditCard';
 export { PageTitle } from './PageTitle/pageTitle';
 export { TableContainer } from './container/tableContainer/tableContainer';
 export { Footer } from './footer';
+export { Header } from './Header/';

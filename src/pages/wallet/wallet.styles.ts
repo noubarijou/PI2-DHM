@@ -126,10 +126,12 @@ export const InputContainer = styled.div`
       @media (min-width: ${theme.screen.mobile}) {
         width: 21rem;
       }
+      @media (min-width: ${theme.screen.mobile425w}) {
+        padding-left: 2.5rem;
+      }
 
       @media (min-width: ${theme.screen.tablet}) {
         width: 32rem;
-        padding-left: 2.5rem;
       }
 
       @media (min-width: ${theme.screen.desktopXL}) {

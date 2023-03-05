@@ -3,15 +3,13 @@ import { InputText } from 'components/input/input-text/InputText';
 import { useState } from 'react';
 import { SignedUp } from 'layouts/SignUp/SignedUp';
 
-import HeaderLogged from '../../components/HeaderLogged';
-import Footer from '../../components/footer';
-
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as s from './signup.style';
 import { schema } from './schemas';
 import { SignUpPayload } from 'hooks/useUser/useCreateUser/types';
 import { usePostUser } from 'hooks/useUser/useCreateUser';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import Head from 'next/head';
 
 const Signup = () => {
   const [isSignedUp, setIsSignedUp] = useState(false);
@@ -41,7 +39,9 @@ const Signup = () => {
 
   return (
     <>
-      <HeaderLogged />
+      <Head>
+        <title>DMH | Cadastro</title>
+      </Head>
       <s.FormContainer>
         {isSignedUp ? (
           <SignedUp />
@@ -107,7 +107,6 @@ const Signup = () => {
           </s.Form>
         )}
       </s.FormContainer>
-      <Footer />
     </>
   );
 };

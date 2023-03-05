@@ -26,5 +26,8 @@ export const TableTitle = styled.h4`
     font-weight: ${theme.font.xbold};
     font-size: ${theme.font.sizes.medium};
     margin-bottom: 1.25rem;
+    @media (min-width: ${theme.screen.desktopXXL}) {
+      font-size: ${theme.font.sizes.xlarge};
+    }
   `}
 `;

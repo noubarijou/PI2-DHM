@@ -1,7 +1,4 @@
 import * as s from './home.style';
-import Header from '../../components/Header';
-import Footer from '../../components/footer';
-import HeaderLogged from 'components/HeaderLogged';
 import { useEffect, useState } from 'react';
 import { UserData } from './types';
 import { useRouter } from 'next/router';
@@ -25,12 +22,8 @@ const HomePage = () => {
     <s.ContainerPage>
       {!loading && (
         <>
-          <Header />
-          <s.WomanImage
-            src="../../assets/images/happy_woman.png"
-            alt="Teste"
-          ></s.WomanImage>
-          <s.GreenBottomContainer></s.GreenBottomContainer>
+          <s.WomanImage src="../../assets/images/happy_woman.png" alt="Teste" />
+          <s.GreenBottomContainer />
           <s.SmallTextSession>
             <s.SmallTextContainer>
               <h1 className="small-text">
@@ -60,7 +53,6 @@ const HomePage = () => {
               </h3>
             </s.InfosRight>
           </div>
-          <Footer />
         </>
       )}
     </s.ContainerPage>

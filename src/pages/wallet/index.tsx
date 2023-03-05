@@ -1,21 +1,15 @@
 import * as s from './wallet.styles';
-import {
-  Button,
-  ContainerPage,
-  PageTitle,
-  SideMenu,
-  TableContainer,
-  Footer
-} from 'components';
+import { Button, ContainerPage, PageTitle, TableContainer } from 'components';
 import Link from 'next/link';
 import { InputText } from 'components/input/input-text/InputText';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schemaLogin } from 'pages/login/schemas';
-import { api } from 'api/client';
 import { AiOutlineArrowRight } from 'react-icons/ai';
 import { BsCircleFill } from 'react-icons/bs';
 import { useTheme } from 'styled-components';
+import { useEffect, useState } from 'react';
+import { UserData } from 'pages/home/types';
 
 const Wallet = () => {
   const { control } = useForm({
@@ -28,15 +22,15 @@ const Wallet = () => {
   const {
     colors: { primary }
   } = useTheme();
+
   return (
     <>
-      <SideMenu />
       <ContainerPage>
         <PageTitle>Início</PageTitle>
         <s.AvailableMoneyCard>
           <s.TopLinks>
-            <s.Links href="/">Ver cartões</s.Links>
-            <s.Links href="/">Ver CVU</s.Links>
+            <s.Links href="/cards">Ver cartões</s.Links>
+            <s.Links href="/profile">Ver CVU</s.Links>
           </s.TopLinks>
           <s.whiteText>Dinheiro disponível</s.whiteText>
           <s.AvailableMoney>
@@ -119,7 +113,6 @@ const Wallet = () => {
           </s.LinkFullActivity>
         </TableContainer>
       </ContainerPage>
-      <Footer />
     </>
   );
 };

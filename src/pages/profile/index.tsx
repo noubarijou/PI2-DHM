@@ -3,62 +3,83 @@ import { AiOutlineArrowRight } from 'react-icons/ai';
 import { useTheme } from 'styled-components';
 import { MdEdit, MdContentCopy } from 'react-icons/md';
 import Link from 'next/link';
-import { useGetUserData } from 'hooks/useUser/useGetUser';
-import { Button, ContainerPage, PageTitle, SideMenu, Footer } from 'components';
+import { Button, ContainerPage, PageTitle, TableContainer } from 'components';
+import { useEffect, useState } from 'react';
+import { UserData } from 'pages/home/types';
+import { useGetUserData } from 'hooks/useUser/useGetUserData';
+import { useGetAccount } from 'hooks/useAccount/useGetAcctAcvivity';
 const Profile = () => {
   const {
     colors: { secondaryWhite }
   } = useTheme();
 
+  const [isRetrievingData, setIsRetrievingData] = useState(true);
+  const [isEditing, setIsEditing] = useState(false);
+  const [editValue, setEditValue] = useState<string | number>();
+
+  const userData: UserData = JSON.parse(
+    localStorage.getItem('userData') || '{}'
+  );
+
+  const { data: userInfo } = useGetUserData(userData.id);
+  const { data: accountInfo } = useGetAccount(userData.id);
+
+  const retrievingData = (userInfo: any) => {
+    return isRetrievingData ? (
+      <s.LoadingInfo>Carregando</s.LoadingInfo>
+    ) : (
+      userInfo
+    );
+  };
+
+  useEffect(() => {
+    if (userInfo) {
+      setIsRetrievingData(false);
+    }
+  }, [userInfo]);
   return (
     <>
-      <SideMenu />
       <ContainerPage>
         <PageTitle>Perfil</PageTitle>
-        <s.PersonalInfo>
-          <s.InfoTitle>Seus dados</s.InfoTitle>
-          <s.DividerLine />
-          <s.InfoContainer>
+        <TableContainer title="Seus dados">
+          <s.PersonalInfo>
             <s.InfoDescriptionContainer>
               <s.InfoDescription>Email </s.InfoDescription>
-              <s.InfoDescription>meuemail@email.com</s.InfoDescription>
+              <s.InfoContent>
+                <span>meuemail@email.com</span>
+              </s.InfoContent>
+              <s.EditIcon />
             </s.InfoDescriptionContainer>
-            <MdEdit color={secondaryWhite} />
-          </s.InfoContainer>
-          <s.DividerLine />
-          <s.InfoContainer>
             <s.InfoDescriptionContainer>
-              <s.InfoDescription>Nome e Sobrenome</s.InfoDescription>
-              <s.InfoDescription>Jonas Antunes</s.InfoDescription>
+              <s.InfoDescription>Nome</s.InfoDescription>
+              <s.InfoContent>
+                <span>Jonas Antunes</span>
+              </s.InfoContent>
+              <s.EditIcon />
             </s.InfoDescriptionContainer>
-            <MdEdit color={secondaryWhite} />
-          </s.InfoContainer>
-          <s.DividerLine />
-          <s.InfoContainer>
             <s.InfoDescriptionContainer>
               <s.InfoDescription>CPF </s.InfoDescription>
-              <s.InfoDescription>12345678910</s.InfoDescription>
+              <s.InfoContent>
+                <span>12345678910</span>
+              </s.InfoContent>
+              <s.EditIcon />
             </s.InfoDescriptionContainer>
-            <MdEdit color={secondaryWhite} />
-          </s.InfoContainer>
-          <s.DividerLine />
-          <s.InfoContainer>
             <s.InfoDescriptionContainer>
               <s.InfoDescription>Telefone </s.InfoDescription>
-              <s.InfoDescription>12345678910</s.InfoDescription>
+              <s.InfoContent>
+                <span>12345678910</span>
+              </s.InfoContent>
+              <s.EditIcon />
             </s.InfoDescriptionContainer>
-            <MdEdit color={secondaryWhite} />
-          </s.InfoContainer>
-          <s.DividerLine />
-          <s.InfoContainer>
             <s.InfoDescriptionContainer>
               <s.InfoDescription>Senha </s.InfoDescription>
-              <s.InfoDescription>********</s.InfoDescription>
+              <s.InfoContent>
+                <span>********</span>
+              </s.InfoContent>
+              <s.EditIcon />
             </s.InfoDescriptionContainer>
-            <MdEdit color={secondaryWhite} />
-          </s.InfoContainer>
-          <s.DividerLine />
-        </s.PersonalInfo>
+          </s.PersonalInfo>
+        </TableContainer>
         <s.ButtonContainer>
           <Link href="/">
             <Button variant="primary" size="wallet">
@@ -77,7 +98,6 @@ const Profile = () => {
             <MdContentCopy />
           </s.CVUAliasTop>
           <s.CVUAliasText>0000002100075320000000</s.CVUAliasText>
-          <s.DividerLine />
           <s.CVUAliasTop>
             Alias
             <MdContentCopy />
@@ -85,7 +105,6 @@ const Profile = () => {
           <s.CVUAliasText>estealiasnãoexiste</s.CVUAliasText>
         </s.CVUAliasCard>
       </ContainerPage>
-      <Footer />
     </>
   );
 };

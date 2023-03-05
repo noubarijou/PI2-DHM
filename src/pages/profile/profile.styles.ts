@@ -1,14 +1,12 @@
 import styled, { css } from 'styled-components';
-import theme from 'styles/theme';
+import { MdEdit, MdContentCopy } from 'react-icons/md';
+import {
+  ModifierSizeMediaQuery,
+  ModifierSizeMediaQueryProps
+} from 'styles/modifier.style';
 
-export const PageTitleContent = styled.p`
-  ${({ theme }) => css`
-    font-size: ${theme.font.sizes.small};
-    font-weight: ${theme.font.bold};
-  `}
-  position: relative;
-  left: 5px;
-  bottom: 2px;
+export const LoadingInfo = styled.span`
+  color: ${({ theme }) => theme.colors.secondaryGray};
 `;
 
 export const PersonalInfo = styled.div`
@@ -16,171 +14,105 @@ export const PersonalInfo = styled.div`
     background-color: ${theme.colors.white};
     display: flex;
     flex-direction: column;
-    height: 310px;
+    justify-content: space-between;
     width: 100%;
     border-radius: 8px;
-    @media (min-width: ${theme.screen.desktopXL}) {
-      height: 390px;
+    @media (min-width: ${theme.screen.desktopXXL}) {
     }
   `}
 `;
 
-export const InfoTitle = styled.p`
-  ${({ theme }) => css`
-    padding: 10px;
-    font-weight: ${theme.font.normal};
-    font-size: ${theme.font.sizes.small};
-    @media (min-width: ${theme.screen.desktop}) {
-      font-size: ${theme.font.sizes.large};
-      width: 300px;
-    }
-    @media (min-width: ${theme.screen.desktopXL}) {
-      font-weight: ${theme.font.xbold};
-      font-size: ${theme.font.sizes.xlarge};
-      width: 300px;
-    }
-    @media (min-width: ${theme.screen.desktopXXL}) {
-      font-weight: ${theme.font.xbold};
-      font-size: ${theme.font.sizes.xxlarge};
-      width: 300px;
-    }
-  `}
-`;
-export const DividerLine = styled.div`
-  ${({ theme }) => css`
-    height: 2px;
-    width: 250px;
-    margin-left: 10px;
-    background-color: ${theme.colors.secondaryWhite};
-    @media (min-width: ${theme.screen.mobile375w}) {
-      width: 305px;
-    }
-    @media (min-width: ${theme.screen.mobile425w}) {
-      width: 360px;
-    }
-    @media (min-width: ${theme.screen.tablet768w}) {
-      width: 550px;
-    }
-    @media (min-width: ${theme.screen.desktop}) {
-      width: 610px;
-    }
-    @media (min-width: ${theme.screen.desktopXL}) {
-      width: 860px;
-      top: 47px;
-    }
-    @media (min-width: ${theme.screen.desktopXXL}) {
-      width: 1570px;
-      top: 75px;
-    }
-  `};
-`;
-
-export const InfoContainer = styled.div`
-  ${({ theme }) => css`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 10px;
-    width: 250px;
-    height: 45px;
-    @media (min-width: ${theme.screen.mobile375w}) {
-      width: 300px;
-    }
-    @media (min-width: ${theme.screen.mobile425w}) {
-    }
-    @media (min-width: ${theme.screen.tablet768w}) {
-      width: 400px;
-      left: 15px;
-    }
-    @media (min-width: ${theme.screen.desktop}) {
-      width: 96%;
-    }
-    @media (min-width: ${theme.screen.desktopXL}) {
-      height: 60px;
-    }
-    @media (min-width: ${theme.screen.desktopXXL}) {
-      height: 110px;
-      top: 90px;
-    }
-  `}
-`;
 export const InfoDescriptionContainer = styled.div`
   ${({ theme }) => css`
-    width: 180px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: left;
+    width: 100%;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid ${theme.colors.secondaryWhite};
+    &:first-of-type {
+      border-top: 1px solid ${theme.colors.secondaryWhite};
+    }
   `}
 `;
 
 export const InfoDescription = styled.div`
   ${({ theme }) => css`
-    font-size: ${theme.font.sizes.xsmall};
-    width: 120px;
-
-    @media (min-width: ${theme.screen.mobile425w}) {
-      right: 115px;
+    font-size: ${theme.font.sizes.small};
+    font-weight: ${theme.font.normal};
+    @media (min-width: ${theme.screen.desktopXXL}) {
+      font-size: ${theme.font.sizes.xlarge};
     }
-    @media (min-width: ${theme.screen.tablet768w}) {
-      right: 160px;
+  `}
+`;
+export const InfoContent = styled.div`
+  text-align: left;
+
+  > span {
+    ${({ theme }) => css`
+      font-size: ${theme.font.sizes.xsmall};
+      font-weight: ${theme.font.normal};
+      opacity: 0.5;
+
+      @media (min-width: ${theme.screen.tablet}) {
+        font-size: ${theme.font.sizes.small};
+      }
+      @media (min-width: ${theme.screen.desktopXXL}) {
+        font-size: ${theme.font.sizes.xlarge};
+      }
+    `}
+  }
+`;
+
+export const EditIcon = styled(MdEdit)`
+  ${({ theme }) => css`
+    position: absolute;
+    left: 270px;
+    @media (min-width: ${theme.screen.mobile375w}) {
+      left: 300px;
+    }
+    @media (min-width: ${theme.screen.mobile425w}) {
+      left: 345px;
+    }
+    @media (min-width: ${theme.screen.tablet}) {
+      left: 700px;
     }
     @media (min-width: ${theme.screen.desktop}) {
-      right: 370px;
-      display: flex;
-      flex-wrap: nowrap;
-      width: 200px;
-      font-size: ${theme.font.sizes.medium};
+      left: 830px;
     }
     @media (min-width: ${theme.screen.desktopXL}) {
-      right: 620px;
-    }
-    @media (min-width: ${theme.screen.desktopXXL}) {
-      right: 1290px;
-      font-size: ${theme.font.sizes.xlarge};
-      width: 500px;
+      left: 1330px;
     }
   `}
 `;
 
 export const ButtonContainer = styled.div`
   ${({ theme }) => css`
-    @media (min-width: ${theme.screen.desktopXL}) {
-      bottom: 610px;
-      left: 460px;
-      width: 1064px;
-    }
-    @media (min-width: ${theme.screen.desktopXXL}) {
-      bottom: 1080px;
-      left: 800px;
-      width: 1602.72px;
-      height: 120px;
-    }
+    display: flex;
   `}
 `;
 
-export const CVUAliasCard = styled.section`
-  ${({ theme }) => css`
-    padding: 5px;
-    height: 340px;
+export const CVUAliasCard = styled.section<ModifierSizeMediaQueryProps>`
+  ${({ theme, variant }) => css`
+    height: 12.7rem;
     border-radius: 8px;
     background: ${theme.colors.black};
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
-    @media (min-width: ${theme.screen.tablet768w}) {
-      width: 728px;
+    padding: 1rem 1.375rem;
+    ${ModifierSizeMediaQuery[(variant = 'bigComponent')](theme)};
+    @media (min-width: ${theme.screen.tablet}) {
+      height: 19rem;
     }
+
     @media (min-width: ${theme.screen.desktop}) {
-      width: 734px;
-      height: 350px;
+      height: 22rem;
     }
     @media (min-width: ${theme.screen.desktopXL}) {
-      bottom: 25px;
-      left: 460px;
-      height: 320px;
-      width: 1064px;
+      height: 22.5rem;
     }
     @media (min-width: ${theme.screen.desktopXXL}) {
-      left: 800px;
-      height: 800px;
-      bottom: 170px;
+      height: 27rem;
     }
   `}
 `;
@@ -190,13 +122,10 @@ export const CVUAliasText = styled.p`
     color: ${theme.colors.secondaryWhite};
     font-size: ${theme.font.sizes.xsmall};
     font-weight: ${theme.font.light};
-    height: 14px;
-    width: 280px;
-    padding: 25px;
-    @media (min-width: ${theme.screen.tablet768w}) {
+    padding: 10px 0;
+    @media (min-width: ${theme.screen.tablet}) {
       font-size: ${theme.font.sizes.medium};
-      width: 500px;
-      padding: 30px;
+      padding: 15px; 0;
     }
     @media (min-width: ${theme.screen.desktop}) {
       font-size: ${theme.font.sizes.medium};
@@ -208,23 +137,20 @@ export const CVUAliasText = styled.p`
       width: 600px;
       padding: 10px 30px 40px 30px;
     }
-    @media (min-width: ${theme.screen.desktopXXL}) {
-      font-size: ${theme.font.sizes.xxlarge};
-      font-weight: ${theme.font.bold};
-      width: 1400px;
-      padding: 60px;
-    }
+   
   `}
 `;
 
 export const CVUAliasTop = styled.div`
   ${({ theme }) => css`
     color: ${theme.colors.primary};
-    padding: 25px 25px 10px 25px;
     display: flex;
     justify-content: space-between;
-    @media (min-width: ${theme.screen.desktop}) {
+    @media (min-width: ${theme.screen.tablet}) {
       font-size: ${theme.font.sizes.medium};
+      padding: 15px; 0;
+    }
+    @media (min-width: ${theme.screen.desktop}) {
       padding: 30px;
     }
     @media (min-width: ${theme.screen.desktopXL}) {
@@ -233,7 +159,6 @@ export const CVUAliasTop = styled.div`
     }
     @media (min-width: ${theme.screen.desktopXXL}) {
       font-size: ${theme.font.sizes.xxlarge};
-      padding: 60px;
     }
   `}
 `;

@@ -1,38 +1,23 @@
 import styled, { css } from 'styled-components';
 
 export const WomanImage = styled.img`
-  @media only screen and (max-width: 915px) {
-    ${({ theme }) => css`
-      height: 70vh;
-      object-fit: cover;
-      object-position: 53% 0;
-      top: 0;
-    `};
-  }
+  object-fit: cover;
   height: 103.5vh;
   width: 100vw;
   display: flex;
   position: absolute;
   z-index: -10;
 
-  @media only screen and (max-width: 1180px) {
-    /* ${({ theme }) => css`
-      object-fit: cover;
-      object-position: 53% 0;
-    `}; */
-  }
-
   ${({ theme }) => css`
-    object-fit: cover;
-    object-position: 53% 5vw;
+    @media only screen and (max-width: ${theme.screen.tablet}) {
+      height: ${theme.calc.body};
+      object-position: 53% 0;
+      top: 0;
+    }
   `};
 `;
 
 export const ContainerPage = styled.div`
-  @media only screen and (max-width: 915px) {
-    height: 100vh;
-  }
-
   height: 100vh;
   width: 100%;
   display: flex;
