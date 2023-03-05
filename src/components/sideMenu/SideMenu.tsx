@@ -1,67 +1,29 @@
-import {
-  HambugerMenu,
-  Header,
-  HeaderInfo,
-  InfoText,
-  NavBar,
-  NavInfo
-} from './SideMenu.styles';
-import { useWindow, WindowSize } from 'hooks/useWindow';
-import { useState } from 'react';
+import { HambugerMenu, NavBar, NavInfo } from './SideMenu.styles';
 import { NavLinksContainer } from './NavLinksContainer/NavLinksContainer';
-import Link from 'next/link';
+import { InfoText } from 'components/HeaderLogged/headerLogged.style';
+import { useWindow, WindowSize } from 'hooks/useWindow';
 
-const SideMenu = () => {
+type SideMenuProps = {
+  closeMenu: () => void;
+  showMenu: boolean;
+  name?: string;
+  lastname?: string;
+};
+
+const SideMenu = ({ closeMenu, showMenu, name, lastname }: SideMenuProps) => {
   const size: WindowSize = useWindow();
-  const [showMenu, setShowMenu] = useState(false);
-
-  const openMenu = () => {
-    setShowMenu(true);
-  };
-
-  const closeMenu = () => {
-    setShowMenu(false);
-  };
 
   return (
     <>
-      {size.width > 834 ? (
+      {size.width > 833 ? (
         <>
-          <Header>
-            <Link href="/" className="headerLogo">
-              <img
-                src="../../assets/images/LOGO-DMH.png"
-                alt="green logo digital money house"
-              />
-            </Link>
-            <HeaderInfo>
-              <p className="alias">MB</p>
-              <InfoText className="headerText">Olá, Maurício Brito</InfoText>
-            </HeaderInfo>
-          </Header>
           <NavBar>
             <NavLinksContainer />
           </NavBar>
         </>
       ) : (
         <>
-          <Header>
-            <Link href="/" className="headerLogo">
-              <img
-                src="../../assets/images/LOGO-DMH.png"
-                alt="green logo digital money house"
-              />
-            </Link>
-            <HeaderInfo>
-              <p className="alias">MB</p>
-              <HambugerMenu className="openBtn" onClick={openMenu}>
-                <span></span>
-                <span></span>
-                <span></span>
-              </HambugerMenu>
-            </HeaderInfo>
-          </Header>
-          {showMenu ? (
+          {showMenu && (
             <NavBar>
               <NavInfo>
                 <HambugerMenu className="closeBtn" onClick={closeMenu}>
@@ -70,12 +32,12 @@ const SideMenu = () => {
                 </HambugerMenu>
                 <div>
                   <InfoText>Olá,</InfoText>
-                  <InfoText>Mauricio Brito</InfoText>
+                  <InfoText>{`${name} ${lastname}`}</InfoText>
                 </div>
               </NavInfo>
               <NavLinksContainer />
             </NavBar>
-          ) : null}
+          )}
         </>
       )}
     </>
