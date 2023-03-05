@@ -3,14 +3,20 @@ import { AiOutlineArrowRight } from 'react-icons/ai';
 import { useTheme } from 'styled-components';
 import { MdEdit, MdContentCopy } from 'react-icons/md';
 import Link from 'next/link';
-import { Button, ContainerPage, PageTitle, SideMenu, Footer } from 'components';
+import {
+  Button,
+  ContainerPage,
+  PageTitle,
+  Footer,
+  HeaderLogged
+} from 'components';
 const Profile = () => {
   const {
     colors: { secondaryWhite }
   } = useTheme();
   return (
     <>
-      <SideMenu />
+      <HeaderLogged />
       <ContainerPage>
         <PageTitle>Perfil</PageTitle>
         <s.PersonalInfo>

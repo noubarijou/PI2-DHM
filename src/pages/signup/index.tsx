@@ -1,9 +1,7 @@
-import { Button, Footer } from 'components';
+import { Button, Footer, HeaderLogged } from 'components';
 import { InputText } from 'components/input/input-text/InputText';
 import { useState } from 'react';
 import { SignedUp } from 'layouts/SignUp/SignedUp';
-
-import HeaderLogged from '../../components/HeaderLogged';
 
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as s from './signup.style';
