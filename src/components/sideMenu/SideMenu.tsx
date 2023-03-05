@@ -15,7 +15,7 @@ const SideMenu = ({ closeMenu, showMenu, name, lastname }: SideMenuProps) => {
 
   return (
     <>
-      {size.width > 833 ? (
+      {size.width > 767 ? (
         <>
           <NavBar>
             <NavLinksContainer />

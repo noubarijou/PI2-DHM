@@ -1,4 +1,5 @@
 import { Footer, Header } from 'components';
+import Head from 'next/head';
 import { FC, PropsWithChildren } from 'react';
 
 const LayoutGeneral: FC<PropsWithChildren> = ({
@@ -6,6 +7,9 @@ const LayoutGeneral: FC<PropsWithChildren> = ({
 }: PropsWithChildren) => {
   return (
     <>
+      <Head>
+        <title>Digital Money House</title>
+      </Head>
       <Header />
       {children}
       <Footer />

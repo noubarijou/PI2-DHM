@@ -12,7 +12,7 @@ describe('<Button>', () => {
     expect(getByRole('button')).toHaveStyle({
       backgroundColor: '#C1FD35',
       padding: '1.25rem 0.875rem',
-      width: '22.5rem'
+      width: '18.5rem'
     });
   });
 
@@ -27,7 +27,7 @@ describe('<Button>', () => {
       screen.getByRole('button', { name: /Small Button/i })
     ).toBeInTheDocument();
     expect(screen.getByRole('button')).toHaveStyle({
-      padding: '1.25rem 0.625rem'
+      padding: '0.625rem 1.25rem'
     });
   });
 
@@ -51,8 +51,8 @@ describe('<Button>', () => {
     const btnLarge = screen.getByRole('button');
 
     expect(btnLarge).toHaveStyle({
-      width: '31rem',
-      padding: '2.5rem 1.25rem',
+      width: '18.5rem',
+      padding: '1.25rem',
       backgroundColor: '#CECECE'
     });
   });

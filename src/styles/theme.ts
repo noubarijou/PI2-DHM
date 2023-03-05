@@ -58,7 +58,7 @@ export default {
     mobile: '24.375rem',
     mobile425w: '26.563rem',
     tablet768w: '48rem',
-    tablet: '52.125rem',
+    tablet: '48rem',
     desktop: '64rem',
     desktopXL: '90rem',
     desktopXXL: '160rem'
