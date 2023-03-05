@@ -43,7 +43,6 @@ export default class MyDocument extends Document {
             rel="stylesheet"
           />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <title>Digital Money House</title>
           <link
             rel="shortcut icon"
             href="/assets/images/LOGO-DMH-green.png"
