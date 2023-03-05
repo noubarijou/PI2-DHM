@@ -4,6 +4,11 @@ import {
   ModifierSizeMediaQuery,
   ModifierSizeMediaQueryProps
 } from 'styles/modifier.style';
+
+export const LoadingInfo = styled.span`
+  color: ${({ theme }) => theme.colors.secondaryGray};
+`;
+
 export const PersonalInfo = styled.div`
   ${({ theme }) => css`
     background-color: ${theme.colors.white};
