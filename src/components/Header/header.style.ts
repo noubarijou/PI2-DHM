@@ -8,6 +8,9 @@ export const ContainerPage = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 
   .dmh-container {
     margin-left: 20px;

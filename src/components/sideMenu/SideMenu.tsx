@@ -1,7 +1,7 @@
 import { HambugerMenu, NavBar, NavInfo } from './SideMenu.styles';
 import { NavLinksContainer } from './NavLinksContainer/NavLinksContainer';
-import { InfoText } from 'components/HeaderLogged/headerLogged.style';
 import { useWindow, WindowSize } from 'hooks/useWindow';
+import { InfoText } from 'components/Header/HeaderLogged/headerLogged.style';
 
 type SideMenuProps = {
   closeMenu: () => void;

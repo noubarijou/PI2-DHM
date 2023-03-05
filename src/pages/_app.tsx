@@ -6,6 +6,7 @@ import theme from '../styles/theme';
 import GlobalStyles from '../styles/global-styles';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { api } from 'api/client';
+import LayoutGeneral from 'layouts/LayoutGeneral/layout-general';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(() => new QueryClient());
@@ -26,7 +27,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
+        <LayoutGeneral>
+          <Component {...pageProps} />
+        </LayoutGeneral>
         <GlobalStyles />
       </ThemeProvider>
     </QueryClientProvider>

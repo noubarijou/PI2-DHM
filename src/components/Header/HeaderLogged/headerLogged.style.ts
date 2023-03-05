@@ -17,10 +17,10 @@ export const Header = styled.header`
     color: ${theme.colors.primary};
   `}
 
-  .headerLogo {
+  > div.headerLogo {
     height: 100%;
     max-height: 3.5rem;
-    > img {
+    > a > img {
       height: 100%;
       width: auto;
     }

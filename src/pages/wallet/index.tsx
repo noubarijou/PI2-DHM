@@ -1,12 +1,5 @@
 import * as s from './wallet.styles';
-import {
-  Button,
-  ContainerPage,
-  PageTitle,
-  TableContainer,
-  HeaderLogged,
-  Footer
-} from 'components';
+import { Button, ContainerPage, PageTitle, TableContainer } from 'components';
 import Link from 'next/link';
 import { InputText } from 'components/input/input-text/InputText';
 import { useForm } from 'react-hook-form';
@@ -29,7 +22,6 @@ const Wallet = () => {
   } = useTheme();
   return (
     <>
-      <HeaderLogged />
       <ContainerPage>
         <PageTitle>Início</PageTitle>
         <s.AvailableMoneyCard>
@@ -118,7 +110,6 @@ const Wallet = () => {
           </s.LinkFullActivity>
         </TableContainer>
       </ContainerPage>
-      <Footer />
     </>
   );
 };

@@ -32,12 +32,14 @@ const HeaderLogged = () => {
       {!loading && (
         <>
           <s.Header>
-            <Link href="/" className="headerLogo">
-              <img
-                src="../../assets/images/LOGO-DMH.png"
-                alt="green logo digital money house"
-              />
-            </Link>
+            <div className="headerLogo">
+              <Link href="/">
+                <img
+                  src="../../assets/images/LOGO-DMH.png"
+                  alt="green logo digital money house"
+                />
+              </Link>
+            </div>
             {userData?.token && (
               <>
                 <s.HeaderInfo>

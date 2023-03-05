@@ -1,4 +1,4 @@
-import { Button, Footer, HeaderLogged } from 'components';
+import { Button, Footer } from 'components';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as s from './login.style';
 import { InputText } from 'components/input/input-text/InputText';
@@ -73,7 +73,6 @@ const Login = () => {
       <Head>
         <title>DMH | Login</title>
       </Head>
-      <HeaderLogged />
       <s.ContainerPage>
         <s.ContainerLogin onSubmit={handleSubmit(handleLogin)}>
           <s.Title key="title">
@@ -110,7 +109,6 @@ const Login = () => {
           {messageError && <s.MessageError>{messageError}</s.MessageError>}
         </s.ContainerLogin>
       </s.ContainerPage>
-      <Footer />
     </>
   );
 };
