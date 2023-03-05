@@ -7,7 +7,7 @@ import { Button, ContainerPage, PageTitle, TableContainer } from 'components';
 import { useEffect, useState } from 'react';
 import { UserData } from 'pages/home/types';
 import { useGetUserData } from 'hooks/useUser/useGetUserData';
-import { useGetAccount } from 'hooks/useAccount/useGetAcctAcvivity';
+import { useGetAccount } from 'hooks/useAccount/useGetAcctData';
 const Profile = () => {
   const {
     colors: { secondaryWhite }
