@@ -8,10 +8,12 @@ import { schemaLogin } from 'pages/login/schemas';
 import { AiOutlineArrowRight } from 'react-icons/ai';
 import { BsCircleFill } from 'react-icons/bs';
 import { useTheme } from 'styled-components';
-import { useEffect, useState } from 'react';
 import { UserData } from 'pages/home/types';
 import { useGetAccount } from 'hooks/useAccount/useGetAcctData';
 import { useGetAcctActivity } from 'hooks/useAccount/useGetAcctActivity';
+import { AcctActivity } from 'hooks/useAccount/useGetAcctActivity/types';
+import { format } from 'date-fns';
+import { pt } from 'date-fns/locale';
 
 const Wallet = () => {
   const { control } = useForm({
@@ -66,22 +68,25 @@ const Wallet = () => {
           />
         </s.InputContainer>
         <TableContainer title="Sua atividade">
-          {activityInfo?.map(activity => (
-            <s.ActivityContainer key={activity.id}>
-              <s.ActivityDescription>
-                <BsCircleFill color={primary} size="20" />
-                <s.ActivityDescriptionText>
-                  {activity?.description}
-                </s.ActivityDescriptionText>
-              </s.ActivityDescription>
-              <s.ActivityValue>
-                <s.ActivityDescriptionText>
-                  ${activity?.amount}
-                </s.ActivityDescriptionText>
-                <span>{activity?.dated}</span>
-              </s.ActivityValue>
-            </s.ActivityContainer>
-          ))}
+          {activityInfo &&
+            activityInfo.map((activity: AcctActivity) => (
+              <s.ActivityContainer key={activity.id}>
+                <s.ActivityDescription>
+                  <BsCircleFill color={primary} size="20" />
+                  <s.ActivityDescriptionText>
+                    {activity?.description}
+                  </s.ActivityDescriptionText>
+                </s.ActivityDescription>
+                <s.ActivityValue>
+                  <s.ActivityDescriptionText>
+                    ${activity?.amount}
+                  </s.ActivityDescriptionText>
+                  <span>
+                    {format(new Date(activity?.dated), 'EEEE', { locale: pt })}
+                  </span>
+                </s.ActivityValue>
+              </s.ActivityContainer>
+            ))}
           <s.LinkFullActivity>
             <s.FullActivityText>Ver toda sua atividade</s.FullActivityText>
             <AiOutlineArrowRight />
