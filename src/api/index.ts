@@ -36,6 +36,7 @@ export function setupApiClient(
       return response;
     },
     function (error: AxiosError) {
+      console.log('erro: ', error);
       if (error?.response?.status === 401 && error instanceof AxiosError) {
         if (error?.response?.data['error'].includes('expired')) {
           logoutUser();

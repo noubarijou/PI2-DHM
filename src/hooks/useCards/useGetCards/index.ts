@@ -1,6 +1,6 @@
 import { api } from 'api/client';
 import { parseCookies } from 'nookies';
-import { useMutation } from 'react-query';
+import { useQuery } from 'react-query';
 interface CustomError extends Error {
   response?: {
     data: {
@@ -8,16 +8,18 @@ interface CustomError extends Error {
     };
   };
 }
+export const QUERY_KEY_GET_CARDS = 'get-cards';
 
 export async function getCardsList() {
   try {
-    const { userData: userDataFromCookies } = parseCookies();
+    const { userData: userDataFromCookies, '@digitalmoney:token': token } =
+      parseCookies();
 
     const userData = JSON.parse(userDataFromCookies);
     const response = await api.get(
-      `/api/accounts/${userData.account_id}/cards`,
+      `/api/accounts/${userData.account_id.id}/cards`,
       {
-        headers: { Authorization: userData.token }
+        headers: { Authorization: token }
       }
     );
     return response.data;
@@ -31,5 +33,5 @@ export async function getCardsList() {
 }
 
 export function useGetCards() {
-  return useMutation(getCardsList);
+  return useQuery([QUERY_KEY_GET_CARDS], getCardsList);
 }
