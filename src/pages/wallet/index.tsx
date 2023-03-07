@@ -8,28 +8,12 @@ import { schemaLogin } from 'pages/login/schemas';
 import { AiOutlineArrowRight } from 'react-icons/ai';
 import { BsCircleFill } from 'react-icons/bs';
 import { useTheme } from 'styled-components';
-import { GetServerSidePropsContext } from 'next';
-import nookies from 'nookies';
-import { useUserStore } from 'store/user';
-
-export async function getServerSideProps(ctx: GetServerSidePropsContext) {
-  const { '@digitalmoney:token': token } = nookies.get(ctx);
-
-  // console.log(user);
-  if (!token) {
-    return {
-      redirect: {
-        destination: '/home',
-        permanent: false
-      },
-      props: {}
-    };
-  }
-
-  return {
-    props: {}
-  };
-}
+import { UserData } from 'pages/home/types';
+import { useGetAccount } from 'hooks/useAccount/useGetAcctData';
+import { useGetAcctActivity } from 'hooks/useAccount/useGetAcctActivity';
+import { AcctActivity } from 'hooks/useAccount/useGetAcctActivity/types';
+import { format } from 'date-fns';
+import { pt } from 'date-fns/locale';
 
 const Wallet = () => {
   const { control } = useForm({
@@ -42,6 +26,11 @@ const Wallet = () => {
   const {
     colors: { primary }
   } = useTheme();
+  const userData: UserData = JSON.parse(
+    localStorage.getItem('userData') || '{}'
+  );
+  const { data: accountInfo } = useGetAccount(userData.id);
+  const { data: activityInfo } = useGetAcctActivity(userData.id);
 
   return (
     <>
@@ -54,7 +43,7 @@ const Wallet = () => {
           </s.TopLinks>
           <s.whiteText>Dinheiro disponível</s.whiteText>
           <s.AvailableMoney>
-            <s.Balance>$ 6.890.534,17</s.Balance>
+            <s.Balance>${`${accountInfo?.available_amount} `}</s.Balance>
           </s.AvailableMoney>
         </s.AvailableMoneyCard>
         <s.ButtonContainer>
@@ -79,54 +68,25 @@ const Wallet = () => {
           />
         </s.InputContainer>
         <TableContainer title="Sua atividade">
-          <s.ActivityContainer>
-            <s.ActivityDescription>
-              <BsCircleFill color={primary} size="20" />
-              <s.ActivityDescriptionText>
-                Transferência para Rodrigo
-              </s.ActivityDescriptionText>
-            </s.ActivityDescription>
-            <s.ActivityValue>
-              <s.ActivityDescriptionText>-$1265,57</s.ActivityDescriptionText>
-              <span>Sábado</span>
-            </s.ActivityValue>
-          </s.ActivityContainer>
-          <s.ActivityContainer>
-            <s.ActivityDescription>
-              <BsCircleFill color={primary} size="20" />
-              <s.ActivityDescriptionText>
-                Transferência para Rodrigo
-              </s.ActivityDescriptionText>
-            </s.ActivityDescription>
-            <s.ActivityValue>
-              <s.ActivityDescriptionText>-$1265,57</s.ActivityDescriptionText>
-              <span>Sábado</span>
-            </s.ActivityValue>
-          </s.ActivityContainer>
-          <s.ActivityContainer>
-            <s.ActivityDescription>
-              <BsCircleFill color={primary} size="20" />
-              <s.ActivityDescriptionText>
-                Transferência para Rodrigo
-              </s.ActivityDescriptionText>
-            </s.ActivityDescription>
-            <s.ActivityValue>
-              <s.ActivityDescriptionText>-$1265,57</s.ActivityDescriptionText>
-              <span>Sábado</span>
-            </s.ActivityValue>
-          </s.ActivityContainer>
-          <s.ActivityContainer>
-            <s.ActivityDescription>
-              <BsCircleFill color={primary} size="20" />
-              <s.ActivityDescriptionText>
-                Transferência para Rodrigo
-              </s.ActivityDescriptionText>
-            </s.ActivityDescription>
-            <s.ActivityValue>
-              <s.ActivityDescriptionText>-$1265,57</s.ActivityDescriptionText>
-              <span>Sábado</span>
-            </s.ActivityValue>
-          </s.ActivityContainer>
+          {activityInfo &&
+            activityInfo.map((activity: AcctActivity) => (
+              <s.ActivityContainer key={activity.id}>
+                <s.ActivityDescription>
+                  <BsCircleFill color={primary} size="20" />
+                  <s.ActivityDescriptionText>
+                    {activity?.description}
+                  </s.ActivityDescriptionText>
+                </s.ActivityDescription>
+                <s.ActivityValue>
+                  <s.ActivityDescriptionText>
+                    ${activity?.amount}
+                  </s.ActivityDescriptionText>
+                  <span>
+                    {format(new Date(activity?.dated), 'EEEE', { locale: pt })}
+                  </span>
+                </s.ActivityValue>
+              </s.ActivityContainer>
+            ))}
           <s.LinkFullActivity>
             <s.FullActivityText>Ver toda sua atividade</s.FullActivityText>
             <AiOutlineArrowRight />
