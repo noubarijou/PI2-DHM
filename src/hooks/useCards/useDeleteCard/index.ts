@@ -12,13 +12,14 @@ interface CustomError extends Error {
 
 export async function deleteCard(cardNumber: any) {
   try {
-    const { userData: userDataFromCookies } = parseCookies();
+    const { userData: userDataFromCookies, '@digitalmoney:token': token } =
+      parseCookies();
 
     const userData = JSON.parse(userDataFromCookies);
-    const response = await api.delete(
-      `/api/accounts/${userData.account_id}/cards/${cardNumber}`,
+    await api.delete(
+      `/api/accounts/${userData.account_id.id}/cards/${cardNumber}`,
       {
-        headers: { Authorization: userData.token }
+        headers: { Authorization: token }
       }
     );
   } catch (e: unknown) {

@@ -1,5 +1,5 @@
 import { ContainerPage, PageTitle, TableContainer } from 'components';
-import { useGetCards } from 'hooks/useCards/useGetCards';
+import { QUERY_KEY_GET_CARDS, useGetCards } from 'hooks/useCards/useGetCards';
 import { useCreateCard } from 'hooks/useCards/useCreateCard';
 import { useDeleteCard } from 'hooks/useCards/useDeleteCard';
 import AddCard from 'layouts/AddCard';
@@ -11,6 +11,7 @@ import { useTheme } from 'styled-components';
 import * as s from './cards.style';
 import { GetServerSidePropsContext } from 'next';
 import nookies from 'nookies';
+import { useQueryClient } from 'react-query';
 
 export async function getServerSideProps(ctx: GetServerSidePropsContext) {
   const { '@digitalmoney:token': token } = nookies.get(ctx);
@@ -32,10 +33,9 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
 
 const Cards = () => {
   const [addNewCard, setAddNewCard] = useState(false);
-  const [cards, setCards] = useState<any>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
-  const { mutate: getCardsList } = useGetCards();
+  const { data: cardsList, refetch } = useGetCards();
   const { mutate: createCard } = useCreateCard();
   const { mutate: deleteCard } = useDeleteCard();
 
@@ -46,28 +46,23 @@ const Cards = () => {
 
   useEffect(() => {
     if (loading) {
-      getCardsList(void 1, {
-        onSuccess: res => setCards(res),
-        onError: err => console.log(err)
-      });
       setLoading(false);
     }
-  }, [cards, loading]);
+  }, [loading]);
 
   const handleCreateCard = (data: any) => {
     createCard(data, {
-      onSuccess: res => setLoading(true),
+      onSuccess: () => {
+        setLoading(true);
+        refetch();
+      },
       onError: err => console.log(err)
     });
   };
 
   const handleDeleteCard = (cardNumber: any) => {
     deleteCard(cardNumber, {
-      onSuccess: res =>
-        getCardsList(void 1, {
-          onSuccess: res => setCards(res),
-          onError: err => console.log(err)
-        }),
+      onSuccess: () => refetch(),
       onError: err => console.log(err)
     });
   };
@@ -98,8 +93,8 @@ const Cards = () => {
               </s.addNewCardContainer>
               <TableContainer title="Seus cartões">
                 {!loading &&
-                  cards?.length !== 0 &&
-                  cards?.map((card: any, index: number) => (
+                  cardsList?.length !== 0 &&
+                  cardsList?.map((card: any, index: number) => (
                     <s.DataContainer key={index}>
                       <s.Description>
                         <BsCircleFill color={primary} size="20" />

@@ -12,15 +12,17 @@ interface CustomError extends Error {
 
 export async function createCard(card: any) {
   try {
-    const { userData: userDataFromCookies } = parseCookies();
+    const { userData: userDataFromCookies, '@digitalmoney:token': token } =
+      parseCookies();
     const userData = JSON.parse(userDataFromCookies);
     const response = await api.post(
-      `/api/accounts/${userData.account_id}/cards`,
+      `/api/accounts/${userData.account_id.id}/cards`,
       card,
       {
-        headers: { Authorization: userData.token }
+        headers: { Authorization: token }
       }
     );
+    console.log(response);
     return response;
   } catch (e: unknown) {
     if (e instanceof Error) {
