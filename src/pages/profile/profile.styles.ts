@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { MdEdit, MdContentCopy } from 'react-icons/md';
+import { MdEdit } from 'react-icons/md';
 import {
   ModifierSizeMediaQuery,
   ModifierSizeMediaQueryProps
@@ -9,7 +9,7 @@ export const LoadingInfo = styled.span`
   color: ${({ theme }) => theme.colors.secondaryGray};
 `;
 
-export const PersonalInfo = styled.div`
+export const PersonalInfo = styled.form`
   ${({ theme }) => css`
     background-color: ${theme.colors.white};
     display: flex;
@@ -63,28 +63,6 @@ export const InfoContent = styled.div`
       }
     `}
   }
-`;
-
-export const EditIcon = styled(MdEdit)`
-  ${({ theme }) => css`
-    position: absolute;
-    left: 270px;
-    @media (min-width: ${theme.screen.mobile375w}) {
-      left: 300px;
-    }
-    @media (min-width: ${theme.screen.mobile425w}) {
-      left: 345px;
-    }
-    @media (min-width: ${theme.screen.tablet}) {
-      left: 700px;
-    }
-    @media (min-width: ${theme.screen.desktop}) {
-      left: 830px;
-    }
-    @media (min-width: ${theme.screen.desktopXL}) {
-      left: 1330px;
-    }
-  `}
 `;
 
 export const ButtonContainer = styled.div`

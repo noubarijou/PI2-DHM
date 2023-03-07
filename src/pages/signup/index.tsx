@@ -10,6 +10,26 @@ import { SignUpPayload } from 'hooks/useUser/useCreateUser/types';
 import { usePostUser } from 'hooks/useUser/useCreateUser';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import Head from 'next/head';
+import { GetServerSidePropsContext } from 'next';
+import nookies from 'nookies';
+
+export async function getServerSideProps(ctx: GetServerSidePropsContext) {
+  const { '@digitalmoney:token': token } = nookies.get(ctx);
+
+  if (token) {
+    return {
+      redirect: {
+        destination: '/wallet',
+        permanent: false
+      },
+      props: {}
+    };
+  }
+
+  return {
+    props: {}
+  };
+}
 
 const Signup = () => {
   const [isSignedUp, setIsSignedUp] = useState(false);

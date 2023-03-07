@@ -1,4 +1,5 @@
 import { api } from 'api/client';
+import { parseCookies } from 'nookies';
 import { useMutation } from 'react-query';
 
 interface CustomError extends Error {
@@ -11,7 +12,8 @@ interface CustomError extends Error {
 
 export async function createCard(card: any) {
   try {
-    const userData = JSON.parse(localStorage.getItem('userData') || '{}');
+    const { userData: userDataFromCookies } = parseCookies();
+    const userData = JSON.parse(userDataFromCookies);
     const response = await api.post(
       `/api/accounts/${userData.account_id}/cards`,
       card,

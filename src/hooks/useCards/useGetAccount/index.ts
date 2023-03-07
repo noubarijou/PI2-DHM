@@ -5,7 +5,6 @@ import { Account } from './types';
 const QUERY_KEY_GET_ACCOUNT = 'get-account';
 
 export async function getAccount(userId: number | undefined) {
-  if (!userId) return;
   try {
     const { data } = await api.get('/api/account', {
       params: { user_id: userId }

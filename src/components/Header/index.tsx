@@ -9,7 +9,7 @@ const Header = () => {
 
   return (
     <>
-      {currentRoute == '/' ? (
+      {currentRoute === '/' || currentRoute === '/home' ? (
         <s.ContainerPage>
           <div className="dmh-container">
             <Link href="/">

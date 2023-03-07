@@ -1,4 +1,6 @@
 import { api } from 'api/client';
+import { setCookie, destroyCookie } from 'nookies';
+
 import { useMutation } from 'react-query';
 import {
   decryptToken,
@@ -34,6 +36,7 @@ export async function loginUser(user: Omit<LoginPayload, 'login'>) {
       '/api/login',
       user
     );
+
     const decryptToken = decryptJwt(loginData.token);
     const { data: userData } = await api.get<UserDataResponse>(
       `/api/users/${decryptToken.username}`,
@@ -53,20 +56,13 @@ export async function loginUser(user: Omit<LoginPayload, 'login'>) {
       }
     );
 
-    window.localStorage.setItem(
+    setCookie(
+      null,
       'userData',
-      JSON.stringify({
-        ...userData,
-        account_id: accountId.id,
-        token: loginData.token
-      })
+      JSON.stringify({ ...userData, account_id: accountId })
     );
-    api.defaults.headers.common['Authorization'] = loginData.token;
 
-    return {
-      ...userData,
-      token: loginData.token
-    };
+    return userData;
   } catch (e: unknown) {
     if (e instanceof Error) {
       const err: CustomError = e;
@@ -76,10 +72,11 @@ export async function loginUser(user: Omit<LoginPayload, 'login'>) {
   }
 }
 
-export async function logoutUser(token: Omit<null, 'logout'>) {
+export async function logoutUser() {
   try {
-    const response = await api.post('/api/logout');
-    window.localStorage.removeItem('userData');
+    await api.post('/api/logout');
+    destroyCookie(null, '@digitalmoney:token');
+    destroyCookie(null, 'userData');
     api.defaults.headers.common['Authorization'] = '';
   } catch (e: unknown) {
     if (e instanceof Error) {
