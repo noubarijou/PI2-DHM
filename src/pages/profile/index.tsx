@@ -4,9 +4,7 @@ import { MdContentCopy } from 'react-icons/md';
 import Link from 'next/link';
 import { Button, ContainerPage, PageTitle, TableContainer } from 'components';
 import { useEffect, useState } from 'react';
-import { UserData } from 'pages/home/types';
 import { useGetUserData } from 'hooks/useUser/useGetUserData';
-import { useGetAccount } from 'hooks/useAccount/useGetAcctAcvivity';
 import { InputEdit } from 'components/InputEdit';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { GetServerSidePropsContext } from 'next';
@@ -14,6 +12,7 @@ import nookies from 'nookies';
 import { useUserStore } from 'store/user';
 import { useUpdateUser } from 'hooks/useUser/useUpdateUser';
 import { useEditStore } from 'store/editing';
+import { useGetAccount } from 'hooks/useAccount/useGetAcctData';
 
 export type FormValues = {
   email: string;
