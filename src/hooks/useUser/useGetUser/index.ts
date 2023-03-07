@@ -7,7 +7,7 @@ const QUERY_KEY_GET_USER_DATA = 'get-user-data';
 export async function getUserData(userId: number | undefined) {
   if (!userId) return;
   try {
-    const { data } = await api.get(`/api/users/123123`);
+    const { data } = await api.get(`/api/users/${userId}`);
 
     return data as UserData;
   } catch (err: unknown) {

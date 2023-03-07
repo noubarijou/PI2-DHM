@@ -24,8 +24,7 @@ export type FormValues = {
 };
 
 export async function getServerSideProps(ctx: GetServerSidePropsContext) {
-  const { userData: userDataFromCookies, '@digitalmoney:token': token } =
-    nookies.get(ctx);
+  const { '@digitalmoney:token': token } = nookies.get(ctx);
 
   if (!token) {
     return {
@@ -38,20 +37,18 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
   }
 
   return {
-    props: {
-      userData: JSON.parse(userDataFromCookies)
-    }
+    props: {}
   };
 }
 
-const Profile = ({ userData }: { userData: UserData }) => {
+const Profile = () => {
   const [isRetrievingData, setIsRetrievingData] = useState(true);
-  const { data: userInfo } = useGetUserData(userData?.id);
-  const { data: accountInfo } = useGetAccount(userData?.id);
+  const user = useUserStore(state => state.user);
+  const { data: userInfo } = useGetUserData(user.id);
+  const { data: accountInfo } = useGetAccount(user.id);
   const { mutate: updateUser } = useUpdateUser();
   const setField = useEditStore(state => state.setField);
   const setUser = useUserStore(state => state.setUser);
-  const user = useUserStore(state => state.user);
 
   const userName = user.firstname + ' ' + user.lastname;
 

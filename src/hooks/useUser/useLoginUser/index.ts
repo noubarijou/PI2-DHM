@@ -56,11 +56,6 @@ export async function loginUser(user: Omit<LoginPayload, 'login'>) {
       }
     );
 
-    setCookie(null, '@digitalmoney:token', loginData.token, {
-      maxAge: 30 * 24 * 60 * 60,
-      path: '/'
-    });
-
     setCookie(
       null,
       'userData',
