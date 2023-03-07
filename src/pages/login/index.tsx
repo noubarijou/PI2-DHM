@@ -10,6 +10,9 @@ import { useLoginUser } from 'hooks/useUser/useLoginUser';
 import Link from 'next/link';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import nookies from 'nookies';
+import { GetServerSidePropsContext } from 'next';
+import { useUserStore } from 'store/user';
 
 const messageErrors = {
   'invalid credentials': 'Senha invalida',
@@ -18,11 +21,30 @@ const messageErrors = {
 
 type ErrorKey = keyof typeof messageErrors;
 
+export async function getServerSideProps(ctx: GetServerSidePropsContext) {
+  const { '@digitalmoney:token': token } = nookies.get(ctx);
+
+  if (token) {
+    return {
+      redirect: {
+        destination: '/wallet',
+        permanent: false
+      },
+      props: {}
+    };
+  }
+
+  return {
+    props: {}
+  };
+}
+
 const Login = () => {
   const router = useRouter();
   const [stepEmailCompleted, setStepEmailCompleted] = useState(false);
   const { mutate: loginUser, isLoading } = useLoginUser();
   const [messageError, setMessageError] = useState('');
+  const setUser = useUserStore(state => state.setUser);
   const {
     control,
     handleSubmit,
@@ -52,10 +74,10 @@ const Login = () => {
     // token é recebido, falta saber o que faremos com ele
     loginUser(dataForm, {
       onSuccess: res => {
-        if (res?.token) {
+        if (res) {
+          setUser(res);
           router.push('/wallet');
         }
-        console.log(res?.token);
       },
       onError: err => {
         let mesErr = err as ErrorKey;

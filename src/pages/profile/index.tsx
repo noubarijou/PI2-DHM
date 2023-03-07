@@ -1,82 +1,165 @@
 import * as s from './profile.styles';
 import { AiOutlineArrowRight } from 'react-icons/ai';
-import { useTheme } from 'styled-components';
-import { MdEdit, MdContentCopy } from 'react-icons/md';
+import { MdContentCopy } from 'react-icons/md';
 import Link from 'next/link';
 import { Button, ContainerPage, PageTitle, TableContainer } from 'components';
 import { useEffect, useState } from 'react';
 import { UserData } from 'pages/home/types';
 import { useGetUserData } from 'hooks/useUser/useGetUserData';
 import { useGetAccount } from 'hooks/useAccount/useGetAcctAcvivity';
-const Profile = () => {
-  const {
-    colors: { secondaryWhite }
-  } = useTheme();
+import { InputEdit } from 'components/InputEdit';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { GetServerSidePropsContext } from 'next';
+import nookies from 'nookies';
+import { useUserStore } from 'store/user';
+import { useUpdateUser } from 'hooks/useUser/useUpdateUser';
+import { useEditStore } from 'store/editing';
 
+export type FormValues = {
+  email: string;
+  name: string;
+  dni: number;
+  phone: string;
+  password: string;
+};
+
+export async function getServerSideProps(ctx: GetServerSidePropsContext) {
+  const { userData: userDataFromCookies, '@digitalmoney:token': token } =
+    nookies.get(ctx);
+
+  if (!token) {
+    return {
+      redirect: {
+        destination: '/home',
+        permanent: false
+      },
+      props: {}
+    };
+  }
+
+  return {
+    props: {
+      userData: JSON.parse(userDataFromCookies)
+    }
+  };
+}
+
+const Profile = ({ userData }: { userData: UserData }) => {
   const [isRetrievingData, setIsRetrievingData] = useState(true);
-  const [isEditing, setIsEditing] = useState(false);
-  const [editValue, setEditValue] = useState<string | number>();
+  const { data: userInfo } = useGetUserData(userData?.id);
+  const { data: accountInfo } = useGetAccount(userData?.id);
+  const { mutate: updateUser } = useUpdateUser();
+  const setField = useEditStore(state => state.setField);
+  const setUser = useUserStore(state => state.setUser);
+  const user = useUserStore(state => state.user);
 
-  const userData: UserData = JSON.parse(
-    localStorage.getItem('userData') || '{}'
-  );
-
-  const { data: userInfo } = useGetUserData(userData.id);
-  const { data: accountInfo } = useGetAccount(userData.id);
+  const userName = user.firstname + ' ' + user.lastname;
 
   const retrievingData = (userInfo: any) => {
-    return isRetrievingData ? (
-      <s.LoadingInfo>Carregando</s.LoadingInfo>
-    ) : (
-      userInfo
-    );
+    return isRetrievingData ? 'Carregando...' : userInfo;
   };
+  const { register, handleSubmit } = useForm<FormValues>({
+    defaultValues: {
+      email: user.email,
+      name: userName,
+      dni: user.dni,
+      phone: user.phone,
+      password: ''
+    }
+  });
 
   useEffect(() => {
     if (userInfo) {
       setIsRetrievingData(false);
     }
   }, [userInfo]);
+
+  const copyToClipboard = async (data: string) => {
+    try {
+      navigator.clipboard.writeText(data);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        console.log(err);
+      }
+    }
+  };
+
+  const handleUpdateUser: SubmitHandler<FormValues> = data => {
+    const firstName = data.name.split(' ')[0];
+    const lastName = data.name.split(' ')[1];
+    const { name, ...newData } = data;
+    updateUser(
+      { ...newData, firstname: firstName, lastname: lastName },
+      {
+        onSuccess: data => {
+          setField('');
+          setUser(data);
+        },
+        onError: () => {
+          console.log('deu errado');
+        }
+      }
+    );
+  };
+
   return (
     <>
       <ContainerPage>
         <PageTitle>Perfil</PageTitle>
         <TableContainer title="Seus dados">
-          <s.PersonalInfo>
+          <s.PersonalInfo onSubmit={handleSubmit(handleUpdateUser)}>
             <s.InfoDescriptionContainer>
               <s.InfoDescription>Email </s.InfoDescription>
-              <s.InfoContent>
-                <span>meuemail@email.com</span>
-              </s.InfoContent>
-              <s.EditIcon />
+              <InputEdit
+                type="email"
+                register={register}
+                name="email"
+                info={retrievingData(userInfo?.email)}
+              />
             </s.InfoDescriptionContainer>
             <s.InfoDescriptionContainer>
               <s.InfoDescription>Nome</s.InfoDescription>
               <s.InfoContent>
-                <span>Jonas Antunes</span>
+                <InputEdit
+                  type="text"
+                  register={register}
+                  name="name"
+                  info={retrievingData(userName)}
+                />
               </s.InfoContent>
-              <s.EditIcon />
             </s.InfoDescriptionContainer>
             <s.InfoDescriptionContainer>
               <s.InfoDescription>CPF </s.InfoDescription>
               <s.InfoContent>
-                <span>12345678910</span>
+                <InputEdit
+                  type="text"
+                  register={register}
+                  name="dni"
+                  info={retrievingData(userInfo?.dni)}
+                />
               </s.InfoContent>
-              <s.EditIcon />
             </s.InfoDescriptionContainer>
             <s.InfoDescriptionContainer>
               <s.InfoDescription>Telefone </s.InfoDescription>
               <s.InfoContent>
-                <span>12345678910</span>
+                <InputEdit
+                  type="text"
+                  register={register}
+                  name="phone"
+                  info={retrievingData(userInfo?.phone)}
+                />
               </s.InfoContent>
-              <s.EditIcon />
             </s.InfoDescriptionContainer>
             <s.InfoDescriptionContainer>
               <s.InfoDescription>Senha </s.InfoDescription>
               <s.InfoContent>
-                <span>********</span>
+                <InputEdit
+                  type="password"
+                  register={register}
+                  name="password"
+                  info={retrievingData('********')}
+                />
               </s.InfoContent>
-              <s.EditIcon />
             </s.InfoDescriptionContainer>
           </s.PersonalInfo>
         </TableContainer>
@@ -95,14 +178,18 @@ const Profile = () => {
           </s.CVUAliasText>
           <s.CVUAliasTop>
             CVU
-            <MdContentCopy />
+            <MdContentCopy
+              onClick={() => copyToClipboard(accountInfo?.cvu || '')}
+            />
           </s.CVUAliasTop>
-          <s.CVUAliasText>0000002100075320000000</s.CVUAliasText>
+          <s.CVUAliasText>{retrievingData(accountInfo?.cvu)}</s.CVUAliasText>
           <s.CVUAliasTop>
             Alias
-            <MdContentCopy />
+            <MdContentCopy
+              onClick={() => copyToClipboard(accountInfo?.alias || '')}
+            />
           </s.CVUAliasTop>
-          <s.CVUAliasText>estealiasnãoexiste</s.CVUAliasText>
+          <s.CVUAliasText>{retrievingData(accountInfo?.alias)}</s.CVUAliasText>
         </s.CVUAliasCard>
       </ContainerPage>
     </>

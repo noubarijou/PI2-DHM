@@ -9,6 +9,26 @@ import { AiOutlineArrowRight, AiOutlinePlusCircle } from 'react-icons/ai';
 import { BsCircleFill } from 'react-icons/bs';
 import { useTheme } from 'styled-components';
 import * as s from './cards.style';
+import { GetServerSidePropsContext } from 'next';
+import nookies from 'nookies';
+
+export async function getServerSideProps(ctx: GetServerSidePropsContext) {
+  const { '@digitalmoney:token': token } = nookies.get(ctx);
+
+  if (!token) {
+    return {
+      redirect: {
+        destination: '/home',
+        permanent: false
+      },
+      props: {}
+    };
+  }
+
+  return {
+    props: {}
+  };
+}
 
 const Cards = () => {
   const [addNewCard, setAddNewCard] = useState(false);

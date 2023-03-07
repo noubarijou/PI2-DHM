@@ -2,16 +2,18 @@ import { SideMenu } from 'components/sideMenu/SideMenu';
 import { HambugerMenu } from 'components/sideMenu/SideMenu.styles';
 import { useWindow, WindowSize } from 'hooks/useWindow';
 import Link from 'next/link';
-import { UserData } from 'pages/home/types';
+import { parseCookies } from 'nookies';
 import { useEffect, useState } from 'react';
 import * as s from './headerLogged.style';
 
 const HeaderLogged = () => {
-  const [userData, setUserData] = useState<UserData>();
   const [loading, setLoading] = useState<boolean>(true);
   const [showMenu, setShowMenu] = useState(false);
   const size: WindowSize = useWindow();
+  const { userData: userDataFromCookies, '@digitalmoney:token': token } =
+    parseCookies();
 
+  const userData = userDataFromCookies && JSON.parse(userDataFromCookies);
   const openMenu = () => {
     setShowMenu(true);
   };
@@ -22,10 +24,9 @@ const HeaderLogged = () => {
 
   useEffect(() => {
     if (loading) {
-      setUserData(JSON.parse(localStorage.getItem('userData') || '{}'));
       setLoading(false);
     }
-  }, [loading, userData]);
+  }, []);
 
   return (
     <>
@@ -40,7 +41,7 @@ const HeaderLogged = () => {
                 />
               </Link>
             </div>
-            {userData?.token && (
+            {token && (
               <>
                 <s.HeaderInfo>
                   <p className="alias">
@@ -66,8 +67,8 @@ const HeaderLogged = () => {
                 <SideMenu
                   closeMenu={closeMenu}
                   showMenu={showMenu}
-                  name={userData.firstname}
-                  lastname={userData.lastname}
+                  name={userData?.firstname}
+                  lastname={userData?.lastname}
                 />
               </>
             )}

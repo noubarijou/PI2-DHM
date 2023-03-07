@@ -1,22 +1,34 @@
 import * as s from './home.style';
 import { useEffect, useState } from 'react';
-import { UserData } from './types';
-import { useRouter } from 'next/router';
+import { GetServerSidePropsContext } from 'next';
+import nookies from 'nookies';
+
+export async function getServerSideProps(ctx: GetServerSidePropsContext) {
+  const { '@digitalmoney:token': token } = nookies.get(ctx);
+
+  if (token) {
+    return {
+      redirect: {
+        destination: '/wallet',
+        permanent: false
+      },
+      props: {}
+    };
+  }
+
+  return {
+    props: {}
+  };
+}
 
 const HomePage = () => {
-  const [userData, setUserData] = useState<UserData>();
   const [loading, setLoading] = useState<boolean>(true);
-  const router = useRouter();
 
   useEffect(() => {
     if (loading) {
-      setUserData(JSON.parse(localStorage.getItem('userData') || '{}'));
       setLoading(false);
-    } else if (userData?.token) {
-      router.push('/wallet');
     }
-  }, [loading, userData]);
-  console.log(userData);
+  }, []);
 
   return (
     <s.ContainerPage>

@@ -1,9 +1,15 @@
 export interface UserData {
+  id?: number;
+  firstname?: string;
+  lastname?: string;
   dni?: number;
   email?: string;
-  firstname?: string;
-  id?: number;
-  lastname?: string;
   phone?: string;
-  token?: string;
+  account_id: {
+    id: number;
+    user_id: number;
+    cvu: number;
+    alias: string;
+    available_amount: number;
+  };
 }

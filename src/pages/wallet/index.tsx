@@ -8,8 +8,28 @@ import { schemaLogin } from 'pages/login/schemas';
 import { AiOutlineArrowRight } from 'react-icons/ai';
 import { BsCircleFill } from 'react-icons/bs';
 import { useTheme } from 'styled-components';
-import { useEffect, useState } from 'react';
-import { UserData } from 'pages/home/types';
+import { GetServerSidePropsContext } from 'next';
+import nookies from 'nookies';
+import { useUserStore } from 'store/user';
+
+export async function getServerSideProps(ctx: GetServerSidePropsContext) {
+  const { '@digitalmoney:token': token } = nookies.get(ctx);
+
+  // console.log(user);
+  if (!token) {
+    return {
+      redirect: {
+        destination: '/home',
+        permanent: false
+      },
+      props: {}
+    };
+  }
+
+  return {
+    props: {}
+  };
+}
 
 const Wallet = () => {
   const { control } = useForm({
