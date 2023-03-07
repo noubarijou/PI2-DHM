@@ -8,12 +8,32 @@ import { schemaLogin } from 'pages/login/schemas';
 import { AiOutlineArrowRight } from 'react-icons/ai';
 import { BsCircleFill } from 'react-icons/bs';
 import { useTheme } from 'styled-components';
-import { UserData } from 'pages/home/types';
 import { useGetAccount } from 'hooks/useAccount/useGetAcctData';
 import { useGetAcctActivity } from 'hooks/useAccount/useGetAcctActivity';
 import { AcctActivity } from 'hooks/useAccount/useGetAcctActivity/types';
 import { format } from 'date-fns';
 import { pt } from 'date-fns/locale';
+import { GetServerSidePropsContext } from 'next';
+import nookies from 'nookies';
+import { useUserStore } from 'store/user';
+
+export async function getServerSideProps(ctx: GetServerSidePropsContext) {
+  const { '@digitalmoney:token': token } = nookies.get(ctx);
+
+  if (!token) {
+    return {
+      redirect: {
+        destination: '/home',
+        permanent: false
+      },
+      props: {}
+    };
+  }
+
+  return {
+    props: {}
+  };
+}
 
 const Wallet = () => {
   const { control } = useForm({
@@ -23,14 +43,14 @@ const Wallet = () => {
     resolver: yupResolver(schemaLogin),
     mode: 'all'
   });
+  const user = useUserStore(state => state.user);
+
   const {
     colors: { primary }
   } = useTheme();
-  const userData: UserData = JSON.parse(
-    localStorage.getItem('userData') || '{}'
-  );
-  const { data: accountInfo } = useGetAccount(userData.id);
-  const { data: activityInfo } = useGetAcctActivity(userData.id);
+
+  const { data: accountInfo } = useGetAccount(user.id);
+  const { data: activityInfo } = useGetAcctActivity(user.id);
 
   return (
     <>
