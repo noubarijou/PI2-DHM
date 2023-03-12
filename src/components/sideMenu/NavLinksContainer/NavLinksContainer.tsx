@@ -34,7 +34,7 @@ const NavLinksContainer = () => {
           <NavLink route="/value">Carregar valor</NavLink>
         </li>
         <li>
-          <NavLink route="/service">Pagar serviços</NavLink>
+          <NavLink route="/payments">Pagar serviços</NavLink>
         </li>
         <li>
           <NavLink route="/cards">Cartões</NavLink>
