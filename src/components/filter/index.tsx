@@ -43,11 +43,13 @@ const Filter = () => {
             Tipo
           </option>
         </select>{' '}
-        Limpar filtros
+        <s.LimparFiltros onClick={handleClearClick}>
+          Limpar filtros
+        </s.LimparFiltros>
       </s.FilterHeader>
-      <s.FilterOptionList>
-        {selectedOption === 'periodo' ? (
-          <>
+      {selectedOption === 'periodo' ? (
+        <>
+          <s.FilterOptionList>
             <s.FilterOption>
               <label htmlFor="hoje">Hoje</label>
               <input
@@ -112,9 +114,11 @@ const Filter = () => {
               <p>Outro período</p>
               <HiOutlineChevronRight />
             </s.FilterOption>
-          </>
-        ) : (
-          <>
+          </s.FilterOptionList>
+        </>
+      ) : (
+        <>
+          <s.FilterOptionList>
             <s.FilterOption>
               <label htmlFor="entrada">Entrada</label>
               <input
@@ -135,11 +139,11 @@ const Filter = () => {
                 onClick={handleFilterClick}
               />
             </s.FilterOption>
-          </>
-        )}
-      </s.FilterOptionList>
+          </s.FilterOptionList>
+        </>
+      )}
       <s.ButtonContainer>
-        <Button variant="tertiary" size="xsmall" onClick={handleClearClick}>
+        <Button variant="tertiary" size="xsmall">
           Fechar
         </Button>
         <Button variant="primary" size="xsmall" onClick={handleApplyClick}>
