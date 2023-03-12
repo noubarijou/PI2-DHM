@@ -1,7 +1,8 @@
 import { SideMenu } from 'components/sideMenu/SideMenu';
 import { HambugerMenu } from 'components/sideMenu/SideMenu.styles';
 import { useWindow, WindowSize } from 'hooks/useWindow';
-import Link from 'next/link';
+import { ProfileLink as Link } from 'components/Header/HeaderLogged/headerLogged.style';
+
 import { parseCookies } from 'nookies';
 import { useEffect, useState } from 'react';
 import * as s from './headerLogged.style';
@@ -45,8 +46,10 @@ const HeaderLogged = () => {
               <>
                 <s.HeaderInfo>
                   <p className="alias">
-                    {userData?.firstname?.split('')[0]}
-                    {userData?.lastname?.split('')[0]}
+                    <Link href="/profile">
+                      {userData?.firstname?.split('')[0]}
+                      {userData?.lastname?.split('')[0]}
+                    </Link>
                   </p>
                   {size.width > 833 ? (
                     <>

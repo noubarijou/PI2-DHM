@@ -25,7 +25,7 @@ const NavLinksContainer = () => {
           <NavLink route="/wallet">Início</NavLink>
         </li>
         <li>
-          <NavLink route="/activity">Atividade</NavLink>
+          <NavLink route="/fullactivity">Atividade</NavLink>
         </li>
         <li>
           <NavLink route="/profile">Seu perfil</NavLink>

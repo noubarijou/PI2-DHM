@@ -2,7 +2,7 @@ import React from 'react';
 import * as s from './tableContainer.style';
 
 type TableContainerProps = {
-  title: string;
+  title?: string;
   children?: React.ReactNode;
 };
 

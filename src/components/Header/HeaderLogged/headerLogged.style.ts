@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styled, { css } from 'styled-components';
 import theme from 'styles/theme';
 
@@ -56,4 +57,11 @@ export const InfoText = styled.h3`
       color: ${theme.colors.white};
     }
   `}
+`;
+
+export const ProfileLink = styled(Link)`
+  ${({ theme }) => css`
+    color: ${theme.colors.black};
+  `}
+  text-decoration: none;
 `;

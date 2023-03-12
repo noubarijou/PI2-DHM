@@ -46,12 +46,21 @@ const Wallet = () => {
   const user = useUserStore(state => state.user);
 
   const {
-    colors: { primary }
+    colors: { primary, secondaryBlack }
   } = useTheme();
 
   const { data: accountInfo } = useGetAccount(user.id);
   const { data: activityInfo } = useGetAcctActivity(user.id);
-
+  const priceFormatter = (num: number | undefined) => {
+    return (
+      num &&
+      new Intl.NumberFormat('pt-br', {
+        style: 'currency',
+        currency: 'BRL'
+      }).format(num)
+    );
+  };
+  const limit = 8;
   return (
     <>
       <ContainerPage>
@@ -63,7 +72,9 @@ const Wallet = () => {
           </s.TopLinks>
           <s.whiteText>Dinheiro disponível</s.whiteText>
           <s.AvailableMoney>
-            <s.Balance>${`${accountInfo?.available_amount} `}</s.Balance>
+            <s.Balance>
+              {priceFormatter(accountInfo?.available_amount)}
+            </s.Balance>
           </s.AvailableMoney>
         </s.AvailableMoneyCard>
         <s.ButtonContainer>
@@ -89,7 +100,7 @@ const Wallet = () => {
         </s.InputContainer>
         <TableContainer title="Sua atividade">
           {activityInfo &&
-            activityInfo.map((activity: AcctActivity) => (
+            activityInfo.slice(0, limit).map((activity: AcctActivity) => (
               <s.ActivityContainer key={activity.id}>
                 <s.ActivityDescription>
                   <BsCircleFill color={primary} size="20" />
@@ -109,7 +120,9 @@ const Wallet = () => {
             ))}
           <s.LinkFullActivity>
             <s.FullActivityText>Ver toda sua atividade</s.FullActivityText>
-            <AiOutlineArrowRight />
+            <Link href="/fullactivity">
+              <AiOutlineArrowRight color={secondaryBlack} />
+            </Link>
           </s.LinkFullActivity>
         </TableContainer>
       </ContainerPage>
