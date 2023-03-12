@@ -61,7 +61,7 @@ export const InputWrapper = styled.div`
 `;
 
 export const InputText = styled.input<InputTextProps>`
-  ${({ theme, variant, variantType }) => css`
+  ${({ theme, variant }) => css`
     background: ${theme.colors.white};
     font-size: ${theme.font.sizes.medium};
     color: ${theme.colors.black};

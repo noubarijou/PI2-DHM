@@ -9,6 +9,13 @@ export const filterByDate = (data: AcctActivity[], dateFilter: Date) => {
   });
 };
 
+export const filterByText = (data: AcctActivity[], text: string) => {
+  // Returns filtered transfers if the 'description' field has the text of the 'text' parameter
+  return data.filter(tranfer =>
+    tranfer.type.toLowerCase().includes(text.toLowerCase())
+  );
+};
+
 export const pagination = (
   data: AcctActivity[],
   limit: number,
@@ -24,11 +31,4 @@ export const pagination = (
     pages: Math.ceil(data.length / limit),
     currentPage: page
   };
-};
-
-export const filterByText = (data: AcctActivity[], text: string) => {
-  // Returns filtered transfers if the 'description' field has the text of the 'text' parameter
-  return data.filter(tranfer =>
-    tranfer.description.toLowerCase().includes(text.toLowerCase())
-  );
 };
