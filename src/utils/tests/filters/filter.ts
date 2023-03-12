@@ -15,15 +15,47 @@ export const filterByText = (data: AcctActivity[], text: string) => {
     tranfer.type.toLowerCase().includes(text.toLowerCase())
   );
 };
-
+interface filters {
+  date?: string;
+  title?: string;
+  type?: string;
+}
 export const pagination = (
   data: AcctActivity[],
   limit: number,
-  page: number
+  page: number,
+  options?: filters
 ) => {
   // Calculates the index of the first and last item on the page
   const startIndex = (page - 1) * limit;
   const endIndex = startIndex + limit;
+
+  if (options) {
+    if (options.date) {
+      const filteredData = filterByDate(data, new Date(options.date));
+      return {
+        data: filteredData.slice(startIndex, endIndex),
+        pages: Math.ceil(filteredData.length / limit),
+        currentPage: page
+      };
+    }
+    if (options.title) {
+      const filteredData = filterByText(data, options.title);
+      return {
+        data: filteredData.slice(startIndex, endIndex),
+        pages: Math.ceil(filteredData.length / limit),
+        currentPage: page
+      };
+    }
+    if (options.date && options.title) {
+      const filteredData = filterByDate(data, new Date(options.date));
+      return {
+        data: filteredData.slice(startIndex, endIndex),
+        pages: Math.ceil(filteredData.length / limit),
+        currentPage: page
+      };
+    }
+  }
 
   // Returns the requested page from the array and paging information
   return {
