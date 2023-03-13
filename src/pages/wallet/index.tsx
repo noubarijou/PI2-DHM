@@ -16,6 +16,7 @@ import { pt } from 'date-fns/locale';
 import { GetServerSidePropsContext } from 'next';
 import nookies from 'nookies';
 import { useUserStore } from 'store/user';
+import { pagination } from 'utils/tests/filters/filter';
 
 export async function getServerSideProps(ctx: GetServerSidePropsContext) {
   const { '@digitalmoney:token': token } = nookies.get(ctx);
@@ -36,7 +37,7 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
 }
 
 const Wallet = () => {
-  const { control } = useForm({
+  const { control, watch } = useForm({
     defaultValues: {
       search: ''
     },
@@ -60,6 +61,11 @@ const Wallet = () => {
       }).format(num)
     );
   };
+
+  const activityInfoFilter =
+    activityInfo &&
+    pagination(activityInfo, 8, 1, { title: watch('search') }).data;
+
   const limit = 8;
   return (
     <>
@@ -99,8 +105,8 @@ const Wallet = () => {
           />
         </s.InputContainer>
         <TableContainer title="Sua atividade">
-          {activityInfo &&
-            activityInfo.slice(0, limit).map((activity: AcctActivity) => (
+          {activityInfoFilter &&
+            activityInfoFilter.map((activity: AcctActivity) => (
               <s.ActivityContainer key={activity.id}>
                 <s.ActivityDescription>
                   <BsCircleFill color={primary} size="20" />
