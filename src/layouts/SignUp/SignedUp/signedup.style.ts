@@ -7,6 +7,7 @@ export const Container = styled.div`
   align-items: center;
   gap: 2rem;
   margin: 0 auto;
+  min-height: ${({ theme }) => theme.calc.body};
 `;
 
 export const Title = styled.span`
