@@ -1,24 +1,26 @@
 import * as s from './fullactivity.styles';
-import { ContainerPage, PageTitle, TableContainer } from 'components';
-import Link from 'next/link';
-import { InputText } from 'components/input/input-text/InputText';
+import {
+  ContainerPage,
+  PageTitle,
+  TableContainer,
+  Pagination,
+  Filter
+} from '../../components';
+import { InputText } from '../../components/input/input-text/InputText';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { schemaLogin } from 'pages/login/schemas';
+import { schemaLogin } from '../login/schemas';
 import { FiFilter } from 'react-icons/fi';
 import { BsCircleFill } from 'react-icons/bs';
 import { useTheme } from 'styled-components';
-import { useGetAccount } from 'hooks/useAccount/useGetAcctData';
-import { useGetAcctActivity } from 'hooks/useAccount/useGetAcctActivity';
-import { AcctActivity } from 'hooks/useAccount/useGetAcctActivity/types';
+import { useGetAcctActivity } from '../../hooks/useAccount/useGetAcctActivity';
+import { AcctActivity } from '../../hooks/useAccount/useGetAcctActivity/types';
 import { format } from 'date-fns';
 import { pt } from 'date-fns/locale';
 import nookies from 'nookies';
-import { useUserStore } from 'store/user';
+import { useUserStore } from '../../store/user';
 import { useEffect, useState } from 'react';
-import Filter from 'components/filter';
-import Pagination from 'components/pagination';
-import { pagination, filterByText } from 'utils/tests/filters/filter';
+import { pagination, filterByText } from '../../utils/tests/filters/filter';
 import { GetServerSidePropsContext } from 'next';
 import { useRouter } from 'next/router';
 
@@ -51,6 +53,8 @@ const FullActivity = () => {
     setOpenFilter(!openFilter);
   };
   const [currentPage, setCurrentPage] = useState(1);
+
+  console.log(activityInfo);
 
   return (
     <ContainerPage>
