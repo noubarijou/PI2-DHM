@@ -34,4 +34,4 @@ const Pagination = ({ pages, currentPage, onPageChange }: PaginationProps) => {
     </nav>
   );
 };
-export default Pagination;
+export { Pagination };
