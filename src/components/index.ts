@@ -7,3 +7,5 @@ export { PageTitle } from './PageTitle/pageTitle';
 export { TableContainer } from './container/tableContainer/tableContainer';
 export { Footer } from './footer';
 export { Header } from './Header/';
+export { Pagination } from './pagination';
+export { Filter } from './filter';
