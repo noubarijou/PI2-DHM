@@ -54,8 +54,6 @@ const FullActivity = () => {
   };
   const [currentPage, setCurrentPage] = useState(1);
 
-  console.log(activityInfo);
-
   return (
     <ContainerPage>
       <PageTitle>Suas atividades</PageTitle>
