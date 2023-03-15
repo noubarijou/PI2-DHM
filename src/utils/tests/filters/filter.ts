@@ -12,9 +12,17 @@ export const filterByDate = (data: AcctActivity[], dateFilter: Date) => {
 export const filterByText = (data: AcctActivity[], text: string) => {
   // Returns filtered transfers if the 'description' field has the text of the 'text' parameter
   return data.filter(tranfer =>
-    tranfer.type.toLowerCase().includes(text.toLowerCase())
+    tranfer.description.toLowerCase().includes(text.toLowerCase())
   );
 };
+
+export const filterByType = (data: AcctActivity[], type: string) => {
+  // Returns filtered transfers if the 'description' field has the text of the 'text' parameter
+  return data.filter(tranfer =>
+    tranfer.type.toLowerCase().includes(type.toLowerCase())
+  );
+};
+
 interface filters {
   date?: string;
   title?: string;
@@ -47,11 +55,32 @@ export const pagination = (
         currentPage: page
       };
     }
+
+    if (options.type) {
+      const filteredByType = filterByType(data, options.type);
+      return {
+        data: filteredByType.slice(startIndex, endIndex),
+        pages: Math.ceil(filteredByType.length / limit),
+        currentPage: page
+      };
+    }
+
     if (options.date && options.title) {
       const filteredData = filterByDate(data, new Date(options.date));
+      const filteredByText = filterByText(filteredData, options.title);
       return {
-        data: filteredData.slice(startIndex, endIndex),
-        pages: Math.ceil(filteredData.length / limit),
+        data: filteredByText.slice(startIndex, endIndex),
+        pages: Math.ceil(filteredByText.length / limit),
+        currentPage: page
+      };
+    }
+
+    if (options.type && options.title) {
+      const filteredByType = filterByType(data, options.type);
+      const filteredByText = filterByType(filteredByType, options.title);
+      return {
+        data: filteredByText.slice(startIndex, endIndex),
+        pages: Math.ceil(filteredByText.length / limit),
         currentPage: page
       };
     }

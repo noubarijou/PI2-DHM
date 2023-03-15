@@ -5,27 +5,63 @@ import {
   TableContainer,
   Pagination,
   Filter
-} from '../../components';
-import { InputText } from '../../components/input/input-text/InputText';
+} from 'components';
+import { InputText } from 'components/input/input-text/InputText';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schemaLogin } from '../login/schemas';
 import { FiFilter } from 'react-icons/fi';
 import { BsCircleFill } from 'react-icons/bs';
 import { useTheme } from 'styled-components';
-import { useGetAcctActivity } from '../../hooks/useAccount/useGetAcctActivity';
-import { AcctActivity } from '../../hooks/useAccount/useGetAcctActivity/types';
+import { useGetAcctActivity } from 'hooks/useAccount/useGetAcctActivity';
+import { AcctActivity } from 'hooks/useAccount/useGetAcctActivity/types';
 import { format } from 'date-fns';
 import { pt } from 'date-fns/locale';
 import nookies from 'nookies';
-import { useUserStore } from '../../store/user';
+import { useUserStore } from 'store/user';
 import { useEffect, useState } from 'react';
-import { pagination, filterByText } from '../../utils/tests/filters/filter';
+import { pagination } from 'utils/tests/filters/filter';
 import { GetServerSidePropsContext } from 'next';
 import { useRouter } from 'next/router';
 
 const FullActivity = () => {
+  const [openFilter, setOpenFilter] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [selectedOption, setSelectedOption] = useState('');
+  const [selectedFilter, setSelectedFilter] = useState('');
   const router = useRouter();
+  const user = useUserStore(state => state.user);
+  const { data: activityInfo } = useGetAcctActivity(user.id);
+
+  const { control, watch } = useForm({
+    defaultValues: {
+      search: ''
+    },
+    resolver: yupResolver(schemaLogin),
+    mode: 'all'
+  });
+
+  const {
+    colors: { primary, secondaryBlack }
+  } = useTheme();
+
+  const handleApplyClick = (selectedFilter: string, selectedOption: string) => {
+    setSelectedFilter(selectedFilter);
+    setSelectedOption(selectedOption);
+  };
+
+  const showFilters = (e: any) => {
+    e.preventDefault();
+    setOpenFilter(!openFilter);
+  };
+
+  const activityInfoPagination =
+    activityInfo &&
+    pagination(activityInfo, 10, currentPage, {
+      title: watch('search'),
+      date: selectedOption === 'periodo' ? selectedFilter : undefined,
+      type: selectedOption === 'tipo' ? selectedFilter : undefined
+    });
 
   useEffect(() => {
     const token = nookies.get(null, { path: '/' })['@digitalmoney:token'];
@@ -33,26 +69,6 @@ const FullActivity = () => {
       router.push('/home');
     }
   }, []);
-  const { control } = useForm({
-    defaultValues: {
-      search: ''
-    },
-    resolver: yupResolver(schemaLogin),
-    mode: 'all'
-  });
-  const user = useUserStore(state => state.user);
-
-  const {
-    colors: { primary, secondaryBlack }
-  } = useTheme();
-
-  const { data: activityInfo } = useGetAcctActivity(user.id);
-  const [openFilter, setOpenFilter] = useState(false);
-  const showFilters = (e: any) => {
-    e.preventDefault();
-    setOpenFilter(!openFilter);
-  };
-  const [currentPage, setCurrentPage] = useState(1);
 
   return (
     <ContainerPage>
@@ -74,32 +90,30 @@ const FullActivity = () => {
             <FiFilter />
           </s.FilterButton>
         </s.ActivityHeader>
-        {openFilter && <Filter />}
-        {activityInfo &&
-          pagination(activityInfo, 10, currentPage).data.map(
-            (activity: AcctActivity) => (
-              <s.ActivityContainer key={activity.id}>
-                <s.ActivityDescription>
-                  <BsCircleFill color={primary} size="20" />
-                  <s.ActivityDescriptionText>
-                    {activity?.description}
-                  </s.ActivityDescriptionText>
-                </s.ActivityDescription>
-                <s.ActivityValue>
-                  <s.ActivityDescriptionText>
-                    ${activity?.amount}
-                  </s.ActivityDescriptionText>
-                  <span>
-                    {format(new Date(activity?.dated), 'EEEE', { locale: pt })}
-                  </span>
-                </s.ActivityValue>
-              </s.ActivityContainer>
-            )
-          )}
-        {activityInfo && (
+        {openFilter && <Filter handleApplyClick={handleApplyClick} />}
+        {activityInfoPagination &&
+          activityInfoPagination.data.map((activity: AcctActivity) => (
+            <s.ActivityContainer key={activity.id}>
+              <s.ActivityDescription>
+                <BsCircleFill color={primary} size="20" />
+                <s.ActivityDescriptionText>
+                  {activity?.description}
+                </s.ActivityDescriptionText>
+              </s.ActivityDescription>
+              <s.ActivityValue>
+                <s.ActivityDescriptionText>
+                  ${activity?.amount}
+                </s.ActivityDescriptionText>
+                <span>
+                  {format(new Date(activity?.dated), 'EEEE', { locale: pt })}
+                </span>
+              </s.ActivityValue>
+            </s.ActivityContainer>
+          ))}
+        {activityInfoPagination && (
           <Pagination
             currentPage={currentPage}
-            pages={pagination(activityInfo, 10, currentPage).pages}
+            pages={activityInfoPagination.pages}
             onPageChange={setCurrentPage}
           />
         )}
