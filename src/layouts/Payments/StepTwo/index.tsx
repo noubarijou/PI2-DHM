@@ -5,10 +5,11 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { schemaLogin } from 'pages/login/schemas';
 import { ModInput } from './steptwo.styles';
 import { Button, PageTitle } from 'components';
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import PaymentStepThree from '../StepThree';
-
+import { useRouter } from 'next/router';
 const PaymentStepTwo = () => {
+  const router = useRouter();
   const { control } = useForm({
     defaultValues: {
       search: ''
@@ -21,6 +22,12 @@ const PaymentStepTwo = () => {
     e.preventDefault();
     setPayService(true);
   };
+  const returnOnClick = () => {
+    setPayService(false);
+    router.push('/payments');
+    console.log(payService);
+  };
+
   return (
     <>
       {!payService ? (
@@ -36,11 +43,16 @@ const PaymentStepTwo = () => {
               />
             </s.InputContainer>
           </s.BillInfoCard>
-          <s.ButtonContainer>
-            <Button variant="primary" size="xsmall" onClick={onClick}>
+          <s.ModButton>
+            <Button variant="primary" size="large" onClick={onClick}>
               Continuar
             </Button>
-          </s.ButtonContainer>
+          </s.ModButton>
+          <s.ModButton>
+            <Button variant="tertiary" size="large" onClick={returnOnClick}>
+              Voltar
+            </Button>
+          </s.ModButton>
         </>
       ) : (
         <>

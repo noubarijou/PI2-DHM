@@ -6,7 +6,6 @@ import styled, { css } from 'styled-components';
 
 export const InputContainer = styled.div`
   position: relative;
-
   > div:first-child,
   div:nth-child(2) {
     padding: 0;
@@ -17,7 +16,6 @@ export const InputContainer = styled.div`
       @media (max-width: ${theme.screen.mobile375w}) {
         padding: 1.25rem 0 1.25rem 2.125rem;
       }
-
       @media (min-width: ${theme.screen.mobile}) {
         width: 21rem;
       }
@@ -73,8 +71,9 @@ export const PaymentsContainer = styled.div`
     padding: 0.75rem 0;
     border-bottom: 1px solid ${theme.colors.secondaryWhite};
 
-    &:nth-child(-1) {
-      border-top: 1px solid ${theme.colors.secondaryWhite};
+    > p {
+      font-size: ${theme.font.sizes.small};
+      padding-right: 40px;
     }
   `}
 `;
@@ -83,5 +82,8 @@ export const Selecionar = styled.button`
   ${({ theme }) => css`
     text-decoration: none;
     color: ${theme.colors.black};
+    border: none;
+    font-weight: ${theme.font.bold};
+    background-color: ${theme.colors.white};
   `}
 `;

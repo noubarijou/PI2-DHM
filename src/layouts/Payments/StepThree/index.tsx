@@ -4,8 +4,10 @@ import { BsCircleFill } from 'react-icons/bs';
 import { useTheme } from 'styled-components';
 import { useState } from 'react';
 import PaymentSuccessful from '../Success';
+import { useRouter } from 'next/router';
 
 const PaymentStepThree = () => {
+  const router = useRouter();
   const {
     colors: { primary }
   } = useTheme();
@@ -13,6 +15,11 @@ const PaymentStepThree = () => {
   const onClick = (e: unknown) => {
     e.preventDefault();
     setPayService(true);
+  };
+  const returnOnClick = () => {
+    setPayService(false);
+    router.push('/payments');
+    console.log(payService);
   };
   return (
     <>
@@ -38,8 +45,13 @@ const PaymentStepThree = () => {
             </s.DataContainer>
           </TableContainer>
           <s.ButtonContainer>
-            <Button variant="primary" size="medium" onClick={onClick}>
+            <Button variant="primary" size="large" onClick={onClick}>
               Pagar
+            </Button>
+          </s.ButtonContainer>
+          <s.ButtonContainer>
+            <Button variant="tertiary" size="large" onClick={returnOnClick}>
+              Voltar
             </Button>
           </s.ButtonContainer>
         </>

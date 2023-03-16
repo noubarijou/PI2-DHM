@@ -1,3 +1,4 @@
+import { ButtonWrapper } from 'components/button/button.styles';
 import { InputText } from 'components/input/input-text/input-text.styles';
 import styled, { css } from 'styled-components';
 import {
@@ -90,11 +91,10 @@ export const ModInput = styled(InputText)`
   `}
 `;
 
-export const ButtonContainer = styled.div`
+export const ModButton = styled(ButtonWrapper)`
   ${({ theme }) => css`
-    margin-left: 170px;
+    border: none;
     @media (min-width: ${theme.screen.mobile425w}) {
-      margin-left: 215px;
     }
   `}
 `;

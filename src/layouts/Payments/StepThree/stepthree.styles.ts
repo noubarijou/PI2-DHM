@@ -13,17 +13,14 @@ export const BillInfoCard = styled.section<ModifierSizeMediaQueryProps>`
     padding: 1rem 1.375rem;
     ${ModifierSizeMediaQuery[(variant = 'bigComponent')](theme)};
     @media (min-width: ${theme.screen.tablet}) {
-      height: 16rem;
+      height: 10rem;
     }
 
     @media (min-width: ${theme.screen.desktop}) {
-      height: 19rem;
     }
     @media (min-width: ${theme.screen.desktopXL}) {
-      height: 22.5rem;
     }
     @media (min-width: ${theme.screen.desktopXXL}) {
-      height: 27rem;
     }
   `}
 `;
@@ -36,7 +33,6 @@ export const CardTitle = styled.div`
     margin: 5px 0 10px 0;
     @media (min-width: ${theme.screen.tablet}) {
       font-size: ${theme.font.sizes.medium};
-      padding: 15px; 0;
     }
     @media (min-width: ${theme.screen.desktop}) {
       padding: 30px;

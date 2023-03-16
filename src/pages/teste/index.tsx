@@ -1,9 +1,10 @@
 import React from 'react';
 import { ContainerPage } from 'components';
-import Filter from 'layouts/Filter';
+import PaymentStepTwo from 'layouts/Payments/StepTwo';
 import PaymentStepThree from 'layouts/Payments/StepThree';
 import PaymentSuccessful from 'layouts/Payments/Success';
-import Payments from 'pages/payments';
+import Payments from '../payments/index';
+import StepOne from 'layouts/Payments/StepOne';
 
 const Teste = () => {
   return (
