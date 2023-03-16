@@ -4,7 +4,7 @@ export const PageTitle = styled.div`
   display: flex;
   align-items: center;
   gap: 0.25rem;
-  width: 18.5rem;
+  width: 100%;
 
   ${({ theme }) => css`
     @media (min-width: ${theme.screen.tablet}) {
