@@ -11,9 +11,11 @@ export const filterByDate = (data: AcctActivity[], dateFilter: Date) => {
 
 export const filterByText = (data: AcctActivity[], text: string) => {
   // Returns filtered transfers if the 'description' field has the text of the 'text' parameter
-  return data.filter(tranfer =>
-    tranfer.description.toLowerCase().includes(text.toLowerCase())
-  );
+  return data.filter(tranfer => {
+    if (tranfer.description) {
+      return tranfer.description.toLowerCase().includes(text.toLowerCase());
+    }
+  });
 };
 
 export const filterByType = (data: AcctActivity[], type: string) => {

@@ -27,7 +27,7 @@ import { useRouter } from 'next/router';
 const FullActivity = () => {
   const [openFilter, setOpenFilter] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedOption, setSelectedOption] = useState('');
+  const [selectedOption, setSelectedOption] = useState('tipo');
   const [selectedFilter, setSelectedFilter] = useState('');
   const router = useRouter();
   const user = useUserStore(state => state.user);

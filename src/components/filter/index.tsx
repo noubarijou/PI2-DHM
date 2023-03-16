@@ -8,8 +8,15 @@ interface FilterProps {
   handleApplyClick: (selectedFilter: string, selectedOption: string) => void;
 }
 
+interface FormFilterProps {
+  selectedOption: string;
+  selectedFilter: string;
+}
+
 const Filter = ({ handleApplyClick }: FilterProps) => {
-  const { control, watch, setValue } = useForm();
+  const { control, watch, setValue } = useForm<FormFilterProps>({
+    defaultValues: { selectedOption: 'tipo' }
+  });
   const selectedOption = watch('selectedOption');
   const selectedFilter = watch('selectedFilter');
 
@@ -142,7 +149,7 @@ const Filter = ({ handleApplyClick }: FilterProps) => {
                       type="radio"
                       id="entrada"
                       name="option"
-                      value="entrada"
+                      value="Deposit"
                     />
                   </s.FilterOption>
                   <s.FilterOption>
@@ -152,7 +159,7 @@ const Filter = ({ handleApplyClick }: FilterProps) => {
                       type="radio"
                       id="saida"
                       name="option"
-                      value="saida"
+                      value="Transfer"
                     />
                   </s.FilterOption>
                 </>
