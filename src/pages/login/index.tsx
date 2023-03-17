@@ -14,9 +14,11 @@ import nookies from 'nookies';
 import { GetServerSidePropsContext } from 'next';
 import { useUserStore } from 'store/user';
 
+import { toast, Toaster } from 'react-hot-toast';
+
 const messageErrors = {
-  'invalid credentials': 'Senha invalida',
-  'user not found': 'usuario não encontrado'
+  'invalid credentials': 'Senha inválida',
+  'user not found': 'Usuário não encontrado'
 };
 
 type ErrorKey = keyof typeof messageErrors;
@@ -77,11 +79,34 @@ const Login = () => {
         if (res) {
           setUser(res);
           router.push('/wallet');
+          toast.success('Logado com sucesso', {
+            style: {
+              fontWeight: '700',
+              background: '#C1FD35',
+              border: '1px solid #C1FD35',
+              color: 'black'
+            },
+            iconTheme: {
+              primary: 'black',
+              secondary: '#C1FD35'
+            }
+          });
         }
       },
       onError: err => {
         let mesErr = err as ErrorKey;
-        setMessageError(messageErrors[mesErr]);
+        toast.error(messageErrors[mesErr], {
+          style: {
+            fontWeight: '700',
+            background: '#201F22',
+            border: '1px solid red',
+            color: 'white'
+          },
+          iconTheme: {
+            primary: 'red',
+            secondary: '#201F22'
+          }
+        });
       }
     });
   };
@@ -95,6 +120,7 @@ const Login = () => {
       <Head>
         <title>DMH | Login</title>
       </Head>
+      <Toaster />
       <s.ContainerPage>
         <s.ContainerLogin onSubmit={handleSubmit(handleLogin)}>
           <s.Title key="title">
@@ -128,7 +154,6 @@ const Login = () => {
               <Button variant="tertiary">Criar conta</Button>
             </Link>
           )}
-          {messageError && <s.MessageError>{messageError}</s.MessageError>}
         </s.ContainerLogin>
       </s.ContainerPage>
     </>
