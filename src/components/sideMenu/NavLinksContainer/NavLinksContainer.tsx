@@ -31,7 +31,7 @@ const NavLinksContainer = () => {
           <NavLink route="/profile">Seu perfil</NavLink>
         </li>
         <li>
-          <NavLink route="/value">Carregar valor</NavLink>
+          <NavLink route="/chargevalue">Carregar valor</NavLink>
         </li>
         <li>
           <NavLink route="/payments">Pagar serviços</NavLink>

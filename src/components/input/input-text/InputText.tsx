@@ -19,7 +19,8 @@ const InputText = ({
   variant = 'outOfFocus',
   control,
   placeholder,
-  className
+  className,
+  ...rest
 }: InputTextProps) => (
   <Controller
     control={control}
@@ -44,6 +45,7 @@ const InputText = ({
             onBlur={onBlur}
             value={value}
             className={className}
+            {...rest}
           />
           {error && <s.Error>{error?.message}</s.Error>}
         </s.InputWrapper>
