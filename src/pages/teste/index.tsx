@@ -5,11 +5,13 @@ import PaymentStepThree from 'layouts/Payments/StepThree';
 import PaymentSuccessful from 'layouts/Payments/Success';
 import Payments from '../payments/index';
 import StepOne from 'layouts/Payments/StepOne';
+import ActivityDetail from 'layouts/FullActivity/ActivityDetail';
+import { getTransaction } from 'hooks/useAccount/useGetAcctTransaction';
 
 const Teste = () => {
   return (
     <ContainerPage>
-      <Payments />
+      <ActivityDetail transactionId={1} />
     </ContainerPage>
   );
 };
