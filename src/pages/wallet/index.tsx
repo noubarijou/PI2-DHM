@@ -84,12 +84,12 @@ const Wallet = () => {
           </s.AvailableMoney>
         </s.AvailableMoneyCard>
         <s.ButtonContainer>
-          <Link href="/">
+          <Link href="/value">
             <Button variant="primary" size="large">
               Transferir valor
             </Button>
           </Link>
-          <Link href="/">
+          <Link href="/transfer">
             <Button variant="primary" size="large">
               Adicionar valor
             </Button>
