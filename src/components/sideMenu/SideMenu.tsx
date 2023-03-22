@@ -1,7 +1,9 @@
+import { useRef } from 'react';
+import { useWindow, WindowSize } from 'hooks/useWindow';
 import { HambugerMenu, NavBar, NavInfo } from './SideMenu.styles';
 import { NavLinksContainer } from './NavLinksContainer/NavLinksContainer';
-import { useWindow, WindowSize } from 'hooks/useWindow';
 import { InfoText } from 'components/Header/HeaderLogged/headerLogged.style';
+import { useOnClickOutside } from 'hooks/useOnClickOutSide';
 
 type SideMenuProps = {
   closeMenu: () => void;
@@ -12,6 +14,9 @@ type SideMenuProps = {
 
 const SideMenu = ({ closeMenu, showMenu, name, lastname }: SideMenuProps) => {
   const size: WindowSize = useWindow();
+
+  const refMenu = useRef(null);
+  useOnClickOutside(refMenu, () => closeMenu());
 
   return (
     <>
@@ -24,7 +29,7 @@ const SideMenu = ({ closeMenu, showMenu, name, lastname }: SideMenuProps) => {
       ) : (
         <>
           {showMenu && (
-            <NavBar>
+            <NavBar ref={refMenu}>
               <NavInfo>
                 <HambugerMenu className="closeBtn" onClick={closeMenu}>
                   <span></span>
