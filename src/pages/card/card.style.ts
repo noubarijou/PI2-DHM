@@ -155,13 +155,15 @@ export const button = styled.button`
 `;
 
 export const buttonMobile = styled.button`
+  display: none;
   width: 0;
   height: 0;
   border: none;
   background-color: transparent;
   color: transparent;
   pointer-events: none;
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
+    display: block;
     height: 50px;
     border-radius: 10px;
     border: none;
