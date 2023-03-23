@@ -17,6 +17,8 @@ import { GetServerSidePropsContext } from 'next';
 import nookies from 'nookies';
 import { useUserStore } from 'store/user';
 import { pagination } from 'utils/tests/filters/filter';
+import { useEffect } from 'react';
+import { useAccountStore } from 'store/account';
 
 export async function getServerSideProps(ctx: GetServerSidePropsContext) {
   const { '@digitalmoney:token': token } = nookies.get(ctx);
@@ -50,6 +52,8 @@ const Wallet = () => {
     colors: { primary, secondaryBlack }
   } = useTheme();
 
+  const setAccountInfo = useAccountStore(state => state.setAccountInfo);
+
   const { data: accountInfo } = useGetAccount(user.id);
   const { data: activityInfo } = useGetAcctActivity(user.id);
   const priceFormatter = (num: number | undefined) => {
@@ -62,6 +66,9 @@ const Wallet = () => {
     );
   };
 
+  useEffect(() => {
+    if (accountInfo) setAccountInfo(accountInfo);
+  }, [accountInfo]);
   const activityInfoFilter =
     activityInfo &&
     pagination(activityInfo, 8, 1, { title: watch('search') }).data;

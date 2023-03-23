@@ -36,7 +36,7 @@ export async function loginUser(user: Omit<LoginPayload, 'login'>) {
       '/api/login',
       user
     );
-
+    console.log(loginData);
     const decryptToken = decryptJwt(loginData.token);
     const { data: userData } = await api.get<UserDataResponse>(
       `/api/users/${decryptToken.username}`,
@@ -61,7 +61,6 @@ export async function loginUser(user: Omit<LoginPayload, 'login'>) {
       'userData',
       JSON.stringify({ ...userData, account_id: accountId })
     );
-
     return userData;
   } catch (e: unknown) {
     if (e instanceof Error) {
