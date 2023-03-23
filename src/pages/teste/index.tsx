@@ -1,14 +1,17 @@
 import React from 'react';
 import { ContainerPage } from 'components';
-import Filter from 'layouts/Filter';
+import PaymentStepTwo from 'layouts/Payments/StepTwo';
 import PaymentStepThree from 'layouts/Payments/StepThree';
 import PaymentSuccessful from 'layouts/Payments/Success';
-import Payments from 'pages/payments';
+import Payments from '../payments/index';
+import StepOne from 'layouts/Payments/StepOne';
+import ActivityDetail from 'layouts/FullActivity/ActivityDetail';
+import { getTransaction } from 'hooks/useAccount/useGetAcctTransaction';
 
 const Teste = () => {
   return (
     <ContainerPage>
-      <Payments />
+      <ActivityDetail transactionId={1} />
     </ContainerPage>
   );
 };

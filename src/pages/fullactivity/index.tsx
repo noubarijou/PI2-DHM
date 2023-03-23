@@ -23,6 +23,7 @@ import { useEffect, useState } from 'react';
 import { pagination } from 'utils/tests/filters/filter';
 import { GetServerSidePropsContext } from 'next';
 import { useRouter } from 'next/router';
+import ActivityDetail from 'layouts/FullActivity/ActivityDetail';
 
 const FullActivity = () => {
   const [openFilter, setOpenFilter] = useState(false);
@@ -32,6 +33,13 @@ const FullActivity = () => {
   const router = useRouter();
   const user = useUserStore(state => state.user);
   const { data: activityInfo } = useGetAcctActivity(user.id);
+  const [detailActivity, setDetailActivity] = useState(false);
+  const [activityId, setActivityId] = useState(0);
+
+  const handleClickDetail = (activityIdNumber: number) => {
+    setActivityId(activityIdNumber);
+    setDetailActivity(true);
+  };
 
   const { control, watch } = useForm({
     defaultValues: {
@@ -71,56 +79,68 @@ const FullActivity = () => {
   }, []);
 
   return (
-    <ContainerPage>
-      <PageTitle>Suas atividades</PageTitle>
-      <s.InputContainer>
-        <s.SearchIcon />
-        <InputText
-          name="search"
-          control={control}
-          placeholder="Buscar em suas atividades"
-          className="search"
-        />
-      </s.InputContainer>
-      <TableContainer>
-        <s.ActivityHeader>
-          <p>Suas atividades</p>
-          <s.FilterButton onClick={showFilters}>
-            <p>Filtrar</p>
-            <FiFilter />
-          </s.FilterButton>
-        </s.ActivityHeader>
-        {openFilter && <Filter handleApplyClick={handleApplyClick} />}
-        {activityInfoPagination &&
-          activityInfoPagination.data.map((activity: AcctActivity) => (
-            <s.ActivityContainer key={activity.id}>
-              <s.ActivityDescription>
-                <BsCircleFill color={primary} size="20" />
-                <s.ActivityDescriptionText>
-                  {activity?.description}
-                </s.ActivityDescriptionText>
-              </s.ActivityDescription>
-              <s.ActivityValue>
-                <s.ActivityDescriptionText>
-                  ${activity?.amount}
-                </s.ActivityDescriptionText>
-                <span>
-                  {format(new Date(activity?.dated), 'EEEE', { locale: pt })}
-                </span>
-              </s.ActivityValue>
-            </s.ActivityContainer>
-          ))}
-        {activityInfoPagination && (
-          <Pagination
-            currentPage={currentPage}
-            pages={activityInfoPagination.pages}
-            onPageChange={setCurrentPage}
-          />
-        )}
-      </TableContainer>
-    </ContainerPage>
+    <>
+      {detailActivity ? (
+        <ActivityDetail transactionId={activityId} />
+      ) : (
+        <ContainerPage>
+          <PageTitle>Suas atividades</PageTitle>
+          <s.InputContainer>
+            <s.SearchIcon />
+            <InputText
+              name="search"
+              control={control}
+              placeholder="Buscar em suas atividades"
+              className="search"
+            />
+          </s.InputContainer>
+          <TableContainer>
+            <s.ActivityHeader>
+              <p>Suas atividades</p>
+              <s.FilterButton onClick={showFilters}>
+                <p>Filtrar</p>
+                <FiFilter />
+              </s.FilterButton>
+            </s.ActivityHeader>
+            {openFilter && <Filter handleApplyClick={handleApplyClick} />}
+            {activityInfoPagination &&
+              activityInfoPagination.data.map((activity: AcctActivity) => (
+                <s.ActivityContainer
+                  key={activity.id}
+                  onClick={() => handleClickDetail(activity.id)}
+                >
+                  <s.ActivityDescription>
+                    <BsCircleFill color={primary} size="20" />
+                    <s.ActivityDescriptionText>
+                      {activity?.description}
+                    </s.ActivityDescriptionText>
+                  </s.ActivityDescription>
+                  <s.ActivityValue>
+                    <s.ActivityDescriptionText>
+                      ${activity?.amount}
+                    </s.ActivityDescriptionText>
+                    <span>
+                      {format(new Date(activity?.dated), 'EEEE', {
+                        locale: pt
+                      })}
+                    </span>
+                  </s.ActivityValue>
+                </s.ActivityContainer>
+              ))}
+            {activityInfoPagination && (
+              <Pagination
+                currentPage={currentPage}
+                pages={activityInfoPagination.pages}
+                onPageChange={setCurrentPage}
+              />
+            )}
+          </TableContainer>
+        </ContainerPage>
+      )}
+    </>
   );
 };
+
 export async function getServerSideProps(ctx: GetServerSidePropsContext) {
   const { '@digitalmoney:token': token } = nookies.get(ctx);
 
