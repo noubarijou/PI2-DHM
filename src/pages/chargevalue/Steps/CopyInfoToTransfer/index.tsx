@@ -49,7 +49,7 @@ const Transfer = () => {
   };
 
   return (
-    <ContainerPage>
+    <>
       {userData?.firstname && userData?.lastname && (
         <s.mainContainer>
           <Toaster />
@@ -85,7 +85,7 @@ const Transfer = () => {
           </s.infoContainer>
         </s.mainContainer>
       )}
-    </ContainerPage>
+    </>
   );
 };
 

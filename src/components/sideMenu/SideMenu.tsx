@@ -3,7 +3,7 @@ import { useWindow, WindowSize } from 'hooks/useWindow';
 import { HambugerMenu, NavBar, NavInfo } from './SideMenu.styles';
 import { NavLinksContainer } from './NavLinksContainer/NavLinksContainer';
 import { InfoText } from 'components/Header/HeaderLogged/headerLogged.style';
-import { useOnClickOutside } from 'hooks/useOnClickOutSide';
+import { useOnClickOutside } from 'hooks/useOnClickOutside';
 
 type SideMenuProps = {
   closeMenu: () => void;
