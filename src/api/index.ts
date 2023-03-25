@@ -42,7 +42,7 @@ export function setupApiClient(
         (404 && error instanceof AxiosError)
       ) {
         if (error?.response?.data['error'].includes('expired')) {
-          logoutUser();
+          logoutUser({});
         }
         return Promise.reject(error);
       }
