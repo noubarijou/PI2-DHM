@@ -3,7 +3,7 @@ import { ContainerPage } from 'components';
 export default function NotFound() {
   return (
     <ContainerPage>
-      <h1>Essa página não existe</h1>
+      <h1>Achou que ia ter uma página aqui? Achou errado, otário!</h1>
     </ContainerPage>
   );
 }
