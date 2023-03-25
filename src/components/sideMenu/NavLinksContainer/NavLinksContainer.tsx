@@ -7,9 +7,9 @@ const NavLinksContainer = () => {
   const router = useRouter();
   const { mutate } = useLogoutUser();
 
-  const logout = async () => {
+  const logout = async (args: {}) => {
     mutate(
-      {},
+      {}, // pass empty object as the first argument to the mutate function
       {
         onSuccess: () => {
           router.push('/');

@@ -1,7 +1,7 @@
 import { api } from 'api/client';
 import { setCookie, destroyCookie } from 'nookies';
 
-import { useMutation } from 'react-query';
+import { useMutation, MutationFunction } from 'react-query';
 import {
   decryptToken,
   LoginPayload,
@@ -71,7 +71,7 @@ export async function loginUser(user: Omit<LoginPayload, 'login'>) {
   }
 }
 
-export async function logoutUser() {
+export const logoutUser: MutationFunction<unknown, {}> = async (args = {}) => {
   try {
     await api.post('/api/logout');
     destroyCookie(null, '@digitalmoney:token');
@@ -84,12 +84,13 @@ export async function logoutUser() {
       return Promise.reject(errorResponse ?? e);
     }
   }
-}
+};
+
+export const useLogoutUser = () => {
+  const { mutate, status } = useMutation(logoutUser);
+  return { mutate, status };
+};
 
 export function useLoginUser() {
   return useMutation(loginUser);
-}
-
-export function useLogoutUser() {
-  return useMutation(logoutUser);
 }
