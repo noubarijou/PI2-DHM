@@ -11,8 +11,7 @@ import Image from 'next/image';
 
 const StepOne = () => {
   const [payService, setPayService] = useState(false);
-  const onClick = (e: any) => {
-    e.preventDefault();
+  const onClick = () => {
     setPayService(true);
   };
   const { control } = useForm({

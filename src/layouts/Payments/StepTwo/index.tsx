@@ -18,8 +18,7 @@ const PaymentStepTwo = () => {
     mode: 'all'
   });
   const [payService, setPayService] = useState(false);
-  const onClick = (e: unknown) => {
-    e.preventDefault();
+  const onClick = () => {
     setPayService(true);
   };
   const returnOnClick = () => {

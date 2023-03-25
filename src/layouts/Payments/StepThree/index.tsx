@@ -12,8 +12,7 @@ const PaymentStepThree = () => {
     colors: { primary }
   } = useTheme();
   const [payService, setPayService] = useState(false);
-  const onClick = (e: unknown) => {
-    e.preventDefault();
+  const onClick = () => {
     setPayService(true);
   };
   const returnOnClick = () => {
