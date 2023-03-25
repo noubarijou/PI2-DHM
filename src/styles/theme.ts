@@ -12,14 +12,16 @@ export default {
     light: 300,
     normal: 400,
     bold: 600,
+    xbold: 700,
+    xxbold: 800,
     sizes: {
-      xsmall: '1.2rem',
-      small: '1.4rem',
-      medium: '1.6rem',
-      large: '1.8rem',
-      xlarge: '2.0rem',
-      xxlarge: '2.8rem',
-      huge: '5.2rem'
+      xsmall: '0.75rem' /* 12 */,
+      small: '0.875rem' /* 14 */,
+      medium: '1rem' /* 16 */,
+      large: '1.25rem' /* 20 */,
+      xlarge: '1.5rem' /* 24 */,
+      xxlarge: '2.0rem' /* 32 */,
+      xxxlarge: '2.25rem' /* 36 */
     }
   },
   colors: {
@@ -51,5 +53,18 @@ export default {
   transition: {
     default: '0.3s ease-in-out',
     fast: '0.1s ease-in-out'
+  },
+  screen: {
+    mobile375w: '23.438rem',
+    mobile: '24.375rem',
+    mobile425w: '26.563rem',
+    tablet768w: '48rem',
+    tablet: '48rem',
+    desktop: '64rem',
+    desktopXL: '90rem',
+    desktopXXL: '160rem'
+  },
+  calc: {
+    body: 'calc(100vh - ((10vh - 8px) + (10vh - 7px)))'
   }
 } as const;

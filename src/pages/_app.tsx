@@ -4,13 +4,19 @@ import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import theme from '../styles/theme';
 import GlobalStyles from '../styles/global-styles';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import LayoutGeneral from 'layouts/LayoutGeneral/layout-general';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider theme={theme}>
-      <Component {...pageProps} />
-      <GlobalStyles />
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={theme}>
+        <LayoutGeneral>
+          <Component {...pageProps} />
+        </LayoutGeneral>
+        <GlobalStyles />
+      </ThemeProvider>
+    </QueryClientProvider>
   );
 }
 

@@ -16,7 +16,9 @@ const GlobalStyles = createGlobalStyle`
 
   ${({ theme }) => css`
     body {
-      border: 8px solid ${theme.colors.ceriseRed};
+      overflow: auto;
+      font-family: ${theme.font.family};
+      background-color: ${theme.colors.secondaryWhite};
     }
   `}
 `;

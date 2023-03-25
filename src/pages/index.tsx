@@ -1,11 +1,31 @@
-import type { NextPage } from 'next';
-import Head from 'next/head';
-import Image from 'next/image';
+import type { GetServerSidePropsContext, NextPage } from 'next';
+import HomePage from './home';
+import nookies from 'nookies';
 
-import { Button } from 'components';
+export async function getServerSideProps(ctx: GetServerSidePropsContext) {
+  const { '@digitalmoney:token': token } = nookies.get(ctx);
+
+  if (token) {
+    return {
+      redirect: {
+        destination: '/wallet',
+        permanent: false
+      },
+      props: {}
+    };
+  }
+
+  return {
+    props: {}
+  };
+}
 
 const Home: NextPage = () => {
-  return <Button variant="secondary" />;
+  return (
+    <>
+      <HomePage />
+    </>
+  );
 };
 
 export default Home;
