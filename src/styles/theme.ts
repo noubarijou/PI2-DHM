@@ -7,8 +7,7 @@ export default {
     radius: '0.4rem'
   },
   font: {
-    family:
-      "Poppins, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
+    family: "'Open Sans', sans-serif",
     light: 300,
     normal: 400,
     bold: 600,
@@ -25,14 +24,14 @@ export default {
     }
   },
   colors: {
-    primary: '#FFCB00',
-    secondary: '#171717',
-    alternative: '#05D9E8',
+    primary: '#C1FD35',
     white: '#FFFFFF',
+    secondaryWhite: '#EEEAEA',
     black: '#000000',
-    ceriseRed: '#E72176',
-    gallery: '#EAEAEA',
-    gray: '#808080'
+    secondaryBlack: '#201F22',
+    gray: '#3A393E',
+    secondaryGray: '#CECECE',
+    error: '#EE3838'
   },
   spacings: {
     xxsmall: '0.8rem',

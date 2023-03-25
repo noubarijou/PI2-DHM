@@ -10,6 +10,9 @@ const GlobalStyles = createGlobalStyle`
   ${reset};
 
   html,  body {
+    @media only screen and (max-width: 915px) {
+      //height: calc(140vh);
+    }
     height: 100%;
     font-family: 16px;
   }

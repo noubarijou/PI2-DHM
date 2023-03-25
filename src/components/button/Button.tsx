@@ -1,3 +1,4 @@
+import React from 'react';
 import * as s from './button.styles';
 
 export type ButtonProps = {
@@ -8,10 +9,23 @@ export type ButtonProps = {
   type?: 'button' | 'submit' | 'reset';
 };
 
-const Button = ({ variant = 'primary', isFullWidth = false }: ButtonProps) => {
+const Button = ({
+  variant = 'primary',
+  size = 'medium',
+  children,
+  type,
+  onClick,
+  ...rest
+}: ButtonProps) => {
   return (
-    <s.ButtonWrapper variant={variant} isFullWidth={isFullWidth}>
-      botão topzera
+    <s.ButtonWrapper
+      type={type}
+      variant={variant}
+      size={size}
+      onClick={onClick}
+      {...rest}
+    >
+      {children}
     </s.ButtonWrapper>
   );
 };

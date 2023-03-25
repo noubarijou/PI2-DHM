@@ -131,18 +131,18 @@ const buttonSize = {
 };
 
 export const ButtonWrapper = styled.button<ButtonProps>`
-  ${({ theme, variant, isFullWidth }) => css`
-    padding: ${theme.spacings.xxsmall};
-    border-radius: ${theme.border.radius};
-
-    font-size: ${theme.font.sizes.xsmall};
-    font-weight: ${theme.font.light};
-    width: ${isFullWidth ? '100%' : 'unset'};
+  ${({ theme, variant, size }) => css`
+    border-radius: 0.625rem;
+    border: 1px solid;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+    font-size: ${theme.font.sizes.medium};
+    font-weight: ${theme.font.xbold};
 
     &:hover {
       cursor: pointer;
     }
 
-    ${!!variant && buttonModifiers[variant](theme)}
+    ${!!variant && buttonModifiers[variant](theme)};
+    ${!!size && buttonSize[size](theme)};
   `}
 `;
