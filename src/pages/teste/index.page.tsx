@@ -3,7 +3,7 @@ import { ContainerPage } from 'components';
 import PaymentStepTwo from 'layouts/Payments/StepTwo';
 import PaymentStepThree from 'layouts/Payments/StepThree';
 import PaymentSuccessful from 'layouts/Payments/Success';
-import Payments from '../payments/index';
+import Payments from '../payments/index.page';
 import StepOne from 'layouts/Payments/StepOne';
 import ActivityDetail from 'layouts/FullActivity/ActivityDetail';
 import { getTransaction } from 'hooks/useAccount/useGetAcctTransaction';
