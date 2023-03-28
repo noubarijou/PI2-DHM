@@ -1,5 +1,5 @@
 import type { GetServerSidePropsContext, NextPage } from 'next';
-import HomePage from './home';
+import HomePage from './home/index.page';
 import nookies from 'nookies';
 
 export async function getServerSideProps(ctx: GetServerSidePropsContext) {
