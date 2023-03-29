@@ -2,10 +2,12 @@ import { useLogoutUser } from 'hooks/useUser/useLoginUser';
 import { useRouter } from 'next/router';
 import { LinksContainer } from './NavLinksContainer.style';
 import { NavLink } from '../NavLink/NavLink';
+import { useStepsStore } from 'store/steps';
 
 const NavLinksContainer = () => {
   const router = useRouter();
   const { mutate } = useLogoutUser();
+  const setStep = useStepsStore(state => state.setStep);
 
   const logout = async (args: {}) => {
     mutate(
@@ -30,7 +32,7 @@ const NavLinksContainer = () => {
         <li>
           <NavLink route="/profile">Seu perfil</NavLink>
         </li>
-        <li>
+        <li onClick={() => setStep(0)}>
           <NavLink route="/chargevalue">Carregar valor</NavLink>
         </li>
         <li>

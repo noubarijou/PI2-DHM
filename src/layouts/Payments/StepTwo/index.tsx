@@ -1,13 +1,12 @@
-import { InputText } from 'components/input/input-text/InputText';
 import * as s from './steptwo.styles';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { schemaLogin } from 'pages/login/schemas';
 import { ModInput } from './steptwo.styles';
-import { Button, PageTitle } from 'components';
-import { useEffect, useMemo, useState } from 'react';
-import PaymentStepThree from '../StepThree';
+import { Button } from 'components';
+import { useState } from 'react';
 import { useRouter } from 'next/router';
+import PaymentStepThree from '../StepThree';
 const PaymentStepTwo = () => {
   const router = useRouter();
   const { control } = useForm({
