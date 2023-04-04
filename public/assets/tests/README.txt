@@ -1,0 +1,1 @@
+Para rodar os testes na sua máquina usando SeleniumIDE, use o arquivo dentro da pasta 'scripts' na extensão do SeleniumIDE
