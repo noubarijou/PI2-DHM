@@ -36,6 +36,7 @@ export const pagination = (
   page: number,
   options?: filters
 ) => {
+  data = [...data].reverse();
   // Calculates the index of the first and last item on the page
   const startIndex = (page - 1) * limit;
   const endIndex = startIndex + limit;

@@ -144,6 +144,7 @@ const Login = () => {
               control={control}
               placeholder="senha"
               variant={'outOfFocus'}
+              autoFocus
             />
           )}
           <Button type="submit" variant={!isLoading ? 'primary' : 'disabled'}>
