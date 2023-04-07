@@ -1,5 +1,4 @@
-import { useEffect } from 'react';
-import * as s from './FlacgContainer.style';
+import * as s from './FlagContainer.style';
 
 type FlagProps = {
   cardNumber?: number;
