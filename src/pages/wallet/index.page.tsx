@@ -123,7 +123,7 @@ const Wallet = () => {
                 </s.ActivityDescription>
                 <s.ActivityValue>
                   <s.ActivityDescriptionText>
-                    ${activity?.amount}
+                    {priceFormatter(activity?.amount)}
                   </s.ActivityDescriptionText>
                   <span>
                     {format(new Date(activity?.dated), 'EEEE', { locale: pt })}
