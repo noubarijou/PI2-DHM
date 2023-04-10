@@ -24,6 +24,7 @@ import { pagination } from 'utils/tests/filters/filter';
 import { GetServerSidePropsContext } from 'next';
 import { useRouter } from 'next/router';
 import ActivityDetail from 'layouts/FullActivity/ActivityDetail';
+import { priceFormatter } from 'utils/formatters/priceFormatter';
 
 const FullActivity = () => {
   const [openFilter, setOpenFilter] = useState(false);
@@ -117,7 +118,7 @@ const FullActivity = () => {
                   </s.ActivityDescription>
                   <s.ActivityValue>
                     <s.ActivityDescriptionText>
-                      ${activity?.amount}
+                      {priceFormatter(activity?.amount)}
                     </s.ActivityDescriptionText>
                     <span>
                       {format(new Date(activity?.dated), 'EEEE', {

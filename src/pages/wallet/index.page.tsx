@@ -19,6 +19,7 @@ import { useUserStore } from 'store/user';
 import { pagination } from 'utils/tests/filters/filter';
 import { useEffect } from 'react';
 import { useAccountStore } from 'store/account';
+import { priceFormatter } from 'utils/formatters/priceFormatter';
 
 export async function getServerSideProps(ctx: GetServerSidePropsContext) {
   const { '@digitalmoney:token': token } = nookies.get(ctx);
@@ -56,15 +57,6 @@ const Wallet = () => {
 
   const { data: accountInfo } = useGetAccount(user.id);
   const { data: activityInfo } = useGetAcctActivity(user.id);
-  const priceFormatter = (num: number | undefined) => {
-    return (
-      num &&
-      new Intl.NumberFormat('pt-br', {
-        style: 'currency',
-        currency: 'BRL'
-      }).format(num)
-    );
-  };
 
   useEffect(() => {
     if (accountInfo) setAccountInfo(accountInfo);
