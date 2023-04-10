@@ -13,6 +13,7 @@ export function TransferDataPreview() {
   const user = useUserStore(state => state.user);
   const previousStep = useStepsStore(state => state.setPreviousStep);
   const nextStep = useStepsStore(state => state.setNextStep);
+  const setStep = useStepsStore(state => state.setStep);
   const chargeValue = useChargeValueStore(state => state.value);
   const { mutate: createDeposit } = useCreateDeposit();
   const { data: account, isLoading } = useGetAccount(user.id);
@@ -37,8 +38,8 @@ export function TransferDataPreview() {
             nextStep();
           }
         },
-        onError: data => {
-          console.log(data);
+        onError: _ => {
+          setStep(6);
         }
       }
     );

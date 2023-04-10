@@ -88,6 +88,8 @@ const Signup = () => {
               control={control}
               placeholder="CPF*"
               label="CPF"
+              maxLength={11}
+              minLength={11}
             />
             <InputText
               type="text"
@@ -106,6 +108,7 @@ const Signup = () => {
               control={control}
               placeholder="Senha"
               label="Senha"
+              minLength={6}
             />
             <InputText
               type="password"
@@ -120,6 +123,8 @@ const Signup = () => {
               control={control}
               placeholder="Telefone*"
               label="Telefone"
+              minLength={11}
+              maxLength={11}
             />
             <Button type="submit" size="medium">
               {isLoading ? 'Carregando...' : 'Criar conta'}

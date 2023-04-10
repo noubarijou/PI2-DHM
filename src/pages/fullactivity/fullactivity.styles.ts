@@ -1,12 +1,7 @@
 import { TableContainer } from 'components';
 import { InputText } from 'components/input/input-text/input-text.styles';
-import Link from 'next/link';
 import { AiOutlineSearch } from 'react-icons/ai';
 import styled, { css } from 'styled-components';
-import {
-  ModifierSizeMediaQuery,
-  ModifierSizeMediaQueryProps
-} from 'styles/modifier.style';
 
 export const InputContainer = styled.div`
   position: relative;
@@ -74,11 +69,16 @@ export const ActivityContainer = styled.div`
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: 0.75rem 0;
+    padding: 0.75rem 0.1rem;
     border-bottom: 1px solid ${theme.colors.secondaryWhite};
 
     &:nth-child(-1) {
       border-top: 1px solid ${theme.colors.secondaryWhite};
+    }
+
+    &:hover {
+      cursor: pointer;
+      background-color: ${theme.colors.secondaryWhite};
     }
   `}
 `;

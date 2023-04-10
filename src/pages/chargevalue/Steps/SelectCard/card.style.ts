@@ -15,6 +15,7 @@ export const mainContainer = styled.div`
   .divider {
     height: 1px;
     width: 100%;
+    opacity: 30%;
     border-radius: 1px;
     background-color: lightgray;
   }

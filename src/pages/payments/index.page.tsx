@@ -3,11 +3,7 @@ import StepOne from 'layouts/Payments/StepOne';
 import React from 'react';
 
 const Payments = () => {
-  return (
-    <ContainerPage>
-      <StepOne />
-    </ContainerPage>
-  );
+  return <StepOne />;
 };
 
 export default Payments;

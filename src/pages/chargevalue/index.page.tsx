@@ -10,6 +10,7 @@ import { SuccessfullyDeposited } from './Steps/SuccessfullyDeposited';
 import Value from './Steps/SelectTransfer';
 import Transfer from './Steps/CopyInfoToTransfer';
 import Card from './Steps/SelectCard';
+import { DepositError } from './Steps/DepositError';
 
 export async function getServerSideProps(ctx: GetServerSidePropsContext) {
   const { '@digitalmoney:token': token } = nookies.get(ctx);
@@ -38,7 +39,8 @@ const ChargeValue = () => {
     2: <Card />,
     3: <DepositValue />,
     4: <TransferDataPreview />,
-    5: <SuccessfullyDeposited />
+    5: <SuccessfullyDeposited />,
+    6: <DepositError />
   };
 
   const component = Steps[currentStep as keyof typeof Steps];

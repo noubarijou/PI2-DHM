@@ -21,6 +21,7 @@ const Filter = ({ handleApplyClick }: FilterProps) => {
   const selectedFilter = watch('selectedFilter');
 
   const today = new Date();
+  today.setHours(0, 0, 0, 0);
   const yesterday = new Date();
   const lastWeek = new Date();
   const last15Days = new Date();
